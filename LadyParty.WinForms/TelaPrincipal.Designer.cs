@@ -40,6 +40,10 @@
             clienteToolStripMenuItem = new ToolStripMenuItem();
             temaDeFestasToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
             toolStrip2.SuspendLayout();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -50,7 +54,7 @@
             statusStrip1.BackColor = Color.White;
             statusStrip1.Location = new Point(0, 430);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(381, 22);
+            statusStrip1.Size = new Size(380, 22);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -60,7 +64,7 @@
             toolStrip2.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripSeparator1, toolStripLabel1 });
             toolStrip2.Location = new Point(0, 24);
             toolStrip2.Name = "toolStrip2";
-            toolStrip2.Size = new Size(381, 25);
+            toolStrip2.Size = new Size(380, 25);
             toolStrip2.TabIndex = 2;
             toolStrip2.Text = "toolStrip2";
             // 
@@ -99,7 +103,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { cadastrosToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(381, 24);
+            menuStrip1.Size = new Size(380, 24);
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -124,19 +128,66 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.TelaInicial;
             pictureBox1.Location = new Point(0, 49);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(381, 381);
+            pictureBox1.Size = new Size(381, 378);
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Thistle;
+            button1.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(110, 176);
+            button1.Name = "button1";
+            button1.Size = new Size(152, 42);
+            button1.TabIndex = 5;
+            button1.Text = "Temas";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Thistle;
+            button2.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(110, 224);
+            button2.Name = "button2";
+            button2.Size = new Size(152, 42);
+            button2.TabIndex = 6;
+            button2.Text = "Clientes";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Thistle;
+            button3.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Location = new Point(110, 272);
+            button3.Name = "button3";
+            button3.Size = new Size(152, 42);
+            button3.TabIndex = 7;
+            button3.Text = "Loja";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Thistle;
+            button4.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Location = new Point(110, 320);
+            button4.Name = "button4";
+            button4.Size = new Size(152, 42);
+            button4.TabIndex = 8;
+            button4.Text = "button4";
+            button4.UseVisualStyleBackColor = false;
             // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(381, 452);
+            ClientSize = new Size(380, 452);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(pictureBox1);
             Controls.Add(toolStrip2);
             Controls.Add(statusStrip1);
@@ -166,5 +217,9 @@
         private ToolStripMenuItem clienteToolStripMenuItem;
         private ToolStripMenuItem temaDeFestasToolStripMenuItem;
         private PictureBox pictureBox1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
     }
 }
