@@ -17,13 +17,13 @@
         public abstract string ObterTipoCadastro { get; }
 
 
-        public virtual bool InserirHabilitado { get { return true; } }
-        public virtual bool EditarHabilitado { get { return true; } }
-        public virtual bool ExcluirHabilitado { get { return true; } }
+        public virtual bool InserirHabilitado => true;
+        public virtual bool EditarHabilitado => true;
+        public virtual bool ExcluirHabilitado => true;
 
-        public virtual bool FiltrarHabilitado { get { return false; } }
-        public virtual bool AdicionarItensHabilitado { get { return false; } }
-        public virtual bool ConcluirItensHabilitado { get { return false; } }
+        public virtual bool FiltrarHabilitado => false;
+        public virtual bool AdicionarItensHabilitado => false;
+        public virtual bool ConcluirItensHabilitado => false;
 
         public abstract void Inserir();
 
