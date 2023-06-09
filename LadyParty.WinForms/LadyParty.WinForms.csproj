@@ -26,7 +26,6 @@
   <ItemGroup>
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloFesta\" />
-    <Folder Include="ModuloTema\" />
     <Folder Include="ModuloCompra\" />
   </ItemGroup>
 
