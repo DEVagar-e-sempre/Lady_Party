@@ -1,6 +1,7 @@
 ﻿namespace LadyParty.WinForms.Compartilhado
 {
-    public class ControladorBase<T> 
+    public abstract class ControladorBase<T> 
     {
+        //metodos de inserir, excluir, listar e editar
     }
 }
