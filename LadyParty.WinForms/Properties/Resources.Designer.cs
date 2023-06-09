@@ -63,19 +63,9 @@ namespace LadyParty.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TelaBase {
+        internal static System.Drawing.Bitmap Lady_Party_Tela__1_ {
             get {
-                object obj = ResourceManager.GetObject("TelaBase", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TelaInicial {
-            get {
-                object obj = ResourceManager.GetObject("TelaInicial", resourceCulture);
+                object obj = ResourceManager.GetObject("Lady_Party_Tela__1_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
