@@ -2,6 +2,10 @@
 {
     public abstract class EntidadeBase<T>
     {
-        protected int id;
+        public int id;
+
+        public abstract void Validar();
+
+        public abstract void AtualizarInformacoes(T entidade);
     }
 }
