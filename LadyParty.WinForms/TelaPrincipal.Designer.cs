@@ -30,10 +30,10 @@
         {
             statusStrip1 = new StatusStrip();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            btn_temas = new Button();
+            btn_clientes = new Button();
+            btn_loja = new Button();
+            btn_festas = new Button();
             label1 = new Label();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -58,49 +58,53 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // btn_temas
             // 
-            button1.BackColor = Color.Thistle;
-            button1.Font = new Font("Comic Sans MS", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(244, 234);
-            button1.Name = "button1";
-            button1.Size = new Size(241, 69);
-            button1.TabIndex = 5;
-            button1.Text = "Temas";
-            button1.UseVisualStyleBackColor = false;
+            btn_temas.BackColor = Color.Thistle;
+            btn_temas.Font = new Font("Comic Sans MS", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_temas.Location = new Point(244, 234);
+            btn_temas.Name = "btn_temas";
+            btn_temas.Size = new Size(241, 69);
+            btn_temas.TabIndex = 5;
+            btn_temas.Text = "Temas";
+            btn_temas.UseVisualStyleBackColor = false;
+            btn_temas.Click += btn_temas_Click;
             // 
-            // button2
+            // btn_clientes
             // 
-            button2.BackColor = Color.Thistle;
-            button2.Font = new Font("Comic Sans MS", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(244, 309);
-            button2.Name = "button2";
-            button2.Size = new Size(241, 69);
-            button2.TabIndex = 6;
-            button2.Text = "Clientes";
-            button2.UseVisualStyleBackColor = false;
+            btn_clientes.BackColor = Color.Thistle;
+            btn_clientes.Font = new Font("Comic Sans MS", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_clientes.Location = new Point(244, 309);
+            btn_clientes.Name = "btn_clientes";
+            btn_clientes.Size = new Size(241, 69);
+            btn_clientes.TabIndex = 6;
+            btn_clientes.Text = "Clientes";
+            btn_clientes.UseVisualStyleBackColor = false;
+            btn_clientes.Click += btn_clientes_Click;
             // 
-            // button3
+            // btn_loja
             // 
-            button3.BackColor = Color.Thistle;
-            button3.Font = new Font("Comic Sans MS", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(244, 384);
-            button3.Name = "button3";
-            button3.Size = new Size(241, 69);
-            button3.TabIndex = 7;
-            button3.Text = "Loja";
-            button3.UseVisualStyleBackColor = false;
+            btn_loja.BackColor = Color.Thistle;
+            btn_loja.Font = new Font("Comic Sans MS", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_loja.Location = new Point(244, 384);
+            btn_loja.Name = "btn_loja";
+            btn_loja.Size = new Size(241, 69);
+            btn_loja.TabIndex = 7;
+            btn_loja.Text = "Loja";
+            btn_loja.UseVisualStyleBackColor = false;
+            btn_loja.Click += btn_loja_Click;
             // 
-            // button4
+            // btn_festas
             // 
-            button4.BackColor = Color.Thistle;
-            button4.Font = new Font("Comic Sans MS", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(244, 459);
-            button4.Name = "button4";
-            button4.Size = new Size(241, 69);
-            button4.TabIndex = 8;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = false;
+            btn_festas.BackColor = Color.Thistle;
+            btn_festas.Font = new Font("Comic Sans MS", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_festas.Location = new Point(244, 459);
+            btn_festas.Name = "btn_festas";
+            btn_festas.Size = new Size(241, 69);
+            btn_festas.TabIndex = 8;
+            btn_festas.Text = "Festas";
+            btn_festas.UseVisualStyleBackColor = false;
+            btn_festas.Click += btn_festas_Click;
             // 
             // label1
             // 
@@ -128,10 +132,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(706, 615);
             Controls.Add(label1);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btn_festas);
+            Controls.Add(btn_loja);
+            Controls.Add(btn_clientes);
+            Controls.Add(btn_temas);
             Controls.Add(pictureBox1);
             Controls.Add(statusStrip1);
             Controls.Add(panel1);
@@ -146,10 +150,10 @@
 
         private StatusStrip statusStrip1;
         private PictureBox pictureBox1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btn_temas;
+        private Button btn_clientes;
+        private Button btn_loja;
+        private Button btn_festas;
         private Label label1;
         private Panel panel1;
     }

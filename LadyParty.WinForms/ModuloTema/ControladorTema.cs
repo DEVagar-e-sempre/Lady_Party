@@ -1,6 +1,12 @@
-﻿namespace LadyParty.WinForms.ModuloTema
+﻿using LadyParty.WinForms.Compartilhado;
+
+namespace LadyParty.WinForms.ModuloTema
 {
-    internal class ControladorTema
+    public class ControladorTema : ControladorBase
     {
+        public ControladorTema()
+        {
+            
+        }
     }
 }

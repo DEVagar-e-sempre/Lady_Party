@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LadyParty.WinForms.ModuloCliente
+﻿namespace LadyParty.WinForms.ModuloCliente
 {
-    internal class Cliente
+    public class Cliente
     {
     }
 }
