@@ -31,7 +31,6 @@ namespace LadyParty.WinForms.ModuloEvento
             this.horaInicio = horaInicio;
             this.horaTermino = horaTermino;
         }
-
         public override void AtualizarInformacoes(Evento entidade)
         {
             this.idTema = entidade.idTema;
