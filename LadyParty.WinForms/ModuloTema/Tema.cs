@@ -1,6 +1,4 @@
-﻿using LadyParty.WinForms.Compartilhado;
-
-namespace LadyParty.WinForms.ModuloTema
+﻿namespace LadyParty.WinForms.ModuloTema
 {
     public class Tema : EntidadeBase<Tema>
     {
@@ -15,5 +13,16 @@ namespace LadyParty.WinForms.ModuloTema
             listaItens = new List<ItemTema>();
         }
 
+        public Tema(){ }
+
+        public override void Validar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void AtualizarInformacoes(Tema entidade)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

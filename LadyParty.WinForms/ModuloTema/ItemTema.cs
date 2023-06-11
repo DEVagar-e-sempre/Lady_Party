@@ -1,24 +1,15 @@
-﻿using LadyParty.WinForms.Compartilhado;
-
-namespace LadyParty.WinForms.ModuloTema
+﻿namespace LadyParty.WinForms.ModuloTema
 {
     public class ItemTema : EntidadeBase<ItemTema>
     {
-        public string[] ehCompleto =
+        public override void AtualizarInformacoes(ItemTema entidade)
         {
-            "3 personagens", "250 Doces tematizados ",
-            "250 Salgados", "Bebidas", "Centro de mesa",
-            "Enfeite de parede", "Balões coloridos", "bonecos",
-            "potes com balas", "Balas", "chicletes",
-            "bombons", "lembrancinha"
-        };
+            throw new NotImplementedException();
+        }
 
-        public string[] ehSimples =
+        public override void Validar()
         {
-            "1 personagens", "175 Doces tematizados ",
-            "175 Salgados", "Bebidas", "Centro de mesa",
-            "bonecos", "potes com balas", "chicletes",
-            "bombons"
-        };
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,87 +1,102 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
-using Newtonsoft.Json;
 
 namespace LadyParty.WinForms.Compartilhado
 {
     public abstract class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
     {
-        protected List<TEntidade> listaRegistros;
-        public int contadorRegistros;
-        protected string jsonRepositorio;
-        protected string nomeArquivo = typeof(TEntidade).Name + ".json";
+        private Type tipo = typeof(TEntidade);
+        string nomeArquivo;
+        protected List<TEntidade> listaRegistros;//--> descarregar na lista
+        private int contadorRegistros = 0;
 
-        public List<TEntidade> ListaRegistros { get => listaRegistros; }
+        public int Contador
+        {
+            get
+            {
+                return contadorRegistros;
+            }
+        }
 
-        public RepositorioArquivoBase()
+        protected List<TEntidade> Desserializador()
         {
-            contadorRegistros = 0;
-            listaRegistros = new List<TEntidade>();
-            //CarregarRepositorio();
-        }
-        public virtual bool Inserir(TEntidade registro)
-        {
-            registro.id = contadorRegistros;
-            listaRegistros.Add(registro);
-            contadorRegistros++;
-            return true;
-        }
-        public virtual void CarregarRepositorio()
-        {
+            nomeArquivo = $"{tipo.Name}.json";
+            JsonSerializerOptions config = ConfigurarLista();
+
             if (File.Exists(nomeArquivo))
             {
-                string json = File.ReadAllText(nomeArquivo);
-
-                if (string.IsNullOrEmpty(json))
-                {
-                    return;
-                }
-
-                RepositorioArquivoBase<TEntidade> tempRep = ConverterJson(json);
-
-                this.listaRegistros.AddRange(tempRep.ListaRegistros);
-
-                this.contadorRegistros = tempRep.contadorRegistros;
-
-                return;
+                string conteudo = File.ReadAllText(nomeArquivo);
+                return JsonSerializer.Deserialize<List<TEntidade>>(conteudo, config);
             }
-            File.Create(nomeArquivo).Close();
-        }
-
-        protected abstract RepositorioArquivoBase<TEntidade> ConverterJson(string json);
-
-        public virtual void GravarRepositorio()
-        {
-            if (contadorRegistros > 0 && listaRegistros.Count > 0)
+            else
             {
-                string antigoJson = jsonRepositorio;
-
-                jsonRepositorio = JsonConvert.SerializeObject(this);
-
-                File.WriteAllText(nomeArquivo, jsonRepositorio);
+                return new List<TEntidade>();
             }
         }
-        protected virtual JsonSerializerOptions ConfigSerializacao()
+
+        public virtual void Inserir(TEntidade registro)
         {
-            JsonSerializerOptions opcoes = new JsonSerializerOptions();
-            opcoes.IncludeFields = true;
-            opcoes.WriteIndented = true;
-            opcoes.ReferenceHandler = ReferenceHandler.Preserve;
+            registro.id = contadorRegistros;
 
-            return opcoes;
+            listaRegistros.Add(registro);
+
+            contadorRegistros++;
         }
-        public virtual void Editar(TEntidade novoRegistro)
+
+        public virtual void Editar(int id, TEntidade registroAtualizado)
         {
-            TEntidade registroAntigo = SelecionarPorId(novoRegistro.id);
-            registroAntigo.AtualizarInformacoes(novoRegistro);
+            TEntidade registroSelecionado = SelecionarPorId(id);
+
+            registroSelecionado.AtualizarInformacoes(registroAtualizado);
         }
-        public virtual void Excluir(int id) => listaRegistros.Remove(SelecionarPorId(id));
 
-        public virtual bool Excluir(TEntidade registro) => listaRegistros.Remove(registro);
+        public virtual void Excluir(TEntidade registroSelecionado)
+        {
+            listaRegistros.Remove(registroSelecionado);
+        }
 
-        public virtual List<TEntidade> SelecionarTodos() => listaRegistros;
+        public virtual TEntidade SelecionarPorId(int id)
+        {
 
-        public virtual TEntidade SelecionarPorId(int id) => listaRegistros.FirstOrDefault(x => x.id == id);
+            foreach (TEntidade ent in listaRegistros)
+            {
+                if (ent.id == id)
+                {
+                    return ent;
+                }
+            }
 
+            return null;
+        }
+
+        public virtual List<TEntidade> SelecionarTodos()
+        {
+            return listaRegistros.OrderByDescending(x => x.id).ToList();
+        }
+
+        //Serializando por json 
+
+        public void Serializador()
+        {
+            nomeArquivo = $"{tipo.Name}.json";
+
+            JsonSerializerOptions config = ConfigurarLista();
+
+            string jsonString = JsonSerializer.Serialize(this.listaRegistros, config);
+
+            File.WriteAllText(nomeArquivo, jsonString);//cria e escreve o arquivo File.WriteAllText(nomeArquivo, objeto);
+
+        }
+
+        private JsonSerializerOptions ConfigurarLista()
+        {
+            JsonSerializerOptions config = new JsonSerializerOptions();
+
+            config.IncludeFields = true;
+            config.WriteIndented = true;
+            config.ReferenceHandler = ReferenceHandler.Preserve;
+
+            return config;
+        }
     }
 }
