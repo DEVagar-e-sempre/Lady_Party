@@ -1,6 +1,10 @@
 ﻿namespace LadyParty.WinForms.ModuloTema
 {
-    internal class RepositorioArquivoTema
+    public class RepositorioArquivoTema : RepositorioArquivoBase<Tema>
     {
+        public RepositorioArquivoTema()
+        {
+            this.listaRegistros = Desserializador();
+        }
     }
 }

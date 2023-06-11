@@ -1,6 +1,6 @@
 ﻿namespace LadyParty.WinForms.Compartilhado
 {
-    public abstract class ControladorBase
+    public abstract class ControladorBase<T> // tem que apagar 
     {
         public abstract string ToolTipInserir { get; }
 
