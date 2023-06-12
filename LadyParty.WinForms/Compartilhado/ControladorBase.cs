@@ -1,14 +1,14 @@
 ﻿namespace LadyParty.WinForms.Compartilhado
 {
-    public abstract class ControladorBase<T> // tem que apagar 
+    public abstract class ControladorBase
     {
-        public abstract string ToolTipInserir { get; }
+        public virtual string ToolTipInserir => $"Inserir novo {ObterTipoCadastro}";
 
-        public abstract string ToolTipEditar { get; }
+        public virtual string ToolTipEditar => $"Editar um {ObterTipoCadastro}";
 
-        public abstract string ToolTipExcluir { get; }
+        public virtual string ToolTipExcluir => $"Excluir um {ObterTipoCadastro}";
 
-        public virtual string ToolTipFiltrar { get; }
+        public virtual string ToolTipFiltrar => $"Filtrar {ObterTipoCadastro}s";
 
         public virtual string ToolTipAdicionarItens { get; }
 
@@ -26,6 +26,7 @@
         public virtual bool ConcluirItensHabilitado => false;
 
         public abstract void Inserir();
+
 
         public abstract void Editar();
 
