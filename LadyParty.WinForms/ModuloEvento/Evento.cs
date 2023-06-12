@@ -2,40 +2,40 @@
 {
     public class Evento : EntidadeBase<Evento>
     {
-        public String enderecoFesta;
+        public String endereco;
 
         public int idCliente;
 
         public int idTema;
 
-        public DateTime dataFesta;
+        public DateTime data;
 
         public TimeSpan horaInicio;
 
         public TimeSpan horaTermino;
 
-        public Evento(int id = -1, string enderecoFesta = "", int idCliente = -1, int idTema = -1, DateTime dataFesta = default(DateTime), TimeSpan horaInicio = default(TimeSpan), TimeSpan horaTermino = default(TimeSpan))
+        public Evento(int id = -1, string endereco = "", int idCliente = -1, int idTema = -1, DateTime data = default(DateTime), TimeSpan horaInicio = default(TimeSpan), TimeSpan horaTermino = default(TimeSpan))
         {
             this.id = id;
-            this.enderecoFesta = enderecoFesta;
+            this.endereco = endereco;
             this.idCliente = idCliente;
             this.idTema = idTema;
-            this.dataFesta = dataFesta;
+            this.data = data;
             this.horaInicio = horaInicio;
             this.horaTermino = horaTermino;
         }
         public override void AtualizarInformacoes(Evento entidade)
         {
             this.idTema = entidade.idTema;
-            this.dataFesta = entidade.dataFesta;
+            this.data = entidade.data;
             this.horaInicio = entidade.horaInicio;
             this.horaTermino = entidade.horaTermino;
         }
 
-        public override void Validar()
+        public override string[] Validar()
         {
             List<string> erros = new List<string>();
-            if (String.IsNullOrEmpty(enderecoFesta))
+            if (String.IsNullOrEmpty(endereco))
             {
                 erros.Add("Endereço não informado");
             }
@@ -47,7 +47,7 @@
             {
                 erros.Add("Tema não selecionado");
             }
-            if (dataFesta == default(DateTime))
+            if (data == default(DateTime))
             {
                 erros.Add("Data não selecionada");
             }
@@ -59,6 +59,7 @@
             {
                 erros.Add("Hora de término não selecionada");
             }
+            return erros.ToArray();
         }
     }
 }

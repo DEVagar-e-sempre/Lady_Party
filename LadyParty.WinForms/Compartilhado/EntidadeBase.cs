@@ -4,7 +4,7 @@
     {
         public int id;
 
-        public abstract void Validar();
+        public abstract string[] Validar();
 
         public abstract void AtualizarInformacoes(T entidade);
     }
