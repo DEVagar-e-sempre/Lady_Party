@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace LadyParty.WinForms
 {
     public partial class TelaPrincipalProspostaForm : Form
     {
-        private RepositorioEvento repEvento;
+        private RepositorioArquivoBase<Evento> repEvento;
 
         private ControladorBase controlador;
         private static TelaPrincipalProspostaForm telaPrincipalProspostaForm;

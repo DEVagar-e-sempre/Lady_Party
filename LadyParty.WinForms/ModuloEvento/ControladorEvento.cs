@@ -9,9 +9,9 @@ namespace LadyParty.WinForms.ModuloEvento
 
         private TabelaEventoUserControl tabelaEvento;
 
-        private RepositorioEvento repEvento;
+        private RepositorioArquivoBase<Evento> repEvento;
 
-        public ControladorEvento(RepositorioEvento repEvento)
+        public ControladorEvento(RepositorioArquivoBase<Evento> repEvento)
         {
             this.repEvento = repEvento;
         }
