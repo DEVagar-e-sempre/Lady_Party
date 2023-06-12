@@ -2,18 +2,13 @@
 {
     public class ControladorTema : ControladorBase<Tema>
     {
-        public ControladorTema()
+        public ControladorTema(RepositorioArquivoTema repTema)
         {
-            
+            base.telaGeral = new TelaCadastroTema();
+            base.repEntidade = repTema;
         }
 
-        public override string ToolTipInserir => throw new NotImplementedException();
-
-        public override string ToolTipEditar => throw new NotImplementedException();
-
-        public override string ToolTipExcluir => throw new NotImplementedException();
-
-        public override string ObterTipoCadastro => throw new NotImplementedException();
+        //Carregar itens
 
         public override void Editar()
         {
@@ -30,7 +25,7 @@
             throw new NotImplementedException();
         }
 
-        public override UserControl ObterTabela()
+        public override UserControl ObterListagem()
         {
             throw new NotImplementedException();
         }
