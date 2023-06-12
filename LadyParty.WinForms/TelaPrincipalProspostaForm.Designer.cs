@@ -125,6 +125,7 @@
             btnInserir.Padding = new Padding(7);
             btnInserir.Size = new Size(42, 42);
             btnInserir.Text = "Inserir";
+            btnInserir.Click += botaoBarraFerramentas_Click;
             // 
             // btnEditar
             // 
@@ -136,6 +137,7 @@
             btnEditar.Padding = new Padding(7);
             btnEditar.Size = new Size(42, 42);
             btnEditar.Text = "toolStripButton2";
+            btnEditar.Click += botaoBarraFerramentas_Click;
             // 
             // btnExcluir
             // 
@@ -147,6 +149,7 @@
             btnExcluir.Padding = new Padding(7);
             btnExcluir.Size = new Size(42, 42);
             btnExcluir.Text = "toolStripButton3";
+            btnExcluir.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator1
             // 
@@ -163,6 +166,7 @@
             btnFiltrar.Padding = new Padding(7);
             btnFiltrar.Size = new Size(42, 42);
             btnFiltrar.Text = "toolStripButton4";
+            btnFiltrar.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator2
             // 
@@ -179,6 +183,7 @@
             btnAdicionarItens.Padding = new Padding(7);
             btnAdicionarItens.Size = new Size(42, 42);
             btnAdicionarItens.Text = "toolStripButton5";
+            btnAdicionarItens.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator3
             // 
@@ -195,6 +200,7 @@
             btnConcluirItens.Padding = new Padding(7);
             btnConcluirItens.Size = new Size(42, 42);
             btnConcluirItens.Text = "toolStripButton6";
+            btnConcluirItens.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator4
             // 

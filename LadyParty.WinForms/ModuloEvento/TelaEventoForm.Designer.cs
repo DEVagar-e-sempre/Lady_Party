@@ -191,6 +191,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
+            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(436, 389);
             Controls.Add(txtEndereco);
             Controls.Add(label7);
@@ -208,6 +210,7 @@
             Controls.Add(label2);
             Controls.Add(txtId);
             Controls.Add(label1);
+            DoubleBuffered = true;
             Name = "TelaEventoForm";
             Text = "Adicionar Evento";
             ResumeLayout(false);

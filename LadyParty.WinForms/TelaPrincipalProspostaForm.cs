@@ -59,6 +59,27 @@ namespace LadyParty.WinForms
 
             ConfigurarTelaPrincipal(controlador);
         }
+        private void botaoBarraFerramentas_Click(object sender, EventArgs e)
+        {
+            ToolStripButton botaoCliclado = (ToolStripButton)sender;
+            switch (botaoCliclado.Name)
+            {
+                case "btnInserir":
+                    controlador.Inserir();
+                    break;
+                case "btnEditar":
+                    controlador.Editar();
+                    break;
+                case "btnExcluir":
+                    controlador.Excluir();
+                    break;
+                case "btnFiltrar":
+                    controlador.Filtrar();
+                    break;
+                default:
+                    break;
+            }
+        }
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
             labelTipoCadastro.Text = controladorBase.ObterTipoCadastro;
