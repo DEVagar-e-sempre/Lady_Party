@@ -13,22 +13,22 @@ using System.Windows.Forms;
 
 namespace LadyParty.WinForms
 {
-    public partial class TelaPrincipalProspostaForm : Form
+    public partial class TelaPrincipalPropostaForm : Form
     {
         private RepositorioArquivoBase<Evento> repEvento;
 
         private ControladorBase controlador;
-        private static TelaPrincipalProspostaForm telaPrincipalProspostaForm;
-        public TelaPrincipalProspostaForm()
+        private static TelaPrincipalPropostaForm telaPrincipalProspostaForm;
+        public TelaPrincipalPropostaForm()
         {
             InitializeComponent();
         }
-        public static TelaPrincipalProspostaForm Instancia
+        public static TelaPrincipalPropostaForm Instancia
         {
             get
             {
                 if (telaPrincipalProspostaForm == null)
-                    telaPrincipalProspostaForm = new TelaPrincipalProspostaForm();
+                    telaPrincipalProspostaForm = new TelaPrincipalPropostaForm();
 
                 return telaPrincipalProspostaForm;
             }

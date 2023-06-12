@@ -1,6 +1,6 @@
 ﻿namespace LadyParty.WinForms
 {
-    partial class TelaPrincipalProspostaForm
+    partial class TelaPrincipalPropostaForm
     {
         /// <summary>
         /// Required designer variable.
