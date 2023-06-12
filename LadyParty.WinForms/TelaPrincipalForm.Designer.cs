@@ -1,6 +1,6 @@
 ﻿namespace LadyParty.WinForms
 {
-    partial class TelaPrincipal
+    partial class TelaPrincipalForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,34 +29,28 @@
         private void InitializeComponent()
         {
             statusStrip1 = new StatusStrip();
-            pictureBox1 = new PictureBox();
             btn_temas = new Button();
             btn_clientes = new Button();
             btn_loja = new Button();
             btn_festas = new Button();
             label1 = new Label();
-            panel1 = new Panel();
+            pnl_principal = new Panel();
+            pictureBox1 = new PictureBox();
+            lbl_status = new ToolStripStatusLabel();
+            statusStrip1.SuspendLayout();
+            pnl_principal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // statusStrip1
             // 
             statusStrip1.BackColor = Color.White;
+            statusStrip1.Items.AddRange(new ToolStripItem[] { lbl_status });
             statusStrip1.Location = new Point(0, 593);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(706, 22);
+            statusStrip1.Size = new Size(707, 22);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.Lady_Party_Tela__1_;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(706, 593);
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
             // 
             // btn_temas
             // 
@@ -118,29 +112,48 @@
             label1.TabIndex = 9;
             label1.Text = "Lady Party";
             // 
-            // panel1
+            // pnl_principal
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(706, 615);
-            panel1.TabIndex = 10;
+            pnl_principal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnl_principal.Controls.Add(pictureBox1);
+            pnl_principal.Location = new Point(0, 0);
+            pnl_principal.Name = "pnl_principal";
+            pnl_principal.Size = new Size(707, 615);
+            pnl_principal.TabIndex = 10;
             // 
-            // TelaPrincipal
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.Lady_Party_Tela__1_;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(707, 615);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
+            // lbl_status
+            // 
+            lbl_status.Name = "lbl_status";
+            lbl_status.Size = new Size(39, 17);
+            lbl_status.Text = "Status";
+            // 
+            // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(706, 615);
+            ClientSize = new Size(707, 615);
             Controls.Add(label1);
             Controls.Add(btn_festas);
             Controls.Add(btn_loja);
             Controls.Add(btn_clientes);
             Controls.Add(btn_temas);
-            Controls.Add(pictureBox1);
             Controls.Add(statusStrip1);
-            Controls.Add(panel1);
-            Name = "TelaPrincipal";
+            Controls.Add(pnl_principal);
+            Name = "TelaPrincipalForm";
             Text = "Tela Principal";
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            pnl_principal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -149,12 +162,13 @@
         #endregion
 
         private StatusStrip statusStrip1;
-        private PictureBox pictureBox1;
         private Button btn_temas;
         private Button btn_clientes;
         private Button btn_loja;
         private Button btn_festas;
         private Label label1;
-        private Panel panel1;
+        private Panel pnl_principal;
+        private PictureBox pictureBox1;
+        private ToolStripStatusLabel lbl_status;
     }
 }

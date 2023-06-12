@@ -1,22 +1,38 @@
-using LadyParty.WinForms.Compartilhado;
 using LadyParty.WinForms.ModuloTema;
 
 namespace LadyParty.WinForms
 {
-    public partial class TelaPrincipal : Form
+    public partial class TelaPrincipalForm : Form
     {
-        
-        
-        public TelaPrincipal()
+        private RepositorioArquivoTema repTema = new RepositorioArquivoTema();
+        private TelaCadastroTema telaCadTema = new TelaCadastroTema();
+        private static TelaPrincipalForm telaPrincipal;
+
+        public TelaPrincipalForm()
         {
             InitializeComponent();
 
+            lbl_status.Text = "";
             this.ConfigurarTelas();
+        }
+
+        public static TelaPrincipalForm TelaPrincipal
+        {
+            get
+            {
+                if (telaPrincipal == null)
+                {
+                    telaPrincipal = new TelaPrincipalForm();
+                }
+
+                return telaPrincipal;
+
+            }
         }
 
         private void btn_temas_Click(object sender, EventArgs e)
         {
-            ControladorBase<Tema> ctrlTema = new ControladorTema();
+            ControladorBase<Tema, TelaCadastroTema> ctrlTema = new ControladorTema(repTema);
 
             ConfigurarListagem(ctrlTema);
         }
@@ -36,8 +52,9 @@ namespace LadyParty.WinForms
 
         }
 
-        private void ConfigurarListagem<T>(ControladorBase<T> ctrlBase)
+        private void ConfigurarListagem<T>(T ctrlBase)
         {
+
             UserControl listagem = ctrlBase.ObterListagem();
 
             listagem.Dock = DockStyle.Fill;
@@ -48,5 +65,11 @@ namespace LadyParty.WinForms
             pnl_principal.Controls.Add(listagem);
 
         }
+
+        public void AtualizarRodape(string msg)
+        {
+            lbl_status.Text = msg;
+        }
+
     }
 }
