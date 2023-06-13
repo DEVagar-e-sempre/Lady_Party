@@ -8,6 +8,20 @@ namespace LadyParty.WinForms.ModuloAluguel
 {
     public class Festa
     {
+        public String endereco;
 
+        public DateTime data;
+
+        public TimeSpan horaInicio;
+
+        public TimeSpan horaTermino;
+
+        public Festa(string endereco, DateTime data, TimeSpan horaInicio, TimeSpan horaTermino)
+        {
+            this.endereco = endereco;
+            this.data = data;
+            this.horaInicio = horaInicio;
+            this.horaTermino = horaTermino;
+        }
     }
 }

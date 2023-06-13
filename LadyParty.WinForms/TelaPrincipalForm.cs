@@ -1,6 +1,5 @@
 using LadyParty.WinForms.ModuloAluguel;
 using LadyParty.WinForms.ModuloCliente;
-using LadyParty.WinForms.ModuloEvento;
 using LadyParty.WinForms.ModuloTema;
 
 namespace LadyParty.WinForms
@@ -106,7 +105,7 @@ namespace LadyParty.WinForms
                     controlador = new ControladorTema(repTema);
                     break;
                 case "btn_evento":
-                    controlador = new ControladorEvento(repEvento, repCliente, repTema);
+                    controlador = new ControladorAluguel(repEvento, repCliente, repTema);
                     break;
                 default:
                     return;
