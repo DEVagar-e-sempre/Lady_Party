@@ -110,6 +110,7 @@ namespace LadyParty.WinForms
                     controlador = new ControladorEvento(repEvento, repCliente, repTema);
                     break;
                 default:
+                    return;
                     break;
             }
             ConfigurarEstados(controlador);
