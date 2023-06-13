@@ -225,6 +225,7 @@
             btn_temas.Padding = new Padding(5);
             btn_temas.Size = new Size(78, 36);
             btn_temas.Text = "Temas";
+            btn_temas.Click += selecaoModulo_Click;
             // 
             // toolStripSeparator1
             // 
@@ -240,6 +241,7 @@
             btn_cliente.Padding = new Padding(5);
             btn_cliente.Size = new Size(85, 36);
             btn_cliente.Text = "Clientes";
+            btn_cliente.Click += selecaoModulo_Click;
             // 
             // toolStripSeparator2
             // 
@@ -255,6 +257,7 @@
             btn_compra.Padding = new Padding(5);
             btn_compra.Size = new Size(93, 36);
             btn_compra.Text = "Compras";
+            btn_compra.Click += selecaoModulo_Click;
             // 
             // toolStripSeparator3
             // 
@@ -270,6 +273,7 @@
             btn_evento.Padding = new Padding(5);
             btn_evento.Size = new Size(71, 36);
             btn_evento.Text = "Festa";
+            btn_evento.Click += selecaoModulo_Click;
             // 
             // toolStripLabel1
             // 
