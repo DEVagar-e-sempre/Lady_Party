@@ -132,7 +132,7 @@ namespace LadyParty.WinForms.ModuloEvento
             tabelaEvento.AtualizarTabela(eventos, repCliente, repTema);
         }
 
-        public override UserControl ObterTabela()
+        public override UserControl ObterListagem()
         {
             if (tabelaEvento == null)
             {

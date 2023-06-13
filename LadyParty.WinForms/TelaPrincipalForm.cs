@@ -50,7 +50,7 @@ namespace LadyParty.WinForms
         private void ConfigurarListagem(ControladorBase controladorBase)
         {
 
-            UserControl listagem = controladorBase.ObterTabela();
+            UserControl listagem = controladorBase.ObterListagem();
 
             listagem.Dock = DockStyle.Fill;
 
