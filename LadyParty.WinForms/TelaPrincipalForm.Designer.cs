@@ -82,7 +82,7 @@
             label1.BackColor = Color.Thistle;
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe Print", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 49);
+            label1.Location = new Point(14, 21);
             label1.Name = "label1";
             label1.Size = new Size(188, 51);
             label1.TabIndex = 9;
@@ -90,21 +90,19 @@
             // 
             // pnl_principal
             // 
-            pnl_principal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnl_principal.Controls.Add(toolStrip2);
             pnl_principal.Controls.Add(lbl);
             pnl_principal.Controls.Add(pictureBox2);
             pnl_principal.Controls.Add(label1);
             pnl_principal.Controls.Add(pictureBox1);
-            pnl_principal.Location = new Point(0, 41);
+            pnl_principal.Location = new Point(0, 71);
             pnl_principal.Name = "pnl_principal";
-            pnl_principal.Size = new Size(499, 400);
+            pnl_principal.Size = new Size(499, 370);
             pnl_principal.TabIndex = 10;
             // 
             // toolStrip2
             // 
             toolStrip2.Items.AddRange(new ToolStripItem[] { btn_inserir, btn_editar, btn_excluir, toolStripSeparator4, btn_filtrar, toolStripSeparator5, lbl_tipoCad });
-            toolStrip2.Location = new Point(0, 0);
+            toolStrip2.Location = new Point(0, 39);
             toolStrip2.Name = "toolStrip2";
             toolStrip2.Size = new Size(499, 29);
             toolStrip2.TabIndex = 12;
@@ -175,7 +173,7 @@
             lbl.AutoSize = true;
             lbl.BackColor = Color.White;
             lbl.Font = new Font("Segoe Print", 14.25F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
-            lbl.Location = new Point(12, 153);
+            lbl.Location = new Point(14, 122);
             lbl.Name = "lbl";
             lbl.Size = new Size(473, 33);
             lbl.TabIndex = 11;
@@ -184,9 +182,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.Video_Facebook_Gerente_de_Comunidade_Simples_Vermehlo;
-            pictureBox2.Location = new Point(119, 175);
+            pictureBox2.Location = new Point(153, 168);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(264, 201);
+            pictureBox2.Size = new Size(186, 166);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
@@ -195,10 +193,11 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.Lady_Party_Tela__1_;
-            pictureBox1.Location = new Point(0, 27);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(499, 373);
+            pictureBox1.Size = new Size(499, 370);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -281,6 +280,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(499, 466);
+            Controls.Add(toolStrip2);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Controls.Add(pnl_principal);
