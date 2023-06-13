@@ -42,12 +42,5 @@
             this.nomeTema = entidadeAtualizada.nomeTema;
             this.listaItens = entidadeAtualizada.listaItens;
         }
-
-        public Tema PegarObjTela()
-        {
-            TelaCadastroTema tela = new TelaCadastroTema();
-
-            return tela.Tema;
-        }
     }
 }

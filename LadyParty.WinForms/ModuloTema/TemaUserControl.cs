@@ -8,7 +8,7 @@
 
             ConfigurarColunas();
             grid.ConfigurarGrid();
-            grid.ConfigGridSoLeitura();
+            grid.ConfigurarGridZebrado();
         }
 
         private void ConfigurarColunas()
@@ -30,29 +30,19 @@
             grid.Columns.AddRange(listaItens);
         }
 
-        //public void AtualizarRegistros(List<Tema> listaTemas)
-        //{
-        //    grid.Rows.Clear();
+        public void AtualizarRegistros(List<Tema> listaTemas)
+        {
+            grid.Rows.Clear();
 
-        //    foreach (Tema tema in listaTemas)
-        //    {
-        //        grid.Rows.Add(tema.id, tema.nomeTema, tema.listaItens.Count);
-        //    }
-        //}
+            foreach (Tema tema in listaTemas)
+            {
+                grid.Rows.Add(tema.id, tema.nomeTema, tema.listaItens.Count);
+            }
+        }
 
         public int ObterIdSelecionado()
         {
             return Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value);
-        }
-
-        public void AtualizarRegistros<T>(List<T> listaEntidade) where T : Tema
-        {
-            grid.Rows.Clear();
-
-            foreach (Tema tema in listaEntidade)
-            {
-                grid.Rows.Add(tema.id, tema.nomeTema, tema.listaItens.Count);
-            }
         }
     }
 }
