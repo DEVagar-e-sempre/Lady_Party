@@ -50,7 +50,7 @@ namespace LadyParty.WinForms
         private void ConfigurarListagem(ControladorBase controladorBase)
         {
 
-            UserControl listagem = controladorBase.ObterTabela();
+            UserControl listagem = controladorBase.ObterListagem();
 
             listagem.Dock = DockStyle.Fill;
 
@@ -97,7 +97,7 @@ namespace LadyParty.WinForms
         }
         private void selecaoModulo_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem itemClicado = (ToolStripMenuItem)sender;
+            ToolStripButton itemClicado = (ToolStripButton)sender;
             switch (itemClicado.Name)
             {
                 case "btn_cliente":
@@ -110,6 +110,7 @@ namespace LadyParty.WinForms
                     controlador = new ControladorEvento(repEvento, repCliente, repTema);
                     break;
                 default:
+                    return;
                     break;
             }
             ConfigurarEstados(controlador);
