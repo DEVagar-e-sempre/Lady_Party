@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LadyParty.WinForms.ModuloEvento
+namespace LadyParty.WinForms.ModuloAluguel
 {
-    public enum StatusEventoEnum
+    public class Festa
     {
-        Concluido, Ativo, Nenhum
+
     }
 }

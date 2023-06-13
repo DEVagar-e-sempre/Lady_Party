@@ -1,6 +1,6 @@
-﻿namespace LadyParty.WinForms.ModuloEvento
+﻿namespace LadyParty.WinForms.ModuloAluguel
 {
-    partial class TelaEventoForm
+    partial class TelaAluguelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -206,7 +206,7 @@
             label8.TabIndex = 16;
             label8.Text = "Cadastro de Festas";
             // 
-            // TelaEventoForm
+            // TelaAluguelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -231,7 +231,7 @@
             Controls.Add(txtId);
             Controls.Add(label1);
             DoubleBuffered = true;
-            Name = "TelaEventoForm";
+            Name = "TelaAluguelForm";
             Text = "Adicionar Evento";
             ResumeLayout(false);
             PerformLayout();
