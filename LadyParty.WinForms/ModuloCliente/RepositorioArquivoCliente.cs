@@ -8,9 +8,5 @@ namespace LadyParty.WinForms.ModuloCliente
 {
     public class RepositorioArquivoCliente : RepositorioArquivoBase<Cliente>
     {
-        public RepositorioArquivoCliente()
-        {
-            Desserializador();
-        }
     }
 }
