@@ -57,7 +57,7 @@ namespace LadyParty.WinForms.ModuloEvento
             string[] erros = evento.Validar();
             if (erros.Length > 0)
             {
-                TelaPrincipalPropostaForm.Instancia.AtualizarRodape(erros[0]);
+                TelaPrincipalForm.TelaPrincipal.AtualizarRodape(erros[0]);
 
                 DialogResult = DialogResult.None;
             }
