@@ -2,12 +2,14 @@
 {
     public abstract class ControladorBase
     {
-        public abstract string ToolTipInserir { get; }
+        public virtual string ToolTipInserir => $"Inserir novo {ObterTipoCadastro}";
 
-        public abstract string ToolTipEditar { get; }
+        public virtual string ToolTipEditar => $"Editar um {ObterTipoCadastro}";
 
-        public abstract string ToolTipExcluir { get; }
-        public virtual string ToolTipFiltrar { get; }
+        public virtual string ToolTipExcluir => $"Excluir um {ObterTipoCadastro}";
+
+        public virtual string ToolTipFiltrar => $"Filtrar {ObterTipoCadastro}s";
+
 
         public abstract string ObterTipoCadastro { get; }
 
@@ -17,16 +19,21 @@
         public virtual bool ExcluirHabilitado => true;
 
         public virtual bool FiltrarHabilitado => false;
-        public virtual bool AdicionarItensHabilitado => false;
-        public virtual bool ConcluirItensHabilitado => false;
 
-        public virtual void Filtrar() { }
-        public virtual void ItensConcluidos() { }
-        public virtual void AddItem() { }
         public abstract void Inserir();
+
+
         public abstract void Editar();
+
         public abstract void Excluir();
-        public abstract UserControl ObterListagem();
+
+        public virtual void Filtrar() {}
+
+        public virtual void Adicionar() { }
+
+        public virtual void ConcluirItens() {}
+
+        public abstract UserControl ObterTabela();
 
     }
 }
