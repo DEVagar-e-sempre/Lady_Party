@@ -38,26 +38,6 @@ namespace LadyParty.WinForms
 
             }
         }
-        private void Desabilitador()
-        {
-            btn_inserir.Enabled = false;
-            btn_editar.Enabled = false;
-            btn_excluir.Enabled = false;
-
-            btn_filtrar.Enabled = false;
-        }
-
-        private void Habilitador()
-        {
-            btn_inserir.Enabled = true;
-            btn_editar.Enabled = true;
-            btn_excluir.Enabled = true;
-
-            if (controlador is ControladorTema || controlador is ControladorEvento)
-            {
-                btn_filtrar.Enabled = true;
-            }
-        }
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
@@ -133,10 +113,16 @@ namespace LadyParty.WinForms
                 default:
                     break;
             }
-            Desabilitador();
-            Habilitador();
+            ConfigurarEstados(controlador);
 
             ConfigurarTelaPrincipal(controlador);
+        }
+        private void ConfigurarEstados(ControladorBase controlador)
+        {
+            btn_inserir.Enabled = controlador.InserirHabilitado;
+            btn_editar.Enabled = controlador.EditarHabilitado;
+            btn_excluir.Enabled = controlador.ExcluirHabilitado;
+            btn_filtrar.Enabled = controlador.FiltrarHabilitado;
         }
     }
 }
