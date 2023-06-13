@@ -97,7 +97,7 @@ namespace LadyParty.WinForms
         }
         private void selecaoModulo_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem itemClicado = (ToolStripMenuItem)sender;
+            ToolStripButton itemClicado = (ToolStripButton)sender;
             switch (itemClicado.Name)
             {
                 case "btn_cliente":
