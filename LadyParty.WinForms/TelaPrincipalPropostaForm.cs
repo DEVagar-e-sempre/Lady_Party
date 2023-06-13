@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,22 +13,22 @@ using System.Windows.Forms;
 
 namespace LadyParty.WinForms
 {
-    public partial class TelaPrincipalProspostaForm : Form
+    public partial class TelaPrincipalPropostaForm : Form
     {
-        private RepositorioEvento repEvento;
+        private RepositorioArquivoBase<Evento> repEvento;
 
         private ControladorBase controlador;
-        private static TelaPrincipalProspostaForm telaPrincipalProspostaForm;
-        public TelaPrincipalProspostaForm()
+        private static TelaPrincipalPropostaForm telaPrincipalProspostaForm;
+        public TelaPrincipalPropostaForm()
         {
             InitializeComponent();
         }
-        public static TelaPrincipalProspostaForm Instancia
+        public static TelaPrincipalPropostaForm Instancia
         {
             get
             {
                 if (telaPrincipalProspostaForm == null)
-                    telaPrincipalProspostaForm = new TelaPrincipalProspostaForm();
+                    telaPrincipalProspostaForm = new TelaPrincipalPropostaForm();
 
                 return telaPrincipalProspostaForm;
             }
@@ -58,6 +59,27 @@ namespace LadyParty.WinForms
             ConfigurarListagem(controlador);
 
             ConfigurarTelaPrincipal(controlador);
+        }
+        private void botaoBarraFerramentas_Click(object sender, EventArgs e)
+        {
+            ToolStripButton botaoCliclado = (ToolStripButton)sender;
+            switch (botaoCliclado.Name)
+            {
+                case "btnInserir":
+                    controlador.Inserir();
+                    break;
+                case "btnEditar":
+                    controlador.Editar();
+                    break;
+                case "btnExcluir":
+                    controlador.Excluir();
+                    break;
+                case "btnFiltrar":
+                    controlador.Filtrar();
+                    break;
+                default:
+                    break;
+            }
         }
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {

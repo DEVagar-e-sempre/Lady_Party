@@ -5,34 +5,12 @@ namespace LadyParty.WinForms.Compartilhado
 {
     public abstract class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
     {
-        private Type tipo = typeof(TEntidade);
-        string nomeArquivo;
+        protected Type tipo = typeof(TEntidade);
+        protected string nomeArquivo;
         protected List<TEntidade> listaRegistros;//--> descarregar na lista
-        private int contadorRegistros = 0;
+        protected int contadorRegistros;
 
-        public int Contador
-        {
-            get
-            {
-                return contadorRegistros;
-            }
-        }
-
-        protected List<TEntidade> Desserializador()
-        {
-            nomeArquivo = $"{tipo.Name}.json";
-            JsonSerializerOptions config = ConfigurarLista();
-
-            if (File.Exists(nomeArquivo))
-            {
-                string conteudo = File.ReadAllText(nomeArquivo);
-                return JsonSerializer.Deserialize<List<TEntidade>>(conteudo, config);
-            }
-            else
-            {
-                return new List<TEntidade>();
-            }
-        }
+        public int Contador => contadorRegistros;
 
         public virtual void Inserir(TEntidade registro)
         {
@@ -55,26 +33,29 @@ namespace LadyParty.WinForms.Compartilhado
             listaRegistros.Remove(registroSelecionado);
         }
 
-        public virtual TEntidade SelecionarPorId(int id)
-        {
+        public virtual TEntidade SelecionarPorId(int id) => listaRegistros.FirstOrDefault(x => x.id == id);
 
-            foreach (TEntidade ent in listaRegistros)
-            {
-                if (ent.id == id)
-                {
-                    return ent;
-                }
-            }
-
-            return null;
-        }
-
-        public virtual List<TEntidade> SelecionarTodos()
-        {
-            return listaRegistros.OrderByDescending(x => x.id).ToList();
-        }
+        public virtual List<TEntidade> SelecionarTodos() => listaRegistros.OrderByDescending(x => x.id).ToList();
 
         //Serializando por json 
+        protected void Desserializador()
+        {
+            nomeArquivo = $"{tipo.Name}.json";
+            JsonSerializerOptions config = ConfigurarLista();
+
+            if (File.Exists(nomeArquivo))
+            {
+                string conteudo = File.ReadAllText(nomeArquivo);
+                RepositorioArquivoBase<TEntidade> tempRep = JsonSerializer.Deserialize<RepositorioArquivoBase<TEntidade>>(conteudo, config);
+                this.contadorRegistros = tempRep.Contador;
+                this.listaRegistros = tempRep.listaRegistros;
+            }
+            else
+            {
+                this.contadorRegistros = 0;
+                this.listaRegistros = new List<TEntidade>();
+            }
+        }
 
         public void Serializador()
         {
@@ -82,7 +63,7 @@ namespace LadyParty.WinForms.Compartilhado
 
             JsonSerializerOptions config = ConfigurarLista();
 
-            string jsonString = JsonSerializer.Serialize(this.listaRegistros, config);
+            string jsonString = JsonSerializer.Serialize(this, config);
 
             File.WriteAllText(nomeArquivo, jsonString);//cria e escreve o arquivo File.WriteAllText(nomeArquivo, objeto);
 
