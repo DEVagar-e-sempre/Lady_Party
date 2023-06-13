@@ -1,5 +1,6 @@
-using LadyParty.WinForms.ModuloCliente;
 using LadyParty.WinForms.ModuloAluguel;
+using LadyParty.WinForms.ModuloCliente;
+using LadyParty.WinForms.ModuloEvento;
 using LadyParty.WinForms.ModuloTema;
 
 namespace LadyParty.WinForms
@@ -7,18 +8,16 @@ namespace LadyParty.WinForms
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-        private RepositorioArquivoBase<Cliente> repCliente;
-        private RepositorioArquivoTema repTema;
-        private RepositorioArquivoBase<Aluguel> repEvento;
+        private RepositorioArquivoCliente repCliente = new RepositorioArquivoCliente();
+        private RepositorioArquivoTema repTema = new RepositorioArquivoTema();
+        private RepositorioArquivoAluguel repEvento = new RepositorioArquivoAluguel();
 
         private static TelaPrincipalForm telaPrincipal;
 
         public TelaPrincipalForm()
         {
             InitializeComponent();
-            this.repCliente = new RepositorioArquivoBase<Cliente>();
-            this.repTema = new RepositorioArquivoTema();
-            this.repEvento = new RepositorioArquivoBase<Aluguel>();
+
 
             lbl_status.Text = "";
             this.ConfigurarTelas();
@@ -107,7 +106,7 @@ namespace LadyParty.WinForms
                     controlador = new ControladorTema(repTema);
                     break;
                 case "btn_evento":
-                    controlador = new ControladorAluguel(repEvento, repCliente, repTema);
+                    controlador = new ControladorEvento(repEvento, repCliente, repTema);
                     break;
                 default:
                     return;

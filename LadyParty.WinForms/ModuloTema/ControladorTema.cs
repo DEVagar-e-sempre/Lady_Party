@@ -8,12 +8,6 @@
 
         public override string ObterTipoCadastro => "Tema";
 
-        public override string ToolTipInserir => "Inserir Tema";
-
-        public override string ToolTipEditar => "Editar Tema existente";
-
-        public override string ToolTipExcluir => "Excluir Tema existente";
-
         public ControladorTema(RepositorioArquivoTema repTema)
         {
             this.repTema = repTema;
