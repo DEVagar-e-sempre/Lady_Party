@@ -3,8 +3,12 @@ using System.Text.Json;
 
 namespace LadyParty.WinForms.Compartilhado
 {
+<<<<<<< Updated upstream
     public abstract class RepositorioArquivoBase<TEntidade> 
         where TEntidade : EntidadeBase<TEntidade>
+=======
+    public class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
+>>>>>>> Stashed changes
     {
         protected Type tipo = typeof(TEntidade);
         protected string nomeArquivo;
@@ -12,6 +16,11 @@ namespace LadyParty.WinForms.Compartilhado
         protected int contadorRegistros;
 
         public int Contador => contadorRegistros;
+
+        public RepositorioArquivoBase()
+        {
+            Desserializador();
+        }
 
         public virtual void Inserir(TEntidade registro)
         {
