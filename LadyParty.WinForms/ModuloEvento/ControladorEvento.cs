@@ -131,7 +131,7 @@ namespace LadyParty.WinForms.ModuloEvento
             {
                 eventos = eventos.Where(x => x.data >= dataInicial && x.data <= dataFinal).ToList();
             }
-            tabelaEvento.AtualizarTabela(eventos);
+            tabelaEvento.AtualizarTabela(eventos, repCliente, repTema);
         }
 
         public override UserControl ObterTabela()
@@ -140,7 +140,7 @@ namespace LadyParty.WinForms.ModuloEvento
             {
                 tabelaEvento = new TabelaEventoUserControl();
             }
-            tabelaEvento.AtualizarTabela(repEvento, repCliente, repCliente);
+            tabelaEvento.AtualizarTabela(repEvento.SelecionarTodos(), repCliente, repTema);
             return tabelaEvento;
         } 
     }
