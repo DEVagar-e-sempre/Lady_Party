@@ -10,11 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LadyParty.WinForms.ModuloEvento
+namespace LadyParty.WinForms.ModuloAluguel
 {
-    public partial class TelaEventoForm : Form
+    public partial class TelaAluguelForm : Form
     {
-        public TelaEventoForm()
+        public TelaAluguelForm()
         {
             InitializeComponent();
             this.ConfigurarTelas();
@@ -25,7 +25,7 @@ namespace LadyParty.WinForms.ModuloEvento
             txtId.Text = id.ToString();
         }
 
-        public void ConfigurarTela(Evento evento, Cliente cliente, Tema tema)
+        public void ConfigurarTela(Aluguel evento, Cliente cliente, Tema tema)
         {
             this.Text = "Editar Evento";
             txtId.Text = evento.id.ToString();
@@ -37,9 +37,9 @@ namespace LadyParty.WinForms.ModuloEvento
             txtHoraTermino.Value = DateTime.Now.Date.Add(evento.horaTermino);
 
         }
-        public Evento ObterEvento()
+        public Aluguel ObterEvento()
         {
-            Evento evento = new Evento();
+            Aluguel evento = new Aluguel();
             evento.id = Convert.ToInt32(txtId.Text);
             evento.endereco = txtEndereco.Text;
             evento.idCliente = ((Cliente)cbnClientes.SelectedItem).id;
@@ -53,7 +53,7 @@ namespace LadyParty.WinForms.ModuloEvento
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            Evento evento = ObterEvento();
+            Aluguel evento = ObterEvento();
             string[] erros = evento.Validar();
             if (erros.Length > 0)
             {

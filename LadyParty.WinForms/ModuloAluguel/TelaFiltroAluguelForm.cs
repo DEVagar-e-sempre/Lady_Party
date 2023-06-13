@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LadyParty.WinForms.ModuloEvento
+namespace LadyParty.WinForms.ModuloAluguel
 {
-    public partial class TelaFiltroEventoForm : Form
+    public partial class TelaFiltroAluguelForm : Form
     {
         private DateTime dataInicial;
         private DateTime dataFinal;
 
-        public TelaFiltroEventoForm()
+        public TelaFiltroAluguelForm()
         {
             InitializeComponent();
         }

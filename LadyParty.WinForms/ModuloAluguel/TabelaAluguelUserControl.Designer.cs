@@ -1,6 +1,6 @@
-﻿namespace LadyParty.WinForms.ModuloEvento
+﻿namespace LadyParty.WinForms.ModuloAluguel
 {
-    partial class TabelaEventoUserControl
+    partial class TabelaAluguelUserControl
     {
         /// <summary> 
         /// Required designer variable.

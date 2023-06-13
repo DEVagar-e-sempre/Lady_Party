@@ -1,6 +1,6 @@
-﻿namespace LadyParty.WinForms.ModuloEvento
+﻿namespace LadyParty.WinForms.ModuloAluguel
 {
-    partial class TelaFiltroEventoForm
+    partial class TelaFiltroAluguelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -177,7 +177,7 @@
             txtDataInicial.TabIndex = 9;
             txtDataInicial.ValueChanged += txtDataInicial_ValueChanged;
             // 
-            // TelaFiltroEventoForm
+            // TelaFiltroAluguelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -192,7 +192,7 @@
             Controls.Add(button1);
             Controls.Add(groupBox1);
             DoubleBuffered = true;
-            Name = "TelaFiltroEventoForm";
+            Name = "TelaFiltroAluguelForm";
             Text = "Filtrar Eventos";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LadyParty.WinForms.ModuloEvento;
+using LadyParty.WinForms.ModuloAluguel;
 using LadyParty.WinForms.ModuloTema;
 using System.Xml.Linq;
 

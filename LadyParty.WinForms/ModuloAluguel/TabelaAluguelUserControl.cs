@@ -10,18 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LadyParty.WinForms.ModuloEvento
+namespace LadyParty.WinForms.ModuloAluguel
 {
-    public partial class TabelaEventoUserControl : UserControl
+    public partial class TabelaAluguelUserControl : UserControl
     {
-        public TabelaEventoUserControl()
+        public TabelaAluguelUserControl()
         {
             InitializeComponent();
             this.ConfigurarUserControl();
             gridTabela.ConfigurarGrid();
             gridTabela.ConfigurarGridZebrado();
         }
-        public void AtualizarTabela(List<Evento> listaEventos, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
+        public void AtualizarTabela(List<Aluguel> listaEventos, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
         {
             gridTabela.Rows.Clear();
 

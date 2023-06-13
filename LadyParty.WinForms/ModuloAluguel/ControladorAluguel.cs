@@ -3,23 +3,23 @@ using LadyParty.WinForms.ModuloCliente;
 using LadyParty.WinForms.ModuloTema;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace LadyParty.WinForms.ModuloEvento
+namespace LadyParty.WinForms.ModuloAluguel
 {
-    public class ControladorEvento : ControladorBase
+    public class ControladorAluguel : ControladorBase
     {
         private DateTime dataInicial;
         private DateTime dataFinal;
 
-        private TabelaEventoUserControl tabelaEvento;
+        private TabelaAluguelUserControl tabelaEvento;
 
-        private RepositorioArquivoBase<Evento> repEvento;
-
+        private RepositorioArquivoBase<Aluguel> repEvento;
+            
         private RepositorioArquivoBase<Cliente> repCliente;
 
         private RepositorioArquivoBase<Tema> repTema;
 
 
-        public ControladorEvento(RepositorioArquivoBase<Evento> repEvento, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
+        public ControladorAluguel(RepositorioArquivoBase<Aluguel> repEvento, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
         {
             this.repEvento = repEvento;
             this.repCliente = repCliente;
@@ -30,7 +30,7 @@ namespace LadyParty.WinForms.ModuloEvento
 
         public override void Editar()
         {
-            Evento eventoSelecionado = ObterIdSelecionado();
+            Aluguel eventoSelecionado = ObterIdSelecionado();
 
             if (eventoSelecionado == null)
             {
@@ -42,7 +42,7 @@ namespace LadyParty.WinForms.ModuloEvento
                 return;
             }
 
-            TelaEventoForm telaEvento = new TelaEventoForm();
+            TelaAluguelForm telaEvento = new TelaAluguelForm();
 
             telaEvento.CarregarClientes(repCliente.SelecionarTodos());
 
@@ -58,7 +58,7 @@ namespace LadyParty.WinForms.ModuloEvento
             CarregarEventos(dataInicial, dataFinal);
         }
 
-        private Evento ObterIdSelecionado()
+        private Aluguel ObterIdSelecionado()
         {
             int id = tabelaEvento.ObterIdSelecionado();
 
@@ -67,7 +67,7 @@ namespace LadyParty.WinForms.ModuloEvento
 
         public override void Excluir()
         {
-            Evento eventoSelecionado = ObterIdSelecionado();
+            Aluguel eventoSelecionado = ObterIdSelecionado();
             if (eventoSelecionado == null)
             {
                 MessageBox.Show($"Selecione um {ObterTipoCadastro} primeiro!",
@@ -92,7 +92,7 @@ namespace LadyParty.WinForms.ModuloEvento
 
         public override void Inserir()
         {
-            TelaEventoForm telaEvento = new TelaEventoForm();
+            TelaAluguelForm telaEvento = new TelaAluguelForm();
 
             telaEvento.DefinirID(repEvento.Contador);
 
@@ -107,7 +107,7 @@ namespace LadyParty.WinForms.ModuloEvento
 
         private void CarregarEventos(DateTime dataInicial, DateTime dataFinal)
         {
-            List<Evento> eventos = repEvento.SelecionarTodos();
+            List<Aluguel> eventos = repEvento.SelecionarTodos();
             
             if (dataInicial == default(DateTime) && dataFinal == default(DateTime))
             {
@@ -136,7 +136,7 @@ namespace LadyParty.WinForms.ModuloEvento
         {
             if (tabelaEvento == null)
             {
-                tabelaEvento = new TabelaEventoUserControl();
+                tabelaEvento = new TabelaAluguelUserControl();
             }
             tabelaEvento.AtualizarTabela(repEvento.SelecionarTodos(), repCliente, repTema);
             return tabelaEvento;
