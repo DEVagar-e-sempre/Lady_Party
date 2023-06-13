@@ -2,7 +2,7 @@
 
 namespace LadyParty.WinForms.ModuloTema
 {
-    public partial class TelaCadastroTema : Form, ITelaBase
+    public partial class TelaCadastroTema : Form
     {
         private Tema tema;
         public TelaCadastroTema()
@@ -32,6 +32,18 @@ namespace LadyParty.WinForms.ModuloTema
             }
         }
 
+        public Tema Tema
+        {
+            set
+            {
+                txb_nomeTema.Text = value.nomeTema;
+            }
+            get
+            {
+                return tema;
+            }
+        }
+
         private List<string> VerificarItensSelec()
         {
             List<string> list = new List<string>();
@@ -42,11 +54,6 @@ namespace LadyParty.WinForms.ModuloTema
             }
 
             return list;
-        }
-
-        public void AtualizarPainelCadastro(Tema entidadeSelec)
-        {
-            txb_nomeTema.Text = entidadeSelec.nomeTema;
         }
 
         private void btn_gravar_Click(object sender, EventArgs e)

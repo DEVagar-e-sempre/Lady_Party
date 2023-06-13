@@ -3,7 +3,8 @@ using System.Text.Json;
 
 namespace LadyParty.WinForms.Compartilhado
 {
-    public abstract class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
+    public abstract class RepositorioArquivoBase<TEntidade> 
+        where TEntidade : EntidadeBase<TEntidade>
     {
         protected Type tipo = typeof(TEntidade);
         protected string nomeArquivo;
