@@ -10,10 +10,11 @@ namespace LadyParty.WinForms.ModuloCliente
         public bool temFestaMarcada { get; set; }
         public DateTime dataDeCadastro { get; set; }
 
-        public Cliente(string nomeCliente = "", string telefoneCliente = "")
+        public Cliente(string nomeCliente, string telefoneCliente, bool ehEspecial)
         {
             this.nomeCliente = nomeCliente;
             this.telefoneCliente = telefoneCliente;
+            this.ehEspecial = ehEspecial;
             this.dataDeCadastro = DateTime.Now.Date;
         }
         public override void AtualizarInformacoes(Cliente registroAtualizado)

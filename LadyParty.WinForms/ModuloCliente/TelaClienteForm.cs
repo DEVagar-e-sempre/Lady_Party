@@ -15,25 +15,62 @@ namespace LadyParty.WinForms.ModuloCliente
 {
     public partial class TelaClienteForm : Form
     {
+        private Cliente cliente;
+
         public TelaClienteForm()
         {
             InitializeComponent();
         }
-        public Cliente ObterCliente()
+        public Cliente Cliente
         {
-            Cliente cliente = new Cliente();
-            cliente.id = Convert.ToInt32(txt_id.Text);
-            cliente.nomeCliente = txt_nomeCliente.Text;
-
-            return cliente;
+            set
+            {
+                txt_nomeCliente.Text = value.nomeCliente;
+            }
+            get
+            {
+                return cliente;
+            }
         }
+
         public void DefinirID(int id = 0)
         {
             txt_id.Text = id.ToString();
         }
         private void btn_gravar_Click(object sender, EventArgs e)
         {
+            TelaPrincipalForm tlPrinc = TelaPrincipalForm.TelaPrincipal;
 
+            string nome = txt_nomeCliente.Text;
+
+            string telefone = txt_telefone.Text;
+
+            bool ehEspecial = false; 
+
+            if(rdb_clienteConvencional.Checked) 
+            {
+                ehEspecial = false;
+            }
+            else if (rdb_clienteEspecial.Checked)
+            {
+                ehEspecial = true;
+            }
+
+            cliente = new Cliente(nome, telefone, ehEspecial);
+
+            
+            string[] erros = cliente.Validar();
+
+            if (erros.Length > 0)
+            {
+                tlPrinc.AtualizarRodape(erros[0]);
+                DialogResult = DialogResult.None;
+            }
+            else
+            {
+                tlPrinc.AtualizarRodape("");
+
+            }
         }
     }
 }
