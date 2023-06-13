@@ -109,16 +109,16 @@
         private void CarregarTemas()
         {
 
-            List<Tema> contatos = repTema.SelecionarTodos();//esta pegando a lista de Contatos e jogando para o contatos
+            List<Tema> listaTemas = repTema.SelecionarTodos();//esta pegando a lista de Contatos e jogando para o contatos
 
-            tabelaTema.AtualizarRegistros(contatos);//vai passar a lista para o listBox por meio desse metodo 
+            tabelaTema.AtualizarRegistros(listaTemas);//vai passar a lista para o listBox por meio desse metodo 
         }
 
         public override UserControl ObterListagem()
         {
             if (tabelaTema == null)
             {
-                return new TemaUserControl();
+                tabelaTema = new TemaUserControl();
             }
 
             CarregarTemas();

@@ -9,6 +9,7 @@ namespace LadyParty.WinForms.ModuloTema
         {
             InitializeComponent();
 
+            this.ConfigurarTelas();
             InicializarCheckedList();
         }
 
@@ -59,7 +60,7 @@ namespace LadyParty.WinForms.ModuloTema
         private void btn_gravar_Click(object sender, EventArgs e)
         {
             TelaPrincipalForm tlPrinc = TelaPrincipalForm.TelaPrincipal;
-            
+
             string nome = txb_nomeTema.Text;
 
             List<string> listaItens = VerificarItensSelec();
@@ -76,7 +77,7 @@ namespace LadyParty.WinForms.ModuloTema
             else
             {
                 tlPrinc.AtualizarRodape("");
-                
+
             }
         }
 
