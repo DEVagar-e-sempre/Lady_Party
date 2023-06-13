@@ -1,6 +1,6 @@
 ﻿namespace LadyParty.WinForms.ModuloEvento
 {
-    partial class TelaEventoForm
+    partial class TelaAluguelForm
     {
         /// <summary>
         /// Required designer variable.

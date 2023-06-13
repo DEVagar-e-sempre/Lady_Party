@@ -5,7 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace LadyParty.WinForms.ModuloEvento
 {
-    public class ControladorEvento : ControladorBase
+    public class ControladorAluguel : ControladorBase
     {
         private DateTime dataInicial;
         private DateTime dataFinal;
@@ -19,7 +19,7 @@ namespace LadyParty.WinForms.ModuloEvento
         private RepositorioArquivoBase<Tema> repTema;
 
 
-        public ControladorEvento(RepositorioArquivoBase<Evento> repEvento, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
+        public ControladorAluguel(RepositorioArquivoBase<Evento> repEvento, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
         {
             this.repEvento = repEvento;
             this.repCliente = repCliente;
