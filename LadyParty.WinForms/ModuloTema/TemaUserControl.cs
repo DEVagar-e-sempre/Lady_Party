@@ -42,7 +42,12 @@
 
         public int ObterIdSelecionado()
         {
-            return Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value);
+            if (grid.SelectedRows.Count == 0)
+                return -1;
+
+            int id = Convert.ToInt32(grid.SelectedRows[0].Cells["ID"].Value);
+
+            return id;
         }
     }
 }

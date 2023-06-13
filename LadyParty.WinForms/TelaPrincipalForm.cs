@@ -100,13 +100,13 @@ namespace LadyParty.WinForms
             switch (itemClicado.Name)
             {
                 case "btn_cliente":
-                    controlador = new ControladorCliente(repCliente);
+                    //controlador = new ControladorCliente(repCliente);
                     break;
                 case "btn_tema":
                     controlador = new ControladorTema(repTema);
                     break;
                 case "btn_evento":
-                    controlador = new ControladorAluguel(repEvento, repCliente, repTema);
+                    controlador = new ControladorEvento(repEvento, repCliente, repTema);
                     break;
                 default:
                     return;
