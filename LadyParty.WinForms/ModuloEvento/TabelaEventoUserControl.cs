@@ -21,15 +21,15 @@ namespace LadyParty.WinForms.ModuloEvento
             gridTabela.ConfigurarGrid();
             gridTabela.ConfigurarGridZebrado();
         }
-        public void AtualizarTabela(RepositorioArquivoBase<Evento> repEvento, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
+        public void AtualizarTabela(List<Evento> listaEventos, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
         {
             gridTabela.Rows.Clear();
 
-            foreach (var evento in repEvento.SelecionarTodos())
+            foreach (var evento in listaEventos)
             {
                 Cliente cliente = repCliente.SelecionarPorId(evento.idCliente);
                 Tema tema = repTema.SelecionarPorId(evento.idTema);
-                gridTabela.Rows.Add(evento.id, cliente.nome, tema.temaNome, evento.endereco, evento.data.ToShortDateString(), evento.horaInicio.ToString(@"hh\:mm"), evento.horaTermino.ToString(@"hh\:mm"));
+                gridTabela.Rows.Add(evento.id, cliente.nomeCliente, tema.nomeTema, evento.endereco, evento.data.ToShortDateString(), evento.horaInicio.ToString(@"hh\:mm"), evento.horaTermino.ToString(@"hh\:mm"));
             }
         }
 
