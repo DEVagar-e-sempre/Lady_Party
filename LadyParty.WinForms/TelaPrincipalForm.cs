@@ -22,7 +22,6 @@ namespace LadyParty.WinForms
 
             lbl_status.Text = "";
             this.ConfigurarTelas();
-            Desabilitador();
         }
 
         public static TelaPrincipalForm TelaPrincipal
