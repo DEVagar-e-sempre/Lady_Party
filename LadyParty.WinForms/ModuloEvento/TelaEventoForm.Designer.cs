@@ -44,13 +44,14 @@
             btnCancelar = new Button();
             label7 = new Label();
             txtEndereco = new TextBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(104, 32);
+            label1.Location = new Point(102, 92);
             label1.Name = "label1";
             label1.Size = new Size(28, 21);
             label1.TabIndex = 0;
@@ -59,7 +60,7 @@
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(138, 32);
+            txtId.Location = new Point(136, 92);
             txtId.Name = "txtId";
             txtId.Size = new Size(121, 23);
             txtId.TabIndex = 1;
@@ -68,7 +69,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(78, 71);
+            label2.Location = new Point(76, 131);
             label2.Name = "label2";
             label2.Size = new Size(54, 21);
             label2.TabIndex = 2;
@@ -77,7 +78,7 @@
             // cbnClientes
             // 
             cbnClientes.FormattingEnabled = true;
-            cbnClientes.Location = new Point(138, 71);
+            cbnClientes.Location = new Point(136, 131);
             cbnClientes.Name = "cbnClientes";
             cbnClientes.Size = new Size(121, 23);
             cbnClientes.TabIndex = 3;
@@ -86,7 +87,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(85, 112);
+            label3.Location = new Point(83, 172);
             label3.Name = "label3";
             label3.Size = new Size(47, 21);
             label3.TabIndex = 4;
@@ -95,7 +96,7 @@
             // cbnTemas
             // 
             cbnTemas.FormattingEnabled = true;
-            cbnTemas.Location = new Point(138, 110);
+            cbnTemas.Location = new Point(136, 170);
             cbnTemas.Name = "cbnTemas";
             cbnTemas.Size = new Size(121, 23);
             cbnTemas.TabIndex = 5;
@@ -104,7 +105,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(32, 189);
+            label4.Location = new Point(30, 249);
             label4.Name = "label4";
             label4.Size = new Size(100, 21);
             label4.TabIndex = 6;
@@ -113,7 +114,7 @@
             // txtData
             // 
             txtData.Format = DateTimePickerFormat.Short;
-            txtData.Location = new Point(138, 189);
+            txtData.Location = new Point(136, 249);
             txtData.Name = "txtData";
             txtData.Size = new Size(98, 23);
             txtData.TabIndex = 7;
@@ -122,7 +123,7 @@
             // 
             txtHoraInicio.CustomFormat = "HH:mm";
             txtHoraInicio.Format = DateTimePickerFormat.Custom;
-            txtHoraInicio.Location = new Point(138, 234);
+            txtHoraInicio.Location = new Point(136, 294);
             txtHoraInicio.Name = "txtHoraInicio";
             txtHoraInicio.ShowUpDown = true;
             txtHoraInicio.Size = new Size(58, 23);
@@ -130,7 +131,7 @@
             // 
             // label5
             // 
-            label5.Location = new Point(68, 227);
+            label5.Location = new Point(66, 287);
             label5.Name = "label5";
             label5.Size = new Size(64, 30);
             label5.TabIndex = 9;
@@ -138,7 +139,7 @@
             // 
             // label6
             // 
-            label6.Location = new Point(220, 227);
+            label6.Location = new Point(218, 287);
             label6.Name = "label6";
             label6.Size = new Size(70, 30);
             label6.TabIndex = 11;
@@ -148,7 +149,7 @@
             // 
             txtHoraTermino.CustomFormat = "HH:mm";
             txtHoraTermino.Format = DateTimePickerFormat.Custom;
-            txtHoraTermino.Location = new Point(296, 234);
+            txtHoraTermino.Location = new Point(294, 294);
             txtHoraTermino.Name = "txtHoraTermino";
             txtHoraTermino.ShowUpDown = true;
             txtHoraTermino.Size = new Size(58, 23);
@@ -158,7 +159,7 @@
             // 
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe Print", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGravar.Location = new Point(170, 309);
+            btnGravar.Location = new Point(168, 369);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(89, 42);
             btnGravar.TabIndex = 12;
@@ -170,7 +171,7 @@
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe Print", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancelar.Location = new Point(276, 309);
+            btnCancelar.Location = new Point(274, 369);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(89, 42);
             btnCancelar.TabIndex = 13;
@@ -181,7 +182,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(63, 150);
+            label7.Location = new Point(61, 210);
             label7.Name = "label7";
             label7.Size = new Size(69, 21);
             label7.TabIndex = 14;
@@ -189,10 +190,21 @@
             // 
             // txtEndereco
             // 
-            txtEndereco.Location = new Point(138, 148);
+            txtEndereco.Location = new Point(136, 208);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.Size = new Size(227, 23);
             txtEndereco.TabIndex = 15;
+            // 
+            // label8
+            // 
+            label8.BackColor = Color.Thistle;
+            label8.FlatStyle = FlatStyle.Flat;
+            label8.Font = new Font("Segoe Script", 22.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(12, 20);
+            label8.Name = "label8";
+            label8.Size = new Size(318, 56);
+            label8.TabIndex = 16;
+            label8.Text = "Cadastro de Festas";
             // 
             // TelaEventoForm
             // 
@@ -200,7 +212,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(436, 389);
+            ClientSize = new Size(436, 429);
+            Controls.Add(label8);
             Controls.Add(txtEndereco);
             Controls.Add(label7);
             Controls.Add(btnCancelar);
@@ -242,5 +255,6 @@
         private Button btnCancelar;
         private Label label7;
         private TextBox txtEndereco;
+        private Label label8;
     }
 }

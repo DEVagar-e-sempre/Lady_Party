@@ -140,7 +140,7 @@ namespace LadyParty.WinForms.ModuloEvento
             tabelaEvento.AtualizarTabela(eventos, repCliente, repTema);
         }
 
-        public override UserControl ObterListagem()
+        public override UserControl ObterTabela()
         {
             if (tabelaEvento == null)
             {
@@ -148,6 +148,6 @@ namespace LadyParty.WinForms.ModuloEvento
             }
             tabelaEvento.AtualizarTabela(repEvento.SelecionarTodos(), repCliente, repTema);
             return tabelaEvento;
-        } 
+        }
     }
 }

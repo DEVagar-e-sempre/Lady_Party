@@ -82,7 +82,7 @@
             label1.BackColor = Color.Thistle;
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe Print", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 49);
+            label1.Location = new Point(14, 21);
             label1.Name = "label1";
             label1.Size = new Size(188, 51);
             label1.TabIndex = 9;
@@ -90,21 +90,19 @@
             // 
             // pnl_principal
             // 
-            pnl_principal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnl_principal.Controls.Add(toolStrip2);
             pnl_principal.Controls.Add(lbl);
             pnl_principal.Controls.Add(pictureBox2);
             pnl_principal.Controls.Add(label1);
             pnl_principal.Controls.Add(pictureBox1);
-            pnl_principal.Location = new Point(0, 41);
+            pnl_principal.Location = new Point(0, 71);
             pnl_principal.Name = "pnl_principal";
-            pnl_principal.Size = new Size(499, 400);
+            pnl_principal.Size = new Size(499, 370);
             pnl_principal.TabIndex = 10;
             // 
             // toolStrip2
             // 
             toolStrip2.Items.AddRange(new ToolStripItem[] { btn_inserir, btn_editar, btn_excluir, toolStripSeparator4, btn_filtrar, toolStripSeparator5, lbl_tipoCad });
-            toolStrip2.Location = new Point(0, 0);
+            toolStrip2.Location = new Point(0, 39);
             toolStrip2.Name = "toolStrip2";
             toolStrip2.Size = new Size(499, 29);
             toolStrip2.TabIndex = 12;
@@ -119,7 +117,7 @@
             btn_inserir.Padding = new Padding(3);
             btn_inserir.Size = new Size(26, 26);
             btn_inserir.Text = "toolStripButton1";
-            btn_inserir.Click += btn_inserir_Click;
+            btn_inserir.Click += botaoBarraFerramentas_Click;
             // 
             // btn_editar
             // 
@@ -130,7 +128,7 @@
             btn_editar.Padding = new Padding(3);
             btn_editar.Size = new Size(26, 26);
             btn_editar.Text = "toolStripButton2";
-            btn_editar.Click += btn_editar_Click;
+            btn_editar.Click += botaoBarraFerramentas_Click;
             // 
             // btn_excluir
             // 
@@ -141,7 +139,7 @@
             btn_excluir.Padding = new Padding(3);
             btn_excluir.Size = new Size(26, 26);
             btn_excluir.Text = "toolStripButton3";
-            btn_excluir.Click += btn_excluir_Click;
+            btn_excluir.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator4
             // 
@@ -157,7 +155,7 @@
             btn_filtrar.Padding = new Padding(3);
             btn_filtrar.Size = new Size(26, 26);
             btn_filtrar.Text = "toolStripButton4";
-            btn_filtrar.Click += btn_filtrar_Click;
+            btn_filtrar.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator5
             // 
@@ -175,7 +173,7 @@
             lbl.AutoSize = true;
             lbl.BackColor = Color.White;
             lbl.Font = new Font("Segoe Print", 14.25F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
-            lbl.Location = new Point(12, 153);
+            lbl.Location = new Point(14, 122);
             lbl.Name = "lbl";
             lbl.Size = new Size(473, 33);
             lbl.TabIndex = 11;
@@ -184,9 +182,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.Video_Facebook_Gerente_de_Comunidade_Simples_Vermehlo;
-            pictureBox2.Location = new Point(119, 175);
+            pictureBox2.Location = new Point(153, 168);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(264, 201);
+            pictureBox2.Size = new Size(186, 166);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
@@ -195,10 +193,11 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.Lady_Party_Tela__1_;
-            pictureBox1.Location = new Point(0, 27);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(499, 373);
+            pictureBox1.Size = new Size(499, 370);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -220,14 +219,13 @@
             btn_temas.ImageTransparentColor = Color.Magenta;
             btn_temas.Name = "btn_temas";
             btn_temas.Padding = new Padding(5);
-            btn_temas.Size = new Size(78, 35);
+            btn_temas.Size = new Size(78, 36);
             btn_temas.Text = "Temas";
-            btn_temas.Click += btn_temas_Click_1;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 38);
+            toolStripSeparator1.Size = new Size(6, 39);
             // 
             // btn_cliente
             // 
@@ -236,14 +234,13 @@
             btn_cliente.ImageTransparentColor = Color.Magenta;
             btn_cliente.Name = "btn_cliente";
             btn_cliente.Padding = new Padding(5);
-            btn_cliente.Size = new Size(85, 35);
+            btn_cliente.Size = new Size(85, 36);
             btn_cliente.Text = "Clientes";
-            btn_cliente.Click += btn_cliente_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 38);
+            toolStripSeparator2.Size = new Size(6, 39);
             // 
             // btn_compra
             // 
@@ -252,14 +249,13 @@
             btn_compra.ImageTransparentColor = Color.Magenta;
             btn_compra.Name = "btn_compra";
             btn_compra.Padding = new Padding(5);
-            btn_compra.Size = new Size(93, 35);
+            btn_compra.Size = new Size(93, 36);
             btn_compra.Text = "Compras";
-            btn_compra.Click += btn_compra_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 38);
+            toolStripSeparator3.Size = new Size(6, 39);
             // 
             // btn_evento
             // 
@@ -268,9 +264,8 @@
             btn_evento.ImageTransparentColor = Color.Magenta;
             btn_evento.Name = "btn_evento";
             btn_evento.Padding = new Padding(5);
-            btn_evento.Size = new Size(71, 35);
+            btn_evento.Size = new Size(71, 36);
             btn_evento.Text = "Festa";
-            btn_evento.Click += btn_evento_Click;
             // 
             // toolStripLabel1
             // 
@@ -285,6 +280,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(499, 466);
+            Controls.Add(toolStrip2);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Controls.Add(pnl_principal);
