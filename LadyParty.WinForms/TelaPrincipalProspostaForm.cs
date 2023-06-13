@@ -75,7 +75,7 @@ namespace LadyParty.WinForms
 
         private void ConfigurarListagem(ControladorBase controladorBase)
         {
-            UserControl tabela = controladorBase.ObterTabela();
+            UserControl tabela = controladorBase.ObterListagem();
 
             panelRegistros.Controls.Clear();
 
@@ -84,12 +84,12 @@ namespace LadyParty.WinForms
 
         private void ConfigurarToolTips(ControladorBase controlador)
         {
-            btnInserir.ToolTipText = controlador.ToolTipInserir;
-            btnEditar.ToolTipText = controlador.ToolTipEditar;
-            btnExcluir.ToolTipText = controlador.ToolTipExcluir;
-            btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
-            btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
-            btnConcluirItens.ToolTipText = controlador.ToolTipConcluirItens;
+            //btnInserir.ToolTipText = controlador.ToolTipInserir;
+            //btnEditar.ToolTipText = controlador.ToolTipEditar;
+            //btnExcluir.ToolTipText = controlador.ToolTipExcluir;
+            //btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
+            //btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
+            //btnConcluirItens.ToolTipText = controlador.ToolTipConcluirItens;
         }
 
         private void ConfigurarEstados(ControladorBase controlador)

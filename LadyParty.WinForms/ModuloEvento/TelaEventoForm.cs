@@ -51,14 +51,20 @@ namespace LadyParty.WinForms.ModuloEvento
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            TelaPrincipalForm telaPrincipal = TelaPrincipalForm.TelaPrincipal;
+
             Evento evento = ObterEvento();
             string[] erros = evento.Validar();
+
+            //Evento evento = new Evento();
+
             if (erros.Length > 0)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+                telaPrincipal.AtualizarRodape(erros[0]);
 
                 DialogResult = DialogResult.None;
             }
+
         }
     }
 }
