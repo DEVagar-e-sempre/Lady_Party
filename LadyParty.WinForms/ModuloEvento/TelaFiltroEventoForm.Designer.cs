@@ -45,11 +45,13 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(rbnIntervaloCustomizado);
             groupBox1.Controls.Add(rbnEventosAtuais);
             groupBox1.Controls.Add(rbnEventosAnteriores);
             groupBox1.Controls.Add(rbnVisualizarTodos);
             groupBox1.Controls.Add(rbnEventosHoje);
+            groupBox1.FlatStyle = FlatStyle.Flat;
             groupBox1.Location = new Point(34, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(256, 185);
@@ -116,6 +118,7 @@
             // button1
             // 
             button1.DialogResult = DialogResult.OK;
+            button1.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(110, 301);
             button1.Name = "button1";
             button1.Size = new Size(87, 40);
@@ -126,6 +129,7 @@
             // button2
             // 
             button2.DialogResult = DialogResult.Cancel;
+            button2.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Location = new Point(203, 301);
             button2.Name = "button2";
             button2.Size = new Size(87, 40);
@@ -136,9 +140,10 @@
             // labelDataFinal
             // 
             labelDataFinal.AutoSize = true;
-            labelDataFinal.Location = new Point(64, 257);
+            labelDataFinal.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDataFinal.Location = new Point(49, 254);
             labelDataFinal.Name = "labelDataFinal";
-            labelDataFinal.Size = new Size(68, 15);
+            labelDataFinal.Size = new Size(83, 21);
             labelDataFinal.TabIndex = 12;
             labelDataFinal.Text = "Data Inicial:";
             // 
@@ -155,9 +160,10 @@
             // labelDataInicial
             // 
             labelDataInicial.AutoSize = true;
-            labelDataInicial.Location = new Point(64, 228);
+            labelDataInicial.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDataInicial.Location = new Point(49, 225);
             labelDataInicial.Name = "labelDataInicial";
-            labelDataInicial.Size = new Size(68, 15);
+            labelDataInicial.Size = new Size(83, 21);
             labelDataInicial.TabIndex = 10;
             labelDataInicial.Text = "Data Inicial:";
             // 
@@ -175,6 +181,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(324, 369);
             Controls.Add(labelDataFinal);
             Controls.Add(txtDataFinal);
@@ -183,6 +191,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(groupBox1);
+            DoubleBuffered = true;
             Name = "TelaFiltroEventoForm";
             Text = "Filtrar Eventos";
             groupBox1.ResumeLayout(false);

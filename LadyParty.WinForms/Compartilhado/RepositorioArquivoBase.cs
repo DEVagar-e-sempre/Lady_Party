@@ -3,12 +3,7 @@ using System.Text.Json;
 
 namespace LadyParty.WinForms.Compartilhado
 {
-<<<<<<< Updated upstream
-    public abstract class RepositorioArquivoBase<TEntidade> 
-        where TEntidade : EntidadeBase<TEntidade>
-=======
     public class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
->>>>>>> Stashed changes
     {
         protected Type tipo = typeof(TEntidade);
         protected string nomeArquivo;

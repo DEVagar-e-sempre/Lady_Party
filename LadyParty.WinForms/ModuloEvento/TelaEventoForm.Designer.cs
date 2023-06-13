@@ -49,9 +49,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(111, 35);
+            label1.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(104, 32);
             label1.Name = "label1";
-            label1.Size = new Size(21, 15);
+            label1.Size = new Size(28, 21);
             label1.TabIndex = 0;
             label1.Text = "ID:";
             // 
@@ -66,9 +67,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(85, 74);
+            label2.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(78, 71);
             label2.Name = "label2";
-            label2.Size = new Size(47, 15);
+            label2.Size = new Size(54, 21);
             label2.TabIndex = 2;
             label2.Text = "Cliente:";
             // 
@@ -83,9 +85,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(94, 113);
+            label3.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(85, 112);
             label3.Name = "label3";
-            label3.Size = new Size(38, 15);
+            label3.Size = new Size(47, 21);
             label3.TabIndex = 4;
             label3.Text = "Tema:";
             // 
@@ -100,9 +103,10 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(52, 195);
+            label4.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(32, 189);
             label4.Name = "label4";
-            label4.Size = new Size(80, 15);
+            label4.Size = new Size(100, 21);
             label4.TabIndex = 6;
             label4.Text = "Data da Festa:";
             // 
@@ -126,7 +130,7 @@
             // 
             // label5
             // 
-            label5.Location = new Point(73, 227);
+            label5.Location = new Point(68, 227);
             label5.Name = "label5";
             label5.Size = new Size(64, 30);
             label5.TabIndex = 9;
@@ -153,6 +157,7 @@
             // btnGravar
             // 
             btnGravar.DialogResult = DialogResult.OK;
+            btnGravar.Font = new Font("Segoe Print", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnGravar.Location = new Point(170, 309);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(89, 42);
@@ -164,6 +169,7 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
+            btnCancelar.Font = new Font("Segoe Print", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnCancelar.Location = new Point(276, 309);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(89, 42);
@@ -174,9 +180,10 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(73, 151);
+            label7.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(63, 150);
             label7.Name = "label7";
-            label7.Size = new Size(59, 15);
+            label7.Size = new Size(69, 21);
             label7.TabIndex = 14;
             label7.Text = "Endereço:";
             // 
@@ -192,7 +199,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
-            BackgroundImageLayout = ImageLayout.None;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(436, 389);
             Controls.Add(txtEndereco);
             Controls.Add(label7);
