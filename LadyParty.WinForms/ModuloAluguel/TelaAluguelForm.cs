@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace LadyParty.WinForms.ModuloEvento
 {
-    public partial class TelaEventoForm : Form
+    public partial class TelaAluguelForm : Form
     {
-        public TelaEventoForm()
+        public TelaAluguelForm()
         {
             InitializeComponent();
             this.ConfigurarTelas();
