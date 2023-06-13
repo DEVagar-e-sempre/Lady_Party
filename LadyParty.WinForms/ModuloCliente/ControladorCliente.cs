@@ -9,6 +9,7 @@ namespace LadyParty.WinForms.ModuloCliente
 {
     internal class ControladorCliente : ControladorBase
     {
+        private TelaClienteForm telaCliente;
         private ClienteUserControl tabelaCliente;
         private RepositorioArquivoBase<Cliente> repCliente;
 
@@ -28,13 +29,14 @@ namespace LadyParty.WinForms.ModuloCliente
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repCliente.Inserir(telaCliente.ObterCliente());
-                CarregarCliente();
+                repCliente.Inserir(telaCliente.Cliente);
+                MessageBox.Show("Cliente gravado com Sucesso!");
+                CarregarClientes();
+                repCliente.Serializador();
             }
         }
-        private void CarregarCliente()
+        private void CarregarClientes()
         {
-
             List<Cliente> clientes = repCliente.SelecionarTodos();
 
             tabelaCliente.AtualizarRegistros(clientes);
@@ -42,18 +44,77 @@ namespace LadyParty.WinForms.ModuloCliente
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            Cliente clienteSelec = ObterClienteSelecionado();
+
+            if (clienteSelec == null)
+            {
+                MessageBox.Show($"Selecione um Cliente primeiro!",
+                    "Edição de Clientes",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                telaCliente = new TelaClienteForm();
+                telaCliente.Cliente = clienteSelec;
+
+                DialogResult opcao = telaCliente.ShowDialog();
+
+                if (opcao == DialogResult.OK)
+                {
+                    repCliente.Editar(telaCliente.Cliente.id, telaCliente.Cliente);
+
+                    CarregarClientes();
+
+                    repCliente.Serializador();
+                }
+            }
+        }
+        private Cliente ObterClienteSelecionado()
+        {
+            int id = tabelaCliente.ObterIdSelecionado();
+
+            return repCliente.SelecionarPorId(id);
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            Cliente clienteSelec = ObterClienteSelecionado();
+
+            if (clienteSelec == null)
+            {
+                MessageBox.Show($"Selecione um Cliente primeiro!",
+                    "Edição de Clientes",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir o Cliente {clienteSelec.nomeCliente}?",
+                    "Exclusão de Clientes",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Question);
+
+                if (opcaoEscolhida == DialogResult.OK)
+                {
+                    repCliente.Excluir(clienteSelec);
+
+                    CarregarClientes();
+
+                    repCliente.Serializador();
+                }
+            }
         }
-
-
         public override UserControl ObterListagem()
         {
-            throw new NotImplementedException();
+            if (tabelaCliente == null)
+            {
+                tabelaCliente = new ClienteUserControl();
+            }
+
+            CarregarClientes();
+
+            return tabelaCliente;
         }
     }
 }
