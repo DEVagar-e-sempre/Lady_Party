@@ -28,14 +28,6 @@ namespace LadyParty.WinForms.ModuloEvento
 
         public override string ObterTipoCadastro => "Evento";
 
-        public override bool FiltrarHabilitado => true;
-
-        public override string ToolTipInserir =>"Inserir Festa";
-                                               
-        public override string ToolTipEditar => "Editar Festa existente";
-                                               
-        public override string ToolTipExcluir => "Excluir Festa existente";
-
         public override void Editar()
         {
             Evento eventoSelecionado = ObterIdSelecionado();
@@ -140,7 +132,7 @@ namespace LadyParty.WinForms.ModuloEvento
             tabelaEvento.AtualizarTabela(eventos, repCliente, repTema);
         }
 
-        public override UserControl ObterTabela()
+        public override UserControl ObterListagem()
         {
             if (tabelaEvento == null)
             {

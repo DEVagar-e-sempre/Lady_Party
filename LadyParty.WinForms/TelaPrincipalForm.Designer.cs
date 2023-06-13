@@ -44,7 +44,7 @@
             toolStripSeparator5 = new ToolStripSeparator();
             lbl_tipoCad = new ToolStripLabel();
             toolStrip1 = new ToolStrip();
-            btn_temas = new ToolStripButton();
+            btn_tema = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             btn_cliente = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
@@ -209,22 +209,23 @@
             // toolStrip1
             // 
             toolStrip1.BackColor = Color.White;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_temas, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_compra, toolStripSeparator3, btn_evento, toolStripLabel1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_tema, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_compra, toolStripSeparator3, btn_evento, toolStripLabel1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(499, 39);
             toolStrip1.TabIndex = 11;
             toolStrip1.Text = "toolStrip1";
             // 
-            // btn_temas
+            // btn_tema
             // 
-            btn_temas.Font = new Font("Segoe Print", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_temas.Image = Properties.Resources.domino_mask_FILL0_wght400_GRAD0_opsz24;
-            btn_temas.ImageTransparentColor = Color.Magenta;
-            btn_temas.Name = "btn_temas";
-            btn_temas.Padding = new Padding(5);
-            btn_temas.Size = new Size(78, 36);
-            btn_temas.Text = "Temas";
+            btn_tema.Font = new Font("Segoe Print", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            btn_tema.Image = Properties.Resources.domino_mask_FILL0_wght400_GRAD0_opsz24;
+            btn_tema.ImageTransparentColor = Color.Magenta;
+            btn_tema.Name = "btn_tema";
+            btn_tema.Padding = new Padding(5);
+            btn_tema.Size = new Size(78, 36);
+            btn_tema.Text = "Temas";
+            btn_tema.Click += selecaoModulo_Click;
             // 
             // toolStripSeparator1
             // 
@@ -240,6 +241,7 @@
             btn_cliente.Padding = new Padding(5);
             btn_cliente.Size = new Size(85, 36);
             btn_cliente.Text = "Clientes";
+            btn_cliente.Click += selecaoModulo_Click;
             // 
             // toolStripSeparator2
             // 
@@ -255,6 +257,7 @@
             btn_compra.Padding = new Padding(5);
             btn_compra.Size = new Size(93, 36);
             btn_compra.Text = "Compras";
+            btn_compra.Click += selecaoModulo_Click;
             // 
             // toolStripSeparator3
             // 
@@ -270,6 +273,7 @@
             btn_evento.Padding = new Padding(5);
             btn_evento.Size = new Size(71, 36);
             btn_evento.Text = "Festa";
+            btn_evento.Click += selecaoModulo_Click;
             // 
             // toolStripLabel1
             // 
@@ -314,7 +318,7 @@
         private Label lbl;
         private PictureBox pictureBox2;
         private ToolStrip toolStrip1;
-        private ToolStripButton btn_temas;
+        private ToolStripButton btn_tema;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btn_cliente;
         private ToolStripSeparator toolStripSeparator2;
