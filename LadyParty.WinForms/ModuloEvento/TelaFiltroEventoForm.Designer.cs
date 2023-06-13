@@ -63,7 +63,6 @@
             rbnIntervaloCustomizado.Name = "rbnIntervaloCustomizado";
             rbnIntervaloCustomizado.Size = new Size(182, 19);
             rbnIntervaloCustomizado.TabIndex = 4;
-            rbnIntervaloCustomizado.TabStop = true;
             rbnIntervaloCustomizado.Text = "Definir Intervalo Customizado";
             rbnIntervaloCustomizado.UseVisualStyleBackColor = true;
             rbnIntervaloCustomizado.CheckedChanged += rbnIntervaloCustomizado_CheckedChanged;
@@ -75,7 +74,6 @@
             rbnEventosAtuais.Name = "rbnEventosAtuais";
             rbnEventosAtuais.Size = new Size(154, 19);
             rbnEventosAtuais.TabIndex = 3;
-            rbnEventosAtuais.TabStop = true;
             rbnEventosAtuais.Text = "Visualizar Eventos Atuais";
             rbnEventosAtuais.UseVisualStyleBackColor = true;
             rbnEventosAtuais.CheckedChanged += rbnEventosAtuais_CheckedChanged;
@@ -87,7 +85,6 @@
             rbnEventosAnteriores.Name = "rbnEventosAnteriores";
             rbnEventosAnteriores.Size = new Size(175, 19);
             rbnEventosAnteriores.TabIndex = 2;
-            rbnEventosAnteriores.TabStop = true;
             rbnEventosAnteriores.Text = "Visualizar Eventos Anteriores";
             rbnEventosAnteriores.UseVisualStyleBackColor = true;
             rbnEventosAnteriores.CheckedChanged += rbnEventosAnteriores_CheckedChanged;
@@ -95,6 +92,7 @@
             // rbnVisualizarTodos
             // 
             rbnVisualizarTodos.AutoSize = true;
+            rbnVisualizarTodos.Checked = true;
             rbnVisualizarTodos.Location = new Point(42, 22);
             rbnVisualizarTodos.Name = "rbnVisualizarTodos";
             rbnVisualizarTodos.Size = new Size(108, 19);
@@ -111,7 +109,6 @@
             rbnEventosHoje.Name = "rbnEventosHoje";
             rbnEventosHoje.Size = new Size(146, 19);
             rbnEventosHoje.TabIndex = 0;
-            rbnEventosHoje.TabStop = true;
             rbnEventosHoje.Text = "Visualizar Eventos Hoje";
             rbnEventosHoje.UseVisualStyleBackColor = true;
             rbnEventosHoje.CheckedChanged += rbnEventosHoje_CheckedChanged;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LadyParty.WinForms.ModuloCliente;
+using LadyParty.WinForms.ModuloTema;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,15 +21,15 @@ namespace LadyParty.WinForms.ModuloEvento
             gridTabela.ConfigurarGrid();
             gridTabela.ConfigurarGridZebrado();
         }
-        public void AtualizarTabela(List<Evento> eventos)
+        public void AtualizarTabela(List<Evento> listaEventos, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
         {
             gridTabela.Rows.Clear();
-            
-            //Lembrar de configurar o idCliente e idTema para exiber os nomes, não os ids
 
-            foreach (var evento in eventos)
+            foreach (var evento in listaEventos)
             {
-                gridTabela.Rows.Add(evento.id, evento.idCliente, evento.idTema, evento.endereco, evento.data.ToShortDateString(), evento.horaInicio.ToString(@"hh\:mm"), evento.horaTermino.ToString(@"hh\:mm"));
+                Cliente cliente = repCliente.SelecionarPorId(evento.idCliente);
+                Tema tema = repTema.SelecionarPorId(evento.idTema);
+                gridTabela.Rows.Add(evento.id, cliente.nomeCliente, tema.nomeTema, evento.endereco, evento.data.ToShortDateString(), evento.horaInicio.ToString(@"hh\:mm"), evento.horaTermino.ToString(@"hh\:mm"));
             }
         }
 

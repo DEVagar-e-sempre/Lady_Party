@@ -1,4 +1,7 @@
 ﻿using LadyParty.WinForms.Compartilhado;
+using LadyParty.WinForms.ModuloCliente;
+using LadyParty.WinForms.ModuloTema;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LadyParty.WinForms.ModuloEvento
 {
@@ -9,11 +12,18 @@ namespace LadyParty.WinForms.ModuloEvento
 
         private TabelaEventoUserControl tabelaEvento;
 
-        private RepositorioEvento repEvento;
+        private RepositorioArquivoBase<Evento> repEvento;
 
-        public ControladorEvento(RepositorioEvento repEvento)
+        private RepositorioArquivoBase<Cliente> repCliente;
+
+        private RepositorioArquivoBase<Tema> repTema;
+
+
+        public ControladorEvento(RepositorioArquivoBase<Evento> repEvento, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
         {
             this.repEvento = repEvento;
+            this.repCliente = repCliente;
+            this.repTema = repTema;
         }
 
         public override string ObterTipoCadastro => "Evento";
@@ -28,7 +38,7 @@ namespace LadyParty.WinForms.ModuloEvento
 
         public override void Editar()
         {
-            Evento eventoSelecionado = ObterEventoSelecionado();
+            Evento eventoSelecionado = ObterIdSelecionado();
 
             if (eventoSelecionado == null)
             {
@@ -42,9 +52,11 @@ namespace LadyParty.WinForms.ModuloEvento
 
             TelaEventoForm telaEvento = new TelaEventoForm();
 
-            //telaEvento.CarregarEventos(repCliente, repTema);
+            telaEvento.CarregarClientes(repCliente.SelecionarTodos());
 
-            telaEvento.ConfigurarTela(eventoSelecionado); //, repCliente.SelecionarPorId(eventoSelecionado.idCliente), repTema.SelecionarPorId(eventoSelecionado.idTema));
+            telaEvento.CarregarTemas(repTema.SelecionarTodos());
+
+            telaEvento.ConfigurarTela(eventoSelecionado, repCliente.SelecionarPorId(eventoSelecionado.idCliente), repTema.SelecionarPorId(eventoSelecionado.idTema));
 
             DialogResult opcaoEscolhida = telaEvento.ShowDialog();
             if (opcaoEscolhida == DialogResult.OK)
@@ -54,14 +66,16 @@ namespace LadyParty.WinForms.ModuloEvento
             CarregarEventos(dataInicial, dataFinal);
         }
 
-        private Evento ObterEventoSelecionado()
+        private Evento ObterIdSelecionado()
         {
-            throw new NotImplementedException();
+            int id = tabelaEvento.ObterIdSelecionado();
+
+            return repEvento.SelecionarPorId(id);
         }
 
         public override void Excluir()
         {
-            Evento eventoSelecionado = ObterEventoSelecionado();
+            Evento eventoSelecionado = ObterIdSelecionado();
             if (eventoSelecionado == null)
             {
                 MessageBox.Show($"Selecione um {ObterTipoCadastro} primeiro!",
@@ -90,9 +104,6 @@ namespace LadyParty.WinForms.ModuloEvento
 
             telaEvento.DefinirID(repEvento.Contador);
 
-            //telaEvento.CarregarClientes(repCliente.SelecionarTodos());
-            //telaEvento.CarregarTemas(repTema.SelecionarTodos());
-
             DialogResult opcaoEscolhida = telaEvento.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
@@ -105,21 +116,28 @@ namespace LadyParty.WinForms.ModuloEvento
         private void CarregarEventos(DateTime dataInicial, DateTime dataFinal)
         {
             List<Evento> eventos = repEvento.SelecionarTodos();
-            /*
-            if (dataInicial != default(DateTime) && dataFinal != default(DateTime))
+            
+            if (dataInicial == default(DateTime) && dataFinal == default(DateTime))
             {
-                eventos = eventos.Where(x => x.data >= dataInicial && x.data <= dataFinal).ToList();
+                
+            }
+            else if (dataInicial == DateTime.Now.Date && dataFinal == DateTime.Now.Date)
+            {
+                eventos = eventos.Where(x => x.data == dataInicial && x.data == dataFinal).ToList();
             }
             else if (dataInicial != default(DateTime) && dataFinal == default(DateTime))
             {
                 eventos = eventos.Where(x => x.data >= dataInicial).ToList();
             }
-            else if (dataFinal != default(DateTime))
+            else if (dataInicial == default(DateTime) && dataFinal == DateTime.Now.Date.AddDays(-1))
             {
                 eventos = eventos.Where(x => x.data <= dataFinal).ToList();
             }
-            */
-            tabelaEvento.AtualizarTabela(eventos);
+            else if (dataInicial != default(DateTime) && dataFinal != default(DateTime))
+            {
+                eventos = eventos.Where(x => x.data >= dataInicial && x.data <= dataFinal).ToList();
+            }
+            tabelaEvento.AtualizarTabela(eventos, repCliente, repTema);
         }
 
         public override UserControl ObterListagem()
@@ -128,8 +146,8 @@ namespace LadyParty.WinForms.ModuloEvento
             {
                 tabelaEvento = new TabelaEventoUserControl();
             }
-            tabelaEvento.AtualizarTabela(repEvento.SelecionarTodos());
+            tabelaEvento.AtualizarTabela(repEvento.SelecionarTodos(), repCliente, repTema);
             return tabelaEvento;
-        }
+        } 
     }
 }
