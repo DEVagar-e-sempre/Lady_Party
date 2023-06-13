@@ -2,27 +2,52 @@
 {
     public class Tema : EntidadeBase<Tema>
     {
-        public TipoTemaEnum tipo { get; set; }
-        public string temaNome { get; set; }
-        public List<ItemTema> listaItens { get; set; }
+        public string nomeTema { get; set; }
+        public List<string> listaItens { get; set; }
 
-        public Tema(TipoTemaEnum tipo, string temaNome)
+        public Tema(string temaNome, List<string> listaItens)
         {
-            this.tipo = tipo;
-            this.temaNome = temaNome;
-            listaItens = new List<ItemTema>();
+            this.nomeTema = temaNome;
+
+            if(listaItens.Count == 0)
+            {
+                this.listaItens = new List<string>();
+            }
+            else
+            {
+                this.listaItens = listaItens;
+            }
         }
 
         public Tema(){ }
 
-        public override void Validar()
+        public override string[] Validar()
         {
-            throw new NotImplementedException();
+            List<string> listaErros = new List<string>();
+
+            if (string.IsNullOrEmpty(nomeTema))
+            {
+                listaErros.Add("O campo do Nome é obrigatório!");
+            }
+            else if(listaItens.Count <= 0)
+            {
+                listaErros.Add("Adicione pelo menos um item da festa!");
+            }
+
+            return listaErros.ToArray();
         }
 
-        public override void AtualizarInformacoes(Tema entidade)
+        public override void AtualizarInformacoes(Tema entidadeAtualizada)
         {
-            throw new NotImplementedException();
+            this.nomeTema = entidadeAtualizada.nomeTema;
+            this.listaItens = entidadeAtualizada.listaItens;
+        }
+
+        public Tema PegarObjTela()
+        {
+            TelaCadastroTema tela = new TelaCadastroTema();
+
+            return tela.Tema;
         }
     }
 }
