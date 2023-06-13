@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace LadyParty.WinForms.ModuloEvento
 {
-    public partial class TelaFiltroAluguelForm : Form
+    public partial class TelaFiltroEventoForm : Form
     {
         private DateTime dataInicial;
         private DateTime dataFinal;
 
-        public TelaFiltroAluguelForm()
+        public TelaFiltroEventoForm()
         {
             InitializeComponent();
         }
