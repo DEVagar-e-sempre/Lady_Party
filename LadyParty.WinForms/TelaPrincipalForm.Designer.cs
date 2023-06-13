@@ -119,7 +119,7 @@
             btn_inserir.Padding = new Padding(3);
             btn_inserir.Size = new Size(26, 26);
             btn_inserir.Text = "toolStripButton1";
-            btn_inserir.Click += btn_inserir_Click;
+            btn_inserir.Click += botaoBarraFerramentas_Click;
             // 
             // btn_editar
             // 
@@ -130,7 +130,7 @@
             btn_editar.Padding = new Padding(3);
             btn_editar.Size = new Size(26, 26);
             btn_editar.Text = "toolStripButton2";
-            btn_editar.Click += btn_editar_Click;
+            btn_editar.Click += botaoBarraFerramentas_Click;
             // 
             // btn_excluir
             // 
@@ -141,7 +141,7 @@
             btn_excluir.Padding = new Padding(3);
             btn_excluir.Size = new Size(26, 26);
             btn_excluir.Text = "toolStripButton3";
-            btn_excluir.Click += btn_excluir_Click;
+            btn_excluir.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator4
             // 
@@ -157,7 +157,7 @@
             btn_filtrar.Padding = new Padding(3);
             btn_filtrar.Size = new Size(26, 26);
             btn_filtrar.Text = "toolStripButton4";
-            btn_filtrar.Click += btn_filtrar_Click;
+            btn_filtrar.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator5
             // 
@@ -220,14 +220,13 @@
             btn_temas.ImageTransparentColor = Color.Magenta;
             btn_temas.Name = "btn_temas";
             btn_temas.Padding = new Padding(5);
-            btn_temas.Size = new Size(78, 35);
+            btn_temas.Size = new Size(78, 36);
             btn_temas.Text = "Temas";
-            btn_temas.Click += btn_temas_Click_1;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 38);
+            toolStripSeparator1.Size = new Size(6, 39);
             // 
             // btn_cliente
             // 
@@ -236,14 +235,13 @@
             btn_cliente.ImageTransparentColor = Color.Magenta;
             btn_cliente.Name = "btn_cliente";
             btn_cliente.Padding = new Padding(5);
-            btn_cliente.Size = new Size(85, 35);
+            btn_cliente.Size = new Size(85, 36);
             btn_cliente.Text = "Clientes";
-            btn_cliente.Click += btn_cliente_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 38);
+            toolStripSeparator2.Size = new Size(6, 39);
             // 
             // btn_compra
             // 
@@ -252,14 +250,13 @@
             btn_compra.ImageTransparentColor = Color.Magenta;
             btn_compra.Name = "btn_compra";
             btn_compra.Padding = new Padding(5);
-            btn_compra.Size = new Size(93, 35);
+            btn_compra.Size = new Size(93, 36);
             btn_compra.Text = "Compras";
-            btn_compra.Click += btn_compra_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 38);
+            toolStripSeparator3.Size = new Size(6, 39);
             // 
             // btn_evento
             // 
@@ -268,9 +265,8 @@
             btn_evento.ImageTransparentColor = Color.Magenta;
             btn_evento.Name = "btn_evento";
             btn_evento.Padding = new Padding(5);
-            btn_evento.Size = new Size(71, 35);
+            btn_evento.Size = new Size(71, 36);
             btn_evento.Text = "Festa";
-            btn_evento.Click += btn_evento_Click;
             // 
             // toolStripLabel1
             // 

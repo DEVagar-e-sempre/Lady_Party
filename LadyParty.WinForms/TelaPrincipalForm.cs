@@ -1,3 +1,4 @@
+using LadyParty.WinForms.ModuloCliente;
 using LadyParty.WinForms.ModuloEvento;
 using LadyParty.WinForms.ModuloTema;
 
@@ -5,15 +6,19 @@ namespace LadyParty.WinForms
 {
     public partial class TelaPrincipalForm : Form
     {
-        private ControladorBase ctrl;
-        private RepositorioArquivoTema repTema = new RepositorioArquivoTema();
-        //private RepositorioArquivoTema repEV = new RepositorioEvento();
+        private ControladorBase controlador;
+        private RepositorioArquivoBase<Cliente> repCliente;
+        private RepositorioArquivoTema repTema;
+        private RepositorioArquivoBase<Evento> repEvento;
 
         private static TelaPrincipalForm telaPrincipal;
 
         public TelaPrincipalForm()
         {
             InitializeComponent();
+            this.repCliente = new RepositorioArquivoBase<Cliente>();
+            this.repTema = new RepositorioArquivoTema();
+            this.repEvento = new RepositorioArquivoBase<Evento>();
 
             lbl_status.Text = "";
             this.ConfigurarTelas();
@@ -48,64 +53,25 @@ namespace LadyParty.WinForms
             btn_editar.Enabled = true;
             btn_excluir.Enabled = true;
 
-            if (ctrl is ControladorTema || ctrl is ControladorEvento)
+            if (controlador is ControladorTema || controlador is ControladorEvento)
             {
                 btn_filtrar.Enabled = true;
             }
         }
 
-        private void btn_temas_Click_1(object sender, EventArgs e)
+        private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
-            ctrl = new ControladorTema(repTema);
+            lbl_tipoCad.Text = controladorBase.ObterTipoCadastro;
 
-            Desabilitador();
-            Habilitador();
+            ConfigurarToolTips(controlador);
 
-            ConfigurarTelaPrincipal(ctrl);
-        }
-        private void btn_cliente_Click(object sender, EventArgs e)
-        {
-            ctrl = new ControladorTema(repTema);
-
-            Desabilitador();
-            Habilitador();
-
-            ConfigurarTelaPrincipal(ctrl);
+            ConfigurarListagem(controlador);
         }
 
-        private void btn_compra_Click(object sender, EventArgs e)
-        {
-            //ctrl = new ControladorTema(repTema);
-
-            //Desabilitador();
-            //Habilitador();
-
-            //ConfigurarTelaPrincipal(ctrl);
-        }
-
-        private void btn_evento_Click(object sender, EventArgs e)
-        {
-            //ctrl = new ControladorEvento(repTema);
-
-            //Desabilitador();
-            //Habilitador();
-
-            //ConfigurarTelaPrincipal(ctrl);
-        }
-
-        private void ConfigurarTelaPrincipal(ControladorBase ctrlBase)
-        {
-            lbl_tipoCad.Text = ctrlBase.ObterTipoCadastro;
-
-            ConfigurarToolTips(ctrl);
-
-            ConfigurarListagem(ctrl);
-        }
-
-        private void ConfigurarListagem(ControladorBase ctrlBase)
+        private void ConfigurarListagem(ControladorBase controladorBase)
         {
 
-            UserControl listagem = ctrlBase.ObterListagem();
+            UserControl listagem = controladorBase.ObterTabela();
 
             listagem.Dock = DockStyle.Fill;
 
@@ -129,25 +95,48 @@ namespace LadyParty.WinForms
         {
             lbl_status.Text = msg;
         }
-
-        private void btn_inserir_Click(object sender, EventArgs e)
+        private void botaoBarraFerramentas_Click(object sender, EventArgs e)
         {
-            ctrl.Inserir();
+            ToolStripButton botaoCliclado = (ToolStripButton)sender;
+            switch (botaoCliclado.Name)
+            {
+                case "btn_inserir":
+                    controlador.Inserir();
+                    break;
+                case "btn_editar":
+                    controlador.Editar();
+                    break;
+                case "btn_excluir":
+                    controlador.Excluir();
+                    break;
+                case "btn_filtrar":
+                    controlador.Filtrar();
+                    break;
+                default:
+                    break;
+            }
         }
-
-        private void btn_editar_Click(object sender, EventArgs e)
+        private void selecaoModulo_Click(object sender, EventArgs e)
         {
-            ctrl.Editar();
-        }
+            ToolStripMenuItem itemClicado = (ToolStripMenuItem)sender;
+            switch (itemClicado.Name)
+            {
+                case "btn_cliente":
+                    //controlador = new ControladorCliente(repCliente);
+                    break;
+                case "btn_tema":
+                    controlador = new ControladorTema(repTema);
+                    break;
+                case "btn_evento":
+                    controlador = new ControladorEvento(repEvento, repCliente, repTema);
+                    break;
+                default:
+                    break;
+            }
+            Desabilitador();
+            Habilitador();
 
-        private void btn_excluir_Click(object sender, EventArgs e)
-        {
-            ctrl.Excluir();
-        }
-
-        private void btn_filtrar_Click(object sender, EventArgs e)
-        {
-            ctrl.Filtrar();
+            ConfigurarTelaPrincipal(controlador);
         }
     }
 }
