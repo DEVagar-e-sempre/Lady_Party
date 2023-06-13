@@ -1,3 +1,4 @@
+using LadyParty.WinForms.ModuloAluguel;
 using LadyParty.WinForms.ModuloCliente;
 using LadyParty.WinForms.ModuloEvento;
 using LadyParty.WinForms.ModuloTema;
@@ -7,18 +8,16 @@ namespace LadyParty.WinForms
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-        private RepositorioArquivoBase<Cliente> repCliente;
-        private RepositorioArquivoTema repTema;
-        private RepositorioArquivoBase<Evento> repEvento;
+        private RepositorioArquivoCliente repCliente = new RepositorioArquivoCliente();
+        private RepositorioArquivoTema repTema = new RepositorioArquivoTema();
+        private RepositorioArquivoAluguel repEvento = new RepositorioArquivoAluguel();
 
         private static TelaPrincipalForm telaPrincipal;
 
         public TelaPrincipalForm()
         {
             InitializeComponent();
-            this.repCliente = new RepositorioArquivoBase<Cliente>();
-            this.repTema = new RepositorioArquivoTema();
-            this.repEvento = new RepositorioArquivoBase<Evento>();
+
 
             lbl_status.Text = "";
             this.ConfigurarTelas();

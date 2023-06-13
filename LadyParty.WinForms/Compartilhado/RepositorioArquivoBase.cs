@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace LadyParty.WinForms.Compartilhado
 {
-    public class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
+    public abstract class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
     {
         protected Type tipo = typeof(TEntidade);
         protected string nomeArquivo;
@@ -11,11 +11,6 @@ namespace LadyParty.WinForms.Compartilhado
         protected int contadorRegistros;
 
         public int Contador => contadorRegistros;
-
-        public RepositorioArquivoBase()
-        {
-            Desserializador();
-        }
 
         public virtual void Inserir(TEntidade registro)
         {
@@ -43,7 +38,7 @@ namespace LadyParty.WinForms.Compartilhado
         public virtual List<TEntidade> SelecionarTodos() => listaRegistros.OrderByDescending(x => x.id).ToList();
 
         //Serializando por json 
-        protected void Desserializador()
+        protected List<TEntidade> Desserializador()
         {
             nomeArquivo = $"{tipo.Name}.json";
             JsonSerializerOptions config = ConfigurarLista();
@@ -52,13 +47,14 @@ namespace LadyParty.WinForms.Compartilhado
             {
                 string conteudo = File.ReadAllText(nomeArquivo);
                 RepositorioArquivoBase<TEntidade> tempRep = JsonSerializer.Deserialize<RepositorioArquivoBase<TEntidade>>(conteudo, config);
+                
                 this.contadorRegistros = tempRep.Contador;
-                this.listaRegistros = tempRep.listaRegistros;
+                return tempRep.listaRegistros;
             }
             else
             {
                 this.contadorRegistros = 0;
-                this.listaRegistros = new List<TEntidade>();
+                return new List<TEntidade>();
             }
         }
 
