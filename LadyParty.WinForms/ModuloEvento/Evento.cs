@@ -2,35 +2,40 @@
 {
     public class Evento : EntidadeBase<Evento>
     {
+        public String endereco;
+
         public int idCliente;
 
         public int idTema;
 
-        public decimal valorTotal;
+        public DateTime data;
 
-        public decimal entrada;
+        public TimeSpan horaInicio;
 
-        public decimal desconto;
+        public TimeSpan horaTermino;
 
-        public Festa festa;
-
-        public Evento(int id = -1, int idCliente = -1, int idTema = -1, Festa festa = null)
+        public Evento(int id = -1, string endereco = "", int idCliente = -1, int idTema = -1, DateTime data = default(DateTime), TimeSpan horaInicio = default(TimeSpan), TimeSpan horaTermino = default(TimeSpan))
         {
             this.id = id;
+            this.endereco = endereco;
             this.idCliente = idCliente;
             this.idTema = idTema;
-            this.festa = festa;
+            this.data = data;
+            this.horaInicio = horaInicio;
+            this.horaTermino = horaTermino;
         }
         public override void AtualizarInformacoes(Evento entidade)
         {
             this.idTema = entidade.idTema;
-            this.festa = entidade.festa;
+            this.data = entidade.data;
+            this.horaInicio = entidade.horaInicio;
+            this.horaTermino = entidade.horaTermino;
         }
 
         public override string[] Validar()
         {
             List<string> erros = new List<string>();
-            if (String.IsNullOrEmpty(festa.endereco))
+            if (String.IsNullOrEmpty(endereco))
             {
                 erros.Add("Endereço não informado");
             }
@@ -42,15 +47,15 @@
             {
                 erros.Add("Tema não selecionado");
             }
-            if (festa.data == default(DateTime))
+            if (data == default(DateTime))
             {
                 erros.Add("Data não selecionada");
             }
-            if (festa.horaInicio == default(TimeSpan))
+            if (horaInicio == default(TimeSpan))
             {
                 erros.Add("Hora de início não selecionada");
             }
-            if (festa.horaTermino == default(TimeSpan))
+            if (horaTermino == default(TimeSpan))
             {
                 erros.Add("Hora de término não selecionada");
             }
