@@ -12,17 +12,12 @@
 
 
         public abstract string ObterTipoCadastro { get; }
-
-
         public virtual bool InserirHabilitado => true;
         public virtual bool EditarHabilitado => true;
         public virtual bool ExcluirHabilitado => true;
-
         public virtual bool FiltrarHabilitado => false;
 
         public abstract void Inserir();
-
-
         public abstract void Editar();
 
         public abstract void Excluir();
@@ -33,7 +28,7 @@
 
         public virtual void ConcluirItens() {}
 
-        public abstract UserControl ObterTabela();
+        public abstract UserControl ObterListagem();
 
     }
 }

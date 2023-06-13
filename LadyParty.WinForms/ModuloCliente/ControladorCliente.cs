@@ -3,18 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LadyParty.WinForms.ModuloTema;
 
 namespace LadyParty.WinForms.ModuloCliente
 {
     internal class ControladorCliente : ControladorBase
     {
-        public override string ToolTipInserir => throw new NotImplementedException();
+        private ClienteUserControl tabelaCliente;
+        private RepositorioArquivoBase<Cliente> repCliente;
 
-        public override string ToolTipEditar => throw new NotImplementedException();
+        public ControladorCliente(RepositorioArquivoBase<Cliente> repCliente)
+        {
+            this.repCliente = repCliente;
+        }
+        public override string ObterTipoCadastro => "Cliente";
 
-        public override string ToolTipExcluir => throw new NotImplementedException();
+        public override void Inserir()
+        {
+            TelaClienteForm telaCliente = new TelaClienteForm();
 
-        public override string ObterTipoCadastro => throw new NotImplementedException();
+            telaCliente.DefinirID(repCliente.Contador);
+
+            DialogResult opcaoEscolhida = telaCliente.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                repCliente.Inserir(telaCliente.ObterCliente());
+                CarregarCliente();
+            }
+        }
+        private void CarregarCliente()
+        {
+
+            List<Cliente> clientes = repCliente.SelecionarTodos();
+
+            tabelaCliente.AtualizarRegistros(clientes);
+        }
 
         public override void Editar()
         {
@@ -26,12 +50,8 @@ namespace LadyParty.WinForms.ModuloCliente
             throw new NotImplementedException();
         }
 
-        public override void Inserir()
-        {
-            throw new NotImplementedException();
-        }
 
-        public override UserControl ObterTabela()
+        public override UserControl ObterListagem()
         {
             throw new NotImplementedException();
         }
