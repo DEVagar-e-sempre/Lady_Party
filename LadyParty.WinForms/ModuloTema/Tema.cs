@@ -54,5 +54,10 @@
         {
             listaItens.Add(item);
         }
+
+        public override string ToString()
+        {
+            return nomeTema;
+        }
     }
 }

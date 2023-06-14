@@ -53,5 +53,9 @@
 
             return erros.ToArray();
         }
+        public override string ToString()
+        {
+            return nomeCliente;
+        }
     }
 }
