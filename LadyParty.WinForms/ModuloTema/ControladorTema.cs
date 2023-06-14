@@ -129,7 +129,6 @@
                     foreach (ItemTema item in listaItens)
                     {
                         temaSelec.AdicionarItens(item);
-
                     }
 
                     //tarefaSelec.AdicionarItens(listaItens.ElementAt<ItemTarefa>(listaItens.Count - 1));
