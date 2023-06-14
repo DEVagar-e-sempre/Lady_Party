@@ -11,10 +11,7 @@
             this.nome = nome;
         }
 
-        public override void AtualizarInformacoes(ItemTema entidade)
-        {
-            throw new NotImplementedException();
-        }
+        public override void AtualizarInformacoes(ItemTema entidade) { }
 
         public override string[] Validar()
         {

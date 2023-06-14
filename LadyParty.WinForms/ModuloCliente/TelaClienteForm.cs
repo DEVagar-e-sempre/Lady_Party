@@ -48,21 +48,7 @@ namespace LadyParty.WinForms.ModuloCliente
 
             string telefone = txt_telefone.Text;
 
-            bool ehEspecial = false;
-<<<<<<< Updated upstream
-
-            if (rdb_clienteConvencional.Checked)
-            {
-                ehEspecial = false;
-            }
-            else if (rdb_clienteEspecial.Checked)
-            {
-                ehEspecial = true;
-            }
-=======
->>>>>>> Stashed changes
-
-            cliente = new Cliente(nome, telefone, ehEspecial);
+            cliente = new Cliente(nome, telefone);
 
 
             string[] erros = cliente.Validar();
