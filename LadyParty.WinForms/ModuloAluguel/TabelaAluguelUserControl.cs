@@ -17,6 +17,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         public TabelaAluguelUserControl()
         {
             InitializeComponent();
+            ConfigurarColunas();
             this.ConfigurarUserControl();
             gridTabela.ConfigurarGrid();
             gridTabela.ConfigurarGridZebrado();

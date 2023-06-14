@@ -27,7 +27,8 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         public void ConfigurarTela(Aluguel aluguel, Cliente cliente, Tema tema)
         {
-            this.Text = "Editar Aluguel";
+            this.Text = "Edição de Aluguel";
+            labelTitulo.Text = Text;
             txtId.Text = aluguel.id.ToString();
             txtEndereco.Text = aluguel.festa.endereco;
             cbnClientes.SelectedItem = cliente;
@@ -77,6 +78,20 @@ namespace LadyParty.WinForms.ModuloAluguel
             {
                 cbnTemas.Items.Add(tema);
             }
+        }
+
+        private void cbnTemas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Tema tema = (Tema)cbnTemas.SelectedItem;
+            if (tema != null)
+            {
+                txtValor.Text = $"R$ {tema.valorTotal()}";
+                txtValorEntrada.Minimum = (int)(tema.valorTotal() * 0.40);
+                txtValorEntrada.Maximum = (int)(tema.valorTotal();
+                txtValorEntrada.Enabled = true;
+                return;
+            }
+            txtValorEntrada.Enabled = false;
         }
     }
 }
