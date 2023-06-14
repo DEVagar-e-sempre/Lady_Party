@@ -42,11 +42,7 @@ namespace LadyParty.WinForms.ModuloAluguel
                 return;
             }
 
-            TelaAluguelForm telaAluguel = new TelaAluguelForm();
-
-            telaAluguel.CarregarClientes(repCliente.SelecionarTodos());
-
-            telaAluguel.CarregarTemas(repTema.SelecionarTodos());
+            TelaAluguelForm telaAluguel = new TelaAluguelForm(repCliente.SelecionarTodos(), repTema.SelecionarTodos());
 
             telaAluguel.ConfigurarTela(aluguelSelecionado, repCliente.SelecionarPorId(aluguelSelecionado.idCliente), repTema.SelecionarPorId(aluguelSelecionado.idTema));
 
@@ -97,7 +93,7 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         public override void Inserir()
         {
-            TelaAluguelForm telaAluguel = new TelaAluguelForm();
+            TelaAluguelForm telaAluguel = new TelaAluguelForm(repCliente.SelecionarTodos(), repTema.SelecionarTodos());
 
             telaAluguel.DefinirID(repAluguel.Contador);
 

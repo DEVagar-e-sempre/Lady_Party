@@ -14,9 +14,16 @@ namespace LadyParty.WinForms.ModuloAluguel
 {
     public partial class TelaAluguelForm : Form
     {
-        public TelaAluguelForm()
+        private List<Cliente> clientes;
+        private List<Tema> temas;
+
+        public TelaAluguelForm(List<Cliente> clientes, List<Tema> temas)
         {
             InitializeComponent();
+            this.clientes = clientes;
+            this.temas = temas;
+            CarregarClientes();
+            CarregarTemas();
             this.ConfigurarTelas();
         }
 
@@ -64,16 +71,18 @@ namespace LadyParty.WinForms.ModuloAluguel
             }
         }
 
-        public void CarregarClientes(List<Cliente> clientes)
+        public void CarregarClientes()
         {
+            cbnClientes.Items.Clear();
             foreach (Cliente cliente in clientes)
             {
                 cbnClientes.Items.Add(cliente);
             }
         }
 
-        public void CarregarTemas(List<Tema> temas)
+        public void CarregarTemas()
         {
+            cbnTemas.Items.Clear();
             foreach (Tema tema in temas)
             {
                 cbnTemas.Items.Add(tema);
