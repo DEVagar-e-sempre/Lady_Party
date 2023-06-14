@@ -10,29 +10,29 @@ namespace LadyParty.WinForms.ModuloAluguel
         private DateTime dataInicial;
         private DateTime dataFinal;
 
-        private TabelaAluguelUserControl tabelaEvento;
+        private TabelaAluguelUserControl tabelaAluguel;
 
-        private RepositorioArquivoBase<Aluguel> repEvento;
+        private RepositorioArquivoAluguel repAluguel;
             
-        private RepositorioArquivoBase<Cliente> repCliente;
+        private RepositorioArquivoCliente repCliente;
 
-        private RepositorioArquivoBase<Tema> repTema;
+        private RepositorioArquivoTema repTema;
 
 
-        public ControladorAluguel(RepositorioArquivoBase<Aluguel> repEvento, RepositorioArquivoBase<Cliente> repCliente, RepositorioArquivoBase<Tema> repTema)
+        public ControladorAluguel(RepositorioArquivoAluguel repAluguel, RepositorioArquivoCliente repCliente, RepositorioArquivoTema repTema)
         {
-            this.repEvento = repEvento;
+            this.repAluguel = repAluguel;
             this.repCliente = repCliente;
             this.repTema = repTema;
         }
 
-        public override string ObterTipoCadastro => "Evento";
+        public override string ObterTipoCadastro => "Aluguel";
 
         public override void Editar()
         {
-            Aluguel eventoSelecionado = ObterIdSelecionado();
+            Aluguel aluguelSelecionado = ObterIdSelecionado();
 
-            if (eventoSelecionado == null)
+            if (aluguelSelecionado == null)
             {
                 MessageBox.Show($"Selecione um {ObterTipoCadastro} primeiro!",
                     "Edição de {ObterTipoCadastro}s",
@@ -42,33 +42,33 @@ namespace LadyParty.WinForms.ModuloAluguel
                 return;
             }
 
-            TelaAluguelForm telaEvento = new TelaAluguelForm();
+            TelaAluguelForm telaAluguel = new TelaAluguelForm();
 
-            telaEvento.CarregarClientes(repCliente.SelecionarTodos());
+            telaAluguel.CarregarClientes(repCliente.SelecionarTodos());
 
-            telaEvento.CarregarTemas(repTema.SelecionarTodos());
+            telaAluguel.CarregarTemas(repTema.SelecionarTodos());
 
-            telaEvento.ConfigurarTela(eventoSelecionado, repCliente.SelecionarPorId(eventoSelecionado.idCliente), repTema.SelecionarPorId(eventoSelecionado.idTema));
+            telaAluguel.ConfigurarTela(aluguelSelecionado, repCliente.SelecionarPorId(aluguelSelecionado.idCliente), repTema.SelecionarPorId(aluguelSelecionado.idTema));
 
-            DialogResult opcaoEscolhida = telaEvento.ShowDialog();
+            DialogResult opcaoEscolhida = telaAluguel.ShowDialog();
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repEvento.Editar(eventoSelecionado.id, telaEvento.ObterEvento());
+                repAluguel.Editar(aluguelSelecionado.id, telaAluguel.ObterAluguel());
             }
-            CarregarEventos(dataInicial, dataFinal);
+            CarregarAluguels(dataInicial, dataFinal);
         }
 
         private Aluguel ObterIdSelecionado()
         {
-            int id = tabelaEvento.ObterIdSelecionado();
+            int id = tabelaAluguel.ObterIdSelecionado();
 
-            return repEvento.SelecionarPorId(id);
+            return repAluguel.SelecionarPorId(id);
         }
 
         public override void Excluir()
         {
-            Aluguel eventoSelecionado = ObterIdSelecionado();
-            if (eventoSelecionado == null)
+            Aluguel aluguelSelecionado = ObterIdSelecionado();
+            if (aluguelSelecionado == null)
             {
                 MessageBox.Show($"Selecione um {ObterTipoCadastro} primeiro!",
                     $"Exclusão de {ObterTipoCadastro}",
@@ -85,29 +85,29 @@ namespace LadyParty.WinForms.ModuloAluguel
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repEvento.Excluir(eventoSelecionado);
-                CarregarEventos(dataInicial, dataFinal);
+                repAluguel.Excluir(aluguelSelecionado);
+                CarregarAluguels(dataInicial, dataFinal);
             }
         }
 
         public override void Inserir()
         {
-            TelaAluguelForm telaEvento = new TelaAluguelForm();
+            TelaAluguelForm telaAluguel = new TelaAluguelForm();
 
-            telaEvento.DefinirID(repEvento.Contador);
+            telaAluguel.DefinirID(repAluguel.Contador);
 
-            DialogResult opcaoEscolhida = telaEvento.ShowDialog();
+            DialogResult opcaoEscolhida = telaAluguel.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repEvento.Inserir(telaEvento.ObterEvento());
-                CarregarEventos(dataInicial, dataFinal);
+                repAluguel.Inserir(telaAluguel.ObterAluguel());
+                CarregarAluguels(dataInicial, dataFinal);
             }
         }
 
-        private void CarregarEventos(DateTime dataInicial, DateTime dataFinal)
+        private void CarregarAluguels(DateTime dataInicial, DateTime dataFinal)
         {
-            List<Aluguel> eventos = repEvento.SelecionarTodos();
+            List<Aluguel> alugueis = repAluguel.SelecionarTodos();
             
             if (dataInicial == default(DateTime) && dataFinal == default(DateTime))
             {
@@ -115,31 +115,31 @@ namespace LadyParty.WinForms.ModuloAluguel
             }
             else if (dataInicial == DateTime.Now.Date && dataFinal == DateTime.Now.Date)
             {
-                eventos = eventos.Where(x => x.data == dataInicial && x.data == dataFinal).ToList();
+                alugueis = alugueis.Where(x => x.festa.data == dataInicial && x.festa.data == dataFinal).ToList();
             }
             else if (dataInicial != default(DateTime) && dataFinal == default(DateTime))
             {
-                eventos = eventos.Where(x => x.data >= dataInicial).ToList();
+                alugueis = alugueis.Where(x => x.festa.data >= dataInicial).ToList();
             }
             else if (dataInicial == default(DateTime) && dataFinal == DateTime.Now.Date.AddDays(-1))
             {
-                eventos = eventos.Where(x => x.data <= dataFinal).ToList();
+                alugueis = alugueis.Where(x => x.festa.data <= dataFinal).ToList();
             }
             else if (dataInicial != default(DateTime) && dataFinal != default(DateTime))
             {
-                eventos = eventos.Where(x => x.data >= dataInicial && x.data <= dataFinal).ToList();
+                alugueis = alugueis.Where(x => x.festa.data >= dataInicial && x.festa.data <= dataFinal).ToList();
             }
-            tabelaEvento.AtualizarTabela(eventos, repCliente, repTema);
+            tabelaAluguel.AtualizarTabela(alugueis, repCliente, repTema);
         }
 
         public override UserControl ObterListagem()
         {
-            if (tabelaEvento == null)
+            if (tabelaAluguel == null)
             {
-                tabelaEvento = new TabelaAluguelUserControl();
+                tabelaAluguel = new TabelaAluguelUserControl();
             }
-            tabelaEvento.AtualizarTabela(repEvento.SelecionarTodos(), repCliente, repTema);
-            return tabelaEvento;
+            tabelaAluguel.AtualizarTabela(repAluguel.SelecionarTodos(), repCliente, repTema);
+            return tabelaAluguel;
         }
     }
 }

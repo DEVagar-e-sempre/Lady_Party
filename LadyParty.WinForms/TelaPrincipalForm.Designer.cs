@@ -49,8 +49,6 @@
             toolStripSeparator1 = new ToolStripSeparator();
             btn_cliente = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
-            btn_compra = new ToolStripButton();
-            toolStripSeparator3 = new ToolStripSeparator();
             btn_evento = new ToolStripButton();
             toolStripLabel1 = new ToolStripLabel();
             statusStrip1.SuspendLayout();
@@ -222,7 +220,7 @@
             // toolStrip1
             // 
             toolStrip1.BackColor = Color.White;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_tema, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_compra, toolStripSeparator3, btn_evento, toolStripLabel1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_tema, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_evento, toolStripLabel1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(499, 39);
@@ -261,22 +259,6 @@
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new Size(6, 39);
             // 
-            // btn_compra
-            // 
-            btn_compra.Font = new Font("Segoe Print", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_compra.Image = Properties.Resources.shopping_cart_FILL0_wght400_GRAD0_opsz24;
-            btn_compra.ImageTransparentColor = Color.Magenta;
-            btn_compra.Name = "btn_compra";
-            btn_compra.Padding = new Padding(5);
-            btn_compra.Size = new Size(93, 36);
-            btn_compra.Text = "Compras";
-            btn_compra.Click += selecaoModulo_Click;
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 39);
-            // 
             // btn_evento
             // 
             btn_evento.Font = new Font("Segoe Print", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -284,8 +266,8 @@
             btn_evento.ImageTransparentColor = Color.Magenta;
             btn_evento.Name = "btn_evento";
             btn_evento.Padding = new Padding(5);
-            btn_evento.Size = new Size(71, 36);
-            btn_evento.Text = "Festa";
+            btn_evento.Size = new Size(82, 36);
+            btn_evento.Text = "Aluguel";
             btn_evento.Click += selecaoModulo_Click;
             // 
             // toolStripLabel1
@@ -335,8 +317,6 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btn_cliente;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripButton btn_compra;
-        private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton btn_evento;
         private ToolStrip toolStrip2;
         private ToolStripButton btn_inserir;

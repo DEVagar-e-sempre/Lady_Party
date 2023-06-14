@@ -25,36 +25,37 @@ namespace LadyParty.WinForms.ModuloAluguel
             txtId.Text = id.ToString();
         }
 
-        public void ConfigurarTela(Aluguel evento, Cliente cliente, Tema tema)
+        public void ConfigurarTela(Aluguel aluguel, Cliente cliente, Tema tema)
         {
-            this.Text = "Editar Evento";
-            txtId.Text = evento.id.ToString();
-            txtEndereco.Text = evento.endereco;
+            this.Text = "Edição de Aluguel";
+            labelTitulo.Text = Text;
+            txtId.Text = aluguel.id.ToString();
+            txtEndereco.Text = aluguel.festa.endereco;
             cbnClientes.SelectedItem = cliente;
             cbnTemas.SelectedItem = tema;
-            txtData.Value = evento.data;
-            txtHoraInicio.Value = DateTime.Now.Date.Add(evento.horaInicio);
-            txtHoraTermino.Value = DateTime.Now.Date.Add(evento.horaTermino);
+            txtData.Value = aluguel.festa.data;
+            txtHoraInicio.Value = DateTime.Now.Date.Add(aluguel.festa.horaInicio);
+            txtHoraTermino.Value = DateTime.Now.Date.Add(aluguel.festa.horaTermino);
 
         }
-        public Aluguel ObterEvento()
+        public Aluguel ObterAluguel()
         {
-            Aluguel evento = new Aluguel();
-            evento.id = Convert.ToInt32(txtId.Text);
-            evento.endereco = txtEndereco.Text;
-            evento.idCliente = ((Cliente)cbnClientes.SelectedItem).id;
-            evento.idTema = ((Tema)cbnTemas.SelectedItem).id;
-            evento.data = txtData.Value;
-            evento.horaInicio = txtHoraInicio.Value.TimeOfDay;
-            evento.horaTermino = txtHoraTermino.Value.TimeOfDay;
+            Aluguel aluguel = new Aluguel();
+            aluguel.id = Convert.ToInt32(txtId.Text);
+            aluguel.festa.endereco = txtEndereco.Text;
+            aluguel.idCliente = ((Cliente)cbnClientes.SelectedItem).id;
+            aluguel.idTema = ((Tema)cbnTemas.SelectedItem).id;
+            aluguel.festa.data = txtData.Value;
+            aluguel.festa.horaInicio = txtHoraInicio.Value.TimeOfDay;
+            aluguel.festa.horaTermino = txtHoraTermino.Value.TimeOfDay;
 
-            return evento;
+            return aluguel;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            Aluguel evento = ObterEvento();
-            string[] erros = evento.Validar();
+            Aluguel aluguel = ObterAluguel();
+            string[] erros = aluguel.Validar();
             if (erros.Length > 0)
             {
                 TelaPrincipalForm.TelaPrincipal.AtualizarRodape(erros[0]);
@@ -77,6 +78,20 @@ namespace LadyParty.WinForms.ModuloAluguel
             {
                 cbnTemas.Items.Add(tema);
             }
+        }
+
+        private void cbnTemas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Tema tema = (Tema)cbnTemas.SelectedItem;
+            if (tema != null)
+            {
+                txtValor.Text = $"R$ {tema.valorTotal()}";
+                txtValorEntrada.Minimum = (int)(tema.valorTotal() * 0.40);
+                txtValorEntrada.Maximum = (int)(tema.valorTotal();
+                txtValorEntrada.Enabled = true;
+                return;
+            }
+            txtValorEntrada.Enabled = false;
         }
     }
 }

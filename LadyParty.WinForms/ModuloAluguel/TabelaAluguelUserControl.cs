@@ -17,6 +17,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         public TabelaAluguelUserControl()
         {
             InitializeComponent();
+            ConfigurarColunas();
             this.ConfigurarUserControl();
             gridTabela.ConfigurarGrid();
             gridTabela.ConfigurarGridZebrado();
@@ -25,11 +26,11 @@ namespace LadyParty.WinForms.ModuloAluguel
         {
             gridTabela.Rows.Clear();
 
-            foreach (var evento in listaEventos)
+            foreach (var aluguel in listaEventos)
             {
-                Cliente cliente = repCliente.SelecionarPorId(evento.idCliente);
-                Tema tema = repTema.SelecionarPorId(evento.idTema);
-                gridTabela.Rows.Add(evento.id, cliente.nomeCliente, tema.nomeTema, evento.endereco, evento.data.ToShortDateString(), evento.horaInicio.ToString(@"hh\:mm"), evento.horaTermino.ToString(@"hh\:mm"));
+                Cliente cliente = repCliente.SelecionarPorId(aluguel.idCliente);
+                Tema tema = repTema.SelecionarPorId(aluguel.idTema);
+                gridTabela.Rows.Add(aluguel.id, cliente.nomeCliente, tema.nomeTema, aluguel.festa.endereco, aluguel.festa.data.ToShortDateString(), aluguel.festa.horaInicio.ToString(@"hh\:mm"), aluguel.festa.horaTermino.ToString(@"hh\:mm"));
             }
         }
 
