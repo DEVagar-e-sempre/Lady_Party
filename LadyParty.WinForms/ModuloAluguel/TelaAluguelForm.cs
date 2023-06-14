@@ -85,9 +85,9 @@ namespace LadyParty.WinForms.ModuloAluguel
             Tema tema = (Tema)cbnTemas.SelectedItem;
             if (tema != null)
             {
-                txtValor.Text = $"R$ {tema.valorTotal()}";
-                txtValorEntrada.Minimum = (int)(tema.valorTotal() * 0.40);
-                txtValorEntrada.Maximum = (int)(tema.valorTotal();
+                txtValor.Text = $"R$ {tema.CalcularValorTotal}";
+                txtValorEntrada.Minimum = (int)(tema.CalcularValorTotal() * 0.40m);
+                txtValorEntrada.Maximum = (int)(tema.CalcularValorTotal());
                 txtValorEntrada.Enabled = true;
                 return;
             }
