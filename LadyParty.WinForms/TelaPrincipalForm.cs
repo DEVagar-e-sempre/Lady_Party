@@ -21,17 +21,14 @@ namespace LadyParty.WinForms
 
             lbl_status.Text = "";
             this.ConfigurarTelas();
+
+            telaPrincipal = this;
         }
 
         public static TelaPrincipalForm TelaPrincipal
         {
             get
             {
-                if (telaPrincipal == null)
-                {
-                    telaPrincipal = new TelaPrincipalForm();
-                }
-
                 return telaPrincipal;
 
             }
