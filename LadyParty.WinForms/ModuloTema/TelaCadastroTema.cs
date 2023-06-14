@@ -10,13 +10,7 @@ namespace LadyParty.WinForms.ModuloTema
             InitializeComponent();
 
             this.ConfigurarTelas();
-            InicializarCheckedList();
             txb_id.ReadOnly = true;
-        }
-
-        public void InicializarCheckedList()
-        {
-
         }
 
         public Tema Tema
@@ -39,7 +33,11 @@ namespace LadyParty.WinForms.ModuloTema
 
             string nome = txb_nomeTema.Text;
 
-            decimal preco = Convert.ToDecimal(txb_preco.Text);
+            if(decimal.TryParse(txb_preco.Text, out decimal preco) == false)
+            {
+                txb_preco.Text = "0";
+                preco = 0;
+            }
 
             tema = new Tema(nome, preco);
 
