@@ -4,21 +4,21 @@
     {
         public string nomeCliente { get; set; }
         public string telefoneCliente { get; set; }
-        public bool ehEspecial { get; set; }
         public bool temFestaMarcada { get; set; }
         public DateTime dataDeCadastro { get; set; }
 
         private int contadorDeAlugueis;
+
 
         public Cliente(string nomeCliente, string telefoneCliente)
         {
             this.nomeCliente = nomeCliente;
             this.telefoneCliente = telefoneCliente;
             this.dataDeCadastro = DateTime.Now.Date;
-            contadorDeAlugueis = 0;
+            contadorDeAlugueis = 0;    
         }
 
-        public Cliente() { }
+    public Cliente() { }
         public override void AtualizarInformacoes(Cliente registroAtualizado)
         {
             this.nomeCliente = registroAtualizado.nomeCliente;
@@ -40,6 +40,15 @@
         public int ObterContadorDeAlugueis()
         {
             return contadorDeAlugueis;
+        }
+        public bool VerificarSeClienteEhEspecial()
+        {
+            if(contadorDeAlugueis >= 3)
+            {
+                return true;
+            }
+            else
+                return false;
         }
         public override string[] Validar() //precisa retornar uma string pelo base
         {
