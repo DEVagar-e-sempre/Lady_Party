@@ -8,12 +8,14 @@
         public bool temFestaMarcada { get; set; }
         public DateTime dataDeCadastro { get; set; }
 
-        public Cliente(string nomeCliente, string telefoneCliente, bool ehEspecial)
+        private int contadorDeAlugueis;
+
+        public Cliente(string nomeCliente, string telefoneCliente)
         {
             this.nomeCliente = nomeCliente;
             this.telefoneCliente = telefoneCliente;
-            this.ehEspecial = ehEspecial;
             this.dataDeCadastro = DateTime.Now.Date;
+            contadorDeAlugueis = 0;
         }
 
         public Cliente() { }
@@ -21,19 +23,23 @@
         {
             this.nomeCliente = registroAtualizado.nomeCliente;
             this.telefoneCliente = registroAtualizado.telefoneCliente;
+            this.contadorDeAlugueis = registroAtualizado.contadorDeAlugueis;
         }
 
-        public void TornarEspecial()
+        public void IncrementarContadorDeAlugueis()
         {
-
+            contadorDeAlugueis++;
         }
-        public void MarcarStatusFesta()
+        public void DecrementarContadorDeAlugueis()
         {
-
+            if(contadorDeAlugueis > 0 )
+            {
+                contadorDeAlugueis--;
+            }
         }
-        public void DesmarcarStatusFesta()
+        public int ObterContadorDeAlugueis()
         {
-
+            return contadorDeAlugueis;
         }
         public override string[] Validar() //precisa retornar uma string pelo base
         {
@@ -46,6 +52,10 @@
                 erros.Add($"O campo 'numero de celular' é obrigatório.");
 
             return erros.ToArray();
+        }
+        public override string ToString()
+        {
+            return nomeCliente;
         }
     }
 }
