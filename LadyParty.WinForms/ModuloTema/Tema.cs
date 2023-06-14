@@ -16,6 +16,18 @@
 
         public Tema(){ }
 
+        public decimal CalcularValorTotal()
+        {
+            decimal valorItens = 0;
+
+            foreach(ItemTema item in listaItens)
+            {
+                valorItens = valorItens + item.preco;
+            }
+
+            return preco + valorItens;
+        }
+
         public override string[] Validar()
         {
             List<string> listaErros = new List<string>();
