@@ -144,7 +144,9 @@
             // 
             // btn_gravar
             // 
+            btn_gravar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_gravar.BackColor = Color.White;
+            btn_gravar.DialogResult = DialogResult.OK;
             btn_gravar.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_gravar.Location = new Point(213, 263);
             btn_gravar.Name = "btn_gravar";
@@ -156,7 +158,9 @@
             // 
             // btn_cancelar
             // 
+            btn_cancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_cancelar.BackColor = Color.White;
+            btn_cancelar.DialogResult = DialogResult.Cancel;
             btn_cancelar.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_cancelar.Location = new Point(331, 263);
             btn_cancelar.Name = "btn_cancelar";

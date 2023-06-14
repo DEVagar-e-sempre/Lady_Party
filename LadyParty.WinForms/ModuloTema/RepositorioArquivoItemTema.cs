@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LadyParty.WinForms.ModuloAluguel
+namespace LadyParty.WinForms.ModuloTema
 {
-    public class RepositorioArquivoAluguel : RepositorioArquivoBase<Aluguel>
+    public class RepositorioArquivoItemTema : RepositorioArquivoBase<ItemTema>
     {
-        public RepositorioArquivoAluguel()
+        public RepositorioArquivoItemTema()
         {
             base.listaRegistros = Desserializador();
         }

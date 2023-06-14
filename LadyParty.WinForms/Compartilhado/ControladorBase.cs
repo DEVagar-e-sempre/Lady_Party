@@ -10,18 +10,22 @@
 
         public virtual string ToolTipFiltrar => $"Filtrar {ObterTipoCadastro}s";
 
+        public virtual string ToolTipAdd => $"Adicionar Itens";
+
 
         public abstract string ObterTipoCadastro { get; }
         public virtual bool InserirHabilitado => true;
         public virtual bool EditarHabilitado => true;
         public virtual bool ExcluirHabilitado => true;
         public virtual bool FiltrarHabilitado => false;
+        public virtual bool AddItemHabilitado => false;
 
         public abstract void Inserir();
-        
         public abstract void Editar();
 
         public abstract void Excluir();
+
+        public virtual void AddItem() { }
 
         public virtual void Filtrar() {}
 

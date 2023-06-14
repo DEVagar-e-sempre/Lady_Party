@@ -11,26 +11,12 @@ namespace LadyParty.WinForms.ModuloTema
 
             this.ConfigurarTelas();
             InicializarCheckedList();
+            txb_id.ReadOnly = true;
         }
 
         public void InicializarCheckedList()
         {
-            if (checkedList.Items.Count == 0)
-            {
-                checkedList.Items.Add("Personagens");
-                checkedList.Items.Add("Doces tematizados");
-                checkedList.Items.Add("Salgados");
-                checkedList.Items.Add("Bebidas");
-                checkedList.Items.Add("Centro de mesa");
-                checkedList.Items.Add("Enfeite de parede");
-                checkedList.Items.Add("Balões coloridos");
-                checkedList.Items.Add("Bonecos para mesa");
-                checkedList.Items.Add("Potes com balas para mesa");
-                checkedList.Items.Add("Balas");
-                checkedList.Items.Add("Chicletes");
-                checkedList.Items.Add("Bombons");
-                checkedList.Items.Add("Lembrancinha");
-            }
+
         }
 
         public Tema Tema
@@ -38,23 +24,13 @@ namespace LadyParty.WinForms.ModuloTema
             set
             {
                 txb_nomeTema.Text = value.nomeTema;
+                txb_preco.Text = value.preco.ToString();
+                txb_id.Text = value.id.ToString();
             }
             get
             {
                 return tema;
             }
-        }
-
-        private List<string> VerificarItensSelec()
-        {
-            List<string> list = new List<string>();
-
-            foreach (string item in checkedList.SelectedItems)
-            {
-                list.Add(item);
-            }
-
-            return list;
         }
 
         private void btn_gravar_Click(object sender, EventArgs e)
@@ -63,9 +39,9 @@ namespace LadyParty.WinForms.ModuloTema
 
             string nome = txb_nomeTema.Text;
 
-            List<string> listaItens = VerificarItensSelec();
+            decimal preco = Convert.ToDecimal(txb_preco.Text);
 
-            tema = new Tema(nome, listaItens);
+            tema = new Tema(nome, preco);
 
             string[] erros = tema.Validar();
 
@@ -81,14 +57,9 @@ namespace LadyParty.WinForms.ModuloTema
             }
         }
 
-        public Tema PegarDadosTela<T>()
+        public void DefinirID(int id)
         {
-            return tema;
-        }
-
-        public void AtualizarPainelCadastro<T>(Tema entidade)
-        {
-            txb_nomeTema.Text = entidade.nomeTema;
+            txb_id.Text = id.ToString();
         }
     }
 }

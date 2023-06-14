@@ -21,12 +21,17 @@
             nomeTema.Name = "nome";
             nomeTema.HeaderText = "Nome do Tema";
 
+            DataGridViewTextBoxColumn preco = new DataGridViewTextBoxColumn();
+            preco.Name = "preco";
+            preco.HeaderText = "Preço";
+
             DataGridViewTextBoxColumn listaItens = new DataGridViewTextBoxColumn();
             listaItens.Name = "listaItens";
             listaItens.HeaderText = "Quantidade de Itens";
 
             grid.Columns.AddRange(id);
             grid.Columns.AddRange(nomeTema);
+            grid.Columns.AddRange(preco);
             grid.Columns.AddRange(listaItens);
         }
 
@@ -36,7 +41,7 @@
 
             foreach (Tema tema in listaTemas)
             {
-                grid.Rows.Add(tema.id, tema.nomeTema, tema.listaItens.Count);
+                grid.Rows.Add(tema.id, tema.nomeTema, tema.preco, tema.listaItens.Count);
             }
         }
 

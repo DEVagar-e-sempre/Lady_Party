@@ -2,17 +2,17 @@
 {
     public class Aluguel : EntidadeBase<Aluguel>
     {
-        public String endereco;
+        public string endereco { get; set; }
 
-        public int idCliente;
+        public int idCliente { get; set; }
 
-        public int idTema;
+        public int idTema { get; set; }
 
-        public DateTime data;
+        public DateTime data { get; set; }
 
-        public TimeSpan horaInicio;
+        public TimeSpan horaInicio { get; set; }
 
-        public TimeSpan horaTermino;
+        public TimeSpan horaTermino { get; set; }
 
         public Aluguel(int id = -1, string endereco = "", int idCliente = -1, int idTema = -1, DateTime data = default(DateTime), TimeSpan horaInicio = default(TimeSpan), TimeSpan horaTermino = default(TimeSpan))
         {
@@ -24,6 +24,8 @@
             this.horaInicio = horaInicio;
             this.horaTermino = horaTermino;
         }
+
+        public Aluguel() { }
         public override void AtualizarInformacoes(Aluguel entidade)
         {
             this.idTema = entidade.idTema;
