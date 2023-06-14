@@ -27,15 +27,28 @@
 
         private void btn_adicionar_Click(object sender, EventArgs e)
         {
+            TelaPrincipalForm tlPrinc = TelaPrincipalForm.TelaPrincipal;
+
             string nome = txb_nome.Text;
             decimal preco = Convert.ToDecimal(txb_preco.Text);
 
             ItemTema item = new ItemTema(nome, preco);
 
-            listBox_itens.Items.Add(item);
+            string[] erros = item.Validar();
 
-            txb_nome.Text = "";
-            txb_preco.Text = "";
+            if (erros.Length > 0)
+            {
+                tlPrinc.AtualizarRodape(erros[0]);
+            }
+            else
+            {
+                tlPrinc.AtualizarRodape("");
+                listBox_itens.Items.Add(item);
+
+                txb_nome.Text = "";
+                txb_preco.Text = "";
+            }
+
         }
 
         private void btn_gravar_Click(object sender, EventArgs e)

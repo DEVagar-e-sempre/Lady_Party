@@ -53,7 +53,6 @@ namespace LadyParty.WinForms.ModuloTema
             else
             {
                 tlPrinc.AtualizarRodape("");
-
             }
         }
 
