@@ -49,6 +49,7 @@ namespace LadyParty.WinForms.ModuloCliente
             string telefone = txt_telefone.Text;
 
             bool ehEspecial = false;
+<<<<<<< Updated upstream
 
             if (rdb_clienteConvencional.Checked)
             {
@@ -58,6 +59,8 @@ namespace LadyParty.WinForms.ModuloCliente
             {
                 ehEspecial = true;
             }
+=======
+>>>>>>> Stashed changes
 
             cliente = new Cliente(nome, telefone, ehEspecial);
 

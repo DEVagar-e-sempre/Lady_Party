@@ -85,7 +85,12 @@ namespace LadyParty.WinForms.ModuloAluguel
 
             if (opcaoEscolhida == DialogResult.OK)
             {
+                Cliente auxCliente = repCliente.SelecionarPorId(aluguelSelecionado.idCliente);
+
+                auxCliente.DecrementarContadorDeAlugueis();
+
                 repAluguel.Excluir(aluguelSelecionado);
+
                 CarregarAluguels(dataInicial, dataFinal);
             }
         }
@@ -100,7 +105,14 @@ namespace LadyParty.WinForms.ModuloAluguel
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repAluguel.Inserir(telaAluguel.ObterAluguel());
+                Aluguel auxAluguel = telaAluguel.ObterAluguel();
+                
+                repAluguel.Inserir(auxAluguel);
+
+                Cliente auxCliente = repCliente.SelecionarPorId(auxAluguel.idCliente);
+
+                auxCliente.IncrementarContadorDeAlugueis();
+
                 CarregarAluguels(dataInicial, dataFinal);
             }
         }
