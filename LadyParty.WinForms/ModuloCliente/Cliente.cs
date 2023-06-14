@@ -15,10 +15,13 @@
             this.nomeCliente = nomeCliente;
             this.telefoneCliente = telefoneCliente;
             this.dataDeCadastro = DateTime.Now.Date;
-            contadorDeAlugueis = 0;    
+            contadorDeAlugueis = 0;
         }
 
-    public Cliente() { }
+        public Cliente()
+        {
+            contadorDeAlugueis = 0;
+        }
         public override void AtualizarInformacoes(Cliente registroAtualizado)
         {
             this.nomeCliente = registroAtualizado.nomeCliente;
@@ -32,7 +35,7 @@
         }
         public void DecrementarContadorDeAlugueis()
         {
-            if(contadorDeAlugueis > 0 )
+            if (contadorDeAlugueis > 0)
             {
                 contadorDeAlugueis--;
             }
@@ -43,7 +46,7 @@
         }
         public bool VerificarSeClienteEhEspecial()
         {
-            if(contadorDeAlugueis >= 3)
+            if (contadorDeAlugueis >= 3)
             {
                 return true;
             }

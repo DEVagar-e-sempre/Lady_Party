@@ -17,6 +17,9 @@ namespace LadyParty.WinForms.ModuloAluguel
         private List<Cliente> clientes;
         private List<Tema> temas;
 
+        private Cliente cliente;
+        private Tema tema;
+
         public TelaAluguelForm(List<Cliente> clientes, List<Tema> temas)
         {
             InitializeComponent();
@@ -48,10 +51,17 @@ namespace LadyParty.WinForms.ModuloAluguel
         public Aluguel ObterAluguel()
         {
             Aluguel aluguel = new Aluguel();
+
             aluguel.id = Convert.ToInt32(txtId.Text);
             aluguel.festa.endereco = txtEndereco.Text;
-            aluguel.idCliente = ((Cliente)cbnClientes.SelectedItem).id;
-            aluguel.idTema = ((Tema)cbnTemas.SelectedItem).id;
+            if (cliente != null)
+            {
+                aluguel.idCliente = cliente.id;
+            }
+            if (tema != null)
+            {
+                aluguel.idTema = tema.id;
+            }
             aluguel.festa.data = txtData.Value;
             aluguel.festa.horaInicio = txtHoraInicio.Value.TimeOfDay;
             aluguel.festa.horaTermino = txtHoraTermino.Value.TimeOfDay;
@@ -91,16 +101,39 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         private void cbnTemas_SelectedValueChanged(object sender, EventArgs e)
         {
-            Tema tema = (Tema)cbnTemas.SelectedItem;
+            this.tema = (Tema)cbnTemas.SelectedItem;
+            
             if (tema != null)
             {
-                txtValor.Text = $"R$ {tema.CalcularValorTotal}";
-                txtValorEntrada.Minimum = (int)(tema.CalcularValorTotal() * 0.40m);
-                txtValorEntrada.Maximum = (int)(tema.CalcularValorTotal());
                 txtValorEntrada.Enabled = true;
+
+                decimal valorDoTema = 0;
+
+                if (cliente.VerificarSeClienteEhEspecial())
+                {
+                    valorDoTema = tema.CalcularValorTotal() * 0.85m;
+
+                    txtValor.Text = $"R$ {valorDoTema} (com 15% OFF)";
+                }
+                else
+                {
+                    valorDoTema = tema.CalcularValorTotal();
+                    txtValor.Text = $"R$ {valorDoTema}";
+
+                }
+
+                txtValorEntrada.Maximum = valorDoTema;
+
+                txtValorEntrada.Minimum = valorDoTema * 0.40m;
+
                 return;
             }
             txtValorEntrada.Enabled = false;
+        }
+
+        private void cbnClientes_SelectedValueChanged(object sender, EventArgs e)
+        {
+            this.cliente = (Cliente)cbnClientes.SelectedItem;
         }
     }
 }

@@ -52,6 +52,10 @@
             contextMenuStrip1 = new ContextMenuStrip(components);
             label10 = new Label();
             txtValorEntrada = new NumericUpDown();
+            label8 = new Label();
+            clienteUserControl1 = new ModuloCliente.ClienteUserControl();
+            txtValorDevido = new TextBox();
+            cbxConcluirPagamento = new CheckBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtValorEntrada).BeginInit();
             SuspendLayout();
@@ -93,6 +97,7 @@
             cbnClientes.Name = "cbnClientes";
             cbnClientes.Size = new Size(121, 23);
             cbnClientes.TabIndex = 3;
+            cbnClientes.SelectedValueChanged += cbnClientes_SelectedValueChanged;
             // 
             // label3
             // 
@@ -253,18 +258,18 @@
             label9.AutoSize = true;
             label9.BackColor = Color.Thistle;
             label9.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(105, 195);
+            label9.Location = new Point(30, 197);
             label9.Name = "label9";
-            label9.Size = new Size(152, 21);
+            label9.Size = new Size(102, 21);
             label9.TabIndex = 18;
-            label9.Text = "Valor do tema escolido:";
+            label9.Text = "Valor do tema:";
             // 
             // txtValor
             // 
             txtValor.AutoSize = true;
             txtValor.BackColor = Color.Thistle;
             txtValor.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtValor.Location = new Point(156, 225);
+            txtValor.Location = new Point(138, 197);
             txtValor.Name = "txtValor";
             txtValor.Size = new Size(50, 21);
             txtValor.TabIndex = 19;
@@ -280,7 +285,7 @@
             label10.AutoSize = true;
             label10.BackColor = Color.Thistle;
             label10.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(43, 253);
+            label10.Location = new Point(14, 232);
             label10.Name = "label10";
             label10.Size = new Size(118, 21);
             label10.TabIndex = 21;
@@ -289,10 +294,51 @@
             // txtValorEntrada
             // 
             txtValorEntrada.Enabled = false;
-            txtValorEntrada.Location = new Point(167, 251);
+            txtValorEntrada.Location = new Point(138, 230);
             txtValorEntrada.Name = "txtValorEntrada";
             txtValorEntrada.Size = new Size(69, 23);
             txtValorEntrada.TabIndex = 22;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Thistle;
+            label8.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(40, 262);
+            label8.Name = "label8";
+            label8.Size = new Size(90, 21);
+            label8.TabIndex = 24;
+            label8.Text = "Valor devido:";
+            // 
+            // clienteUserControl1
+            // 
+            clienteUserControl1.BackgroundImageLayout = ImageLayout.Stretch;
+            clienteUserControl1.Location = new Point(386, 152);
+            clienteUserControl1.Name = "clienteUserControl1";
+            clienteUserControl1.Size = new Size(8, 8);
+            clienteUserControl1.TabIndex = 25;
+            // 
+            // txtValorDevido
+            // 
+            txtValorDevido.Location = new Point(136, 262);
+            txtValorDevido.Name = "txtValorDevido";
+            txtValorDevido.ReadOnly = true;
+            txtValorDevido.Size = new Size(75, 23);
+            txtValorDevido.TabIndex = 26;
+            // 
+            // cbxConcluirPagamento
+            // 
+            cbxConcluirPagamento.AutoCheck = false;
+            cbxConcluirPagamento.AutoSize = true;
+            cbxConcluirPagamento.BackColor = Color.Thistle;
+            cbxConcluirPagamento.CheckAlign = ContentAlignment.MiddleRight;
+            cbxConcluirPagamento.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            cbxConcluirPagamento.Location = new Point(217, 260);
+            cbxConcluirPagamento.Name = "cbxConcluirPagamento";
+            cbxConcluirPagamento.Size = new Size(133, 25);
+            cbxConcluirPagamento.TabIndex = 27;
+            cbxConcluirPagamento.Text = "Pagar Pendência:";
+            cbxConcluirPagamento.UseVisualStyleBackColor = false;
             // 
             // TelaAluguelForm
             // 
@@ -300,7 +346,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(401, 555);
+            ClientSize = new Size(405, 552);
+            Controls.Add(cbxConcluirPagamento);
+            Controls.Add(txtValorDevido);
+            Controls.Add(clienteUserControl1);
+            Controls.Add(label8);
             Controls.Add(txtValorEntrada);
             Controls.Add(label10);
             Controls.Add(txtValor);
@@ -350,5 +400,9 @@
         private ContextMenuStrip contextMenuStrip1;
         private Label label10;
         private NumericUpDown txtValorEntrada;
+        private Label label8;
+        private ModuloCliente.ClienteUserControl clienteUserControl1;
+        private TextBox txtValorDevido;
+        private CheckBox cbxConcluirPagamento;
     }
 }

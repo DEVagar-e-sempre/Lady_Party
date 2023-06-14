@@ -36,7 +36,7 @@
             {
                 listaErros.Add("O campo do Nome é obrigatório!");
             }
-            else if(preco is string || preco == null)
+            if(preco == 0)
             {
                 listaErros.Add("Adicione um valor ao preço!");
             }
@@ -47,6 +47,7 @@
         public override void AtualizarInformacoes(Tema entidadeAtualizada)
         {
             this.nomeTema = entidadeAtualizada.nomeTema;
+            this.preco = entidadeAtualizada.preco;
             this.listaItens = entidadeAtualizada.listaItens;
         }
 
