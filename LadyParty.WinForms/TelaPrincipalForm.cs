@@ -9,6 +9,7 @@ namespace LadyParty.WinForms
         private ControladorBase controlador;
         private RepositorioArquivoCliente repCliente = new RepositorioArquivoCliente();
         private RepositorioArquivoTema repTema = new RepositorioArquivoTema();
+        private RepositorioArquivoItemTema repItem = new RepositorioArquivoItemTema();
         private RepositorioArquivoAluguel repEvento = new RepositorioArquivoAluguel();
 
         private static TelaPrincipalForm telaPrincipal;
@@ -66,6 +67,7 @@ namespace LadyParty.WinForms
             btn_excluir.ToolTipText = controlador.ToolTipExcluir;
 
             btn_filtrar.ToolTipText = controlador.ToolTipFiltrar;
+            btn_addItem.ToolTipText = controlador.ToolTipAdd;
         }
 
         public void AtualizarRodape(string msg)
@@ -75,6 +77,7 @@ namespace LadyParty.WinForms
         private void botaoBarraFerramentas_Click(object sender, EventArgs e)
         {
             ToolStripButton botaoCliclado = (ToolStripButton)sender;
+
             switch (botaoCliclado.Name)
             {
                 case "btn_inserir":
@@ -89,6 +92,9 @@ namespace LadyParty.WinForms
                 case "btn_filtrar":
                     controlador.Filtrar();
                     break;
+                case "btn_addItem":
+                    controlador.AddItem();
+                    break;
                 default:
                     break;
             }
@@ -96,19 +102,19 @@ namespace LadyParty.WinForms
         private void selecaoModulo_Click(object sender, EventArgs e)
         {
             ToolStripButton itemClicado = (ToolStripButton)sender;
+
             switch (itemClicado.Name)
             {
                 case "btn_cliente":
-                    //controlador = new ControladorCliente(repCliente);
+                    controlador = new ControladorCliente(repCliente);
                     break;
                 case "btn_tema":
-                    controlador = new ControladorTema(repTema);
+                    controlador = new ControladorTema(repTema, repItem);
                     break;
                 case "btn_evento":
                     controlador = new ControladorAluguel(repEvento, repCliente, repTema);
                     break;
                 default:
-                    return;
                     break;
             }
             ConfigurarEstados(controlador);
@@ -117,9 +123,11 @@ namespace LadyParty.WinForms
         }
         private void ConfigurarEstados(ControladorBase controlador)
         {
+            //desnecessário. Já que todos serão habilitados, não precisa mexer neles
             btn_inserir.Enabled = controlador.InserirHabilitado;
             btn_editar.Enabled = controlador.EditarHabilitado;
             btn_excluir.Enabled = controlador.ExcluirHabilitado;
+            btn_addItem.Enabled = controlador.AddItemHabilitado;
             btn_filtrar.Enabled = controlador.FiltrarHabilitado;
         }
     }

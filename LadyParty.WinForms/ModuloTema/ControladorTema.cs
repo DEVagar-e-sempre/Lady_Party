@@ -4,13 +4,18 @@
     {
         private TelaCadastroTema telaTema;
         private RepositorioArquivoTema repTema;
+        private RepositorioArquivoItemTema repItem;
         private TemaUserControl tabelaTema;
 
         public override string ObterTipoCadastro => "Tema";
 
-        public ControladorTema(RepositorioArquivoTema repTema)
+        public override bool FiltrarHabilitado => true;
+        public override bool AddItemHabilitado => true;
+
+        public ControladorTema(RepositorioArquivoTema repTema, RepositorioArquivoItemTema repItem)
         {
             this.repTema = repTema;
+            this.repItem = repItem;
         }
 
         //Carregar itens
@@ -18,6 +23,8 @@
         public override void Inserir()
         {
             telaTema = new TelaCadastroTema();
+
+            telaTema.DefinirID(repTema.Contador);
 
             DialogResult opcaoEscolhida = telaTema.ShowDialog();
 
@@ -92,6 +99,49 @@
                 }
             }
         }
+
+        //########### Item ############//
+
+        public override void AddItem()
+        {
+            Tema temaSelec = ObterTemaSelecionado();
+
+            if (temaSelec == null)
+            {
+                MessageBox.Show($"Selecione um Tema primeiro!",
+                    "Adição de itens a Tema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                TelaCadastroItemForm telaCadItem = new TelaCadastroItemForm(temaSelec);
+
+                DialogResult opcaoEscolhida = telaCadItem.ShowDialog();
+
+                if (opcaoEscolhida == DialogResult.OK)
+                {
+
+                    //tarefaSelec.AdicionarItens(telaCadItem.Item);
+
+                    List<ItemTema> listaItens = telaCadItem.ObterItensCad();
+
+                    foreach (ItemTema item in listaItens)
+                    {
+                        temaSelec.AdicionarItens(item);
+
+                    }
+
+                    //tarefaSelec.AdicionarItens(listaItens.ElementAt<ItemTarefa>(listaItens.Count - 1));
+
+                    repTema.Editar(temaSelec.id, temaSelec);
+                    CarregarTemas();
+                    repTema.Serializador();
+                }
+            }
+        }
+
+        //##################################//
 
         private Tema ObterTemaSelecionado()
         {

@@ -41,6 +41,7 @@
             btn_excluir = new ToolStripButton();
             toolStripSeparator4 = new ToolStripSeparator();
             btn_filtrar = new ToolStripButton();
+            btn_addItem = new ToolStripButton();
             toolStripSeparator5 = new ToolStripSeparator();
             lbl_tipoCad = new ToolStripLabel();
             toolStrip1 = new ToolStrip();
@@ -133,7 +134,7 @@
             // 
             // toolStrip2
             // 
-            toolStrip2.Items.AddRange(new ToolStripItem[] { btn_inserir, btn_editar, btn_excluir, toolStripSeparator4, btn_filtrar, toolStripSeparator5, lbl_tipoCad });
+            toolStrip2.Items.AddRange(new ToolStripItem[] { btn_inserir, btn_editar, btn_excluir, toolStripSeparator4, btn_filtrar, btn_addItem, toolStripSeparator5, lbl_tipoCad });
             toolStrip2.Location = new Point(0, 39);
             toolStrip2.Name = "toolStrip2";
             toolStrip2.Size = new Size(499, 29);
@@ -192,6 +193,18 @@
             btn_filtrar.Size = new Size(26, 26);
             btn_filtrar.Text = "toolStripButton4";
             btn_filtrar.Click += botaoBarraFerramentas_Click;
+            // 
+            // btn_addItem
+            // 
+            btn_addItem.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_addItem.Enabled = false;
+            btn_addItem.Image = Properties.Resources.library_add_FILL0_wght400_GRAD0_opsz24;
+            btn_addItem.ImageTransparentColor = Color.Magenta;
+            btn_addItem.Name = "btn_addItem";
+            btn_addItem.Padding = new Padding(3);
+            btn_addItem.Size = new Size(26, 26);
+            btn_addItem.Text = "toolStripButton1";
+            btn_addItem.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator5
             // 
@@ -314,5 +327,6 @@
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripLabel lbl_tipoCad;
         private ToolStripLabel toolStripLabel1;
+        private ToolStripButton btn_addItem;
     }
 }

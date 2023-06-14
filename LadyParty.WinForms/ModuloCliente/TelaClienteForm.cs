@@ -20,6 +20,9 @@ namespace LadyParty.WinForms.ModuloCliente
         public TelaClienteForm()
         {
             InitializeComponent();
+
+            this.ConfigurarTelas();
+            txt_id.ReadOnly = true;
         }
         public Cliente Cliente
         {
@@ -45,9 +48,9 @@ namespace LadyParty.WinForms.ModuloCliente
 
             string telefone = txt_telefone.Text;
 
-            bool ehEspecial = false; 
+            bool ehEspecial = false;
 
-            if(rdb_clienteConvencional.Checked) 
+            if (rdb_clienteConvencional.Checked)
             {
                 ehEspecial = false;
             }
@@ -58,7 +61,7 @@ namespace LadyParty.WinForms.ModuloCliente
 
             cliente = new Cliente(nome, telefone, ehEspecial);
 
-            
+
             string[] erros = cliente.Validar();
 
             if (erros.Length > 0)

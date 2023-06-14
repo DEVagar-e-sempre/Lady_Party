@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace LadyParty.WinForms.Compartilhado
 {
-    public class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
+    public  class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
     {
         protected Type tipo = typeof(TEntidade);
         protected string nomeArquivo;
@@ -11,6 +11,10 @@ namespace LadyParty.WinForms.Compartilhado
         protected int contadorRegistros;
 
         public int Contador => contadorRegistros;
+
+        public RepositorioArquivoBase()
+        {
+        }
 
         public virtual void Inserir(TEntidade registro)
         {
@@ -46,10 +50,12 @@ namespace LadyParty.WinForms.Compartilhado
             if (File.Exists(nomeArquivo))
             {
                 string conteudo = File.ReadAllText(nomeArquivo);
-                RepositorioArquivoBase<TEntidade> tempRep = JsonSerializer.Deserialize<RepositorioArquivoBase<TEntidade>>(conteudo, config);
                 
-                this.contadorRegistros = tempRep.Contador;
-                return tempRep.listaRegistros;
+                return JsonSerializer.Deserialize<List<TEntidade>>(conteudo, config);
+                //RepositorioArquivoBase<TEntidade> tempRep = JsonSerializer.Deserialize<RepositorioArquivoBase<TEntidade>>(conteudo, config);
+
+                //this.contadorRegistros = tempRep.Contador;
+                //return tempRep.listaRegistros;
             }
             else
             {
@@ -64,7 +70,7 @@ namespace LadyParty.WinForms.Compartilhado
 
             JsonSerializerOptions config = ConfigurarLista();
 
-            string jsonString = JsonSerializer.Serialize(this, config);
+            string jsonString = JsonSerializer.Serialize(this.listaRegistros, config);
 
             File.WriteAllText(nomeArquivo, jsonString);//cria e escreve o arquivo File.WriteAllText(nomeArquivo, objeto);
 

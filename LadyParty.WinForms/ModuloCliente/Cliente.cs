@@ -1,6 +1,4 @@
-﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-
-namespace LadyParty.WinForms.ModuloCliente
+﻿namespace LadyParty.WinForms.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
@@ -17,6 +15,8 @@ namespace LadyParty.WinForms.ModuloCliente
             this.ehEspecial = ehEspecial;
             this.dataDeCadastro = DateTime.Now.Date;
         }
+
+        public Cliente() { }
         public override void AtualizarInformacoes(Cliente registroAtualizado)
         {
             this.nomeCliente = registroAtualizado.nomeCliente;

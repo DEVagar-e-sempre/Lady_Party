@@ -16,6 +16,8 @@ namespace LadyParty.WinForms.ModuloCliente
         public ClienteUserControl()
         {
             InitializeComponent();
+
+            ConfigurarColunas();
             grid.ConfigurarGrid();
             grid.ConfigurarGridZebrado();
         }

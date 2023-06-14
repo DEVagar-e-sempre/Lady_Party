@@ -44,7 +44,7 @@
             grid.Location = new Point(0, 0);
             grid.Name = "grid";
             grid.RowTemplate.Height = 25;
-            grid.Size = new Size(412, 233);
+            grid.Size = new Size(412, 201);
             grid.TabIndex = 0;
             // 
             // pictureBox1
@@ -63,7 +63,7 @@
             panel1.Controls.Add(grid);
             panel1.Location = new Point(42, 136);
             panel1.Name = "panel1";
-            panel1.Size = new Size(412, 233);
+            panel1.Size = new Size(412, 201);
             panel1.TabIndex = 2;
             // 
             // label1
@@ -72,7 +72,7 @@
             label1.BackColor = Color.Thistle;
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe Print", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(14, 26);
+            label1.Location = new Point(20, 30);
             label1.Name = "label1";
             label1.Size = new Size(265, 51);
             label1.TabIndex = 10;
