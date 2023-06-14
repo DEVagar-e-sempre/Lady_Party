@@ -110,6 +110,7 @@
             txb_preco.Name = "txb_preco";
             txb_preco.Size = new Size(81, 30);
             txb_preco.TabIndex = 20;
+            txb_preco.Text = "0";
             // 
             // txb_nomeTema
             // 

@@ -133,7 +133,7 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         private void cbnClientes_SelectedValueChanged(object sender, EventArgs e)
         {
-            Cliente cliente = (Cliente)cbnClientes.SelectedItem;
+            this.cliente = (Cliente)cbnClientes.SelectedItem;
         }
     }
 }
