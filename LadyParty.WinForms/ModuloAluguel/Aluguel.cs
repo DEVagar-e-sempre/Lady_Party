@@ -9,6 +9,13 @@
 
         public Festa festa;
 
+        private decimal ValorDaEntrada;
+
+        private decimal ValorComDesconto;
+
+        private decimal ValorDevido;
+
+        
 
         public Aluguel(int id = -1,int idCliente = -1, int idTema = -1, Festa festa = null)
         {
