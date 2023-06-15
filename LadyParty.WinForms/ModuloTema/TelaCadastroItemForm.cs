@@ -30,7 +30,11 @@
             TelaPrincipalForm tlPrinc = TelaPrincipalForm.TelaPrincipal;
 
             string nome = txb_nome.Text;
-            decimal preco = Convert.ToDecimal(txb_preco.Text);
+            if (decimal.TryParse(txb_preco.Text, out decimal preco) == false)
+            {
+                txb_preco.Text = "0";
+                preco = 0;
+            }
 
             ItemTema item = new ItemTema(nome, preco);
 
@@ -54,7 +58,11 @@
         private void btn_gravar_Click(object sender, EventArgs e)
         {
             string nome = txb_nome.Text;
-            decimal preco = Convert.ToDecimal(txb_preco.Text);
+            if (decimal.TryParse(txb_preco.Text, out decimal preco) == false)
+            {
+                txb_preco.Text = "0";
+                preco = 0;
+            }
 
             this.item = new ItemTema(nome, preco);
         }

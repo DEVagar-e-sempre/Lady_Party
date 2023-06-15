@@ -39,7 +39,8 @@
         {
             grid.Rows.Clear();
 
-            foreach (Tema tema in listaTemas)
+            foreach (Tema tema in 
+                listaTemas)
             {
                 grid.Rows.Add(tema.id, tema.nomeTema, tema.preco, tema.listaItens.Count);
             }
