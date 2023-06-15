@@ -90,6 +90,7 @@
             txb_preco.Name = "txb_preco";
             txb_preco.Size = new Size(158, 30);
             txb_preco.TabIndex = 25;
+            txb_preco.Text = "0";
             // 
             // label4
             // 
