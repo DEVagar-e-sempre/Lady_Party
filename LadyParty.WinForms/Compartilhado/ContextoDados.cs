@@ -52,12 +52,19 @@ namespace LadyParty.WinForms.Compartilhado
             repTema.AdicionarRegistroEContador(Temas, ContadorTemas);
             repItemTema.AdicionarRegistroEContador(ItemTemas, ContadorItemTemas);
             repAluguel.AdicionarRegistroEContador(Alugueis, ContadorAlugueis);
-
-  
  
         }
 
-        public void GravarEmJson() {
+        public void GravarEmJson(RepositorioArquivoCliente repCliente, RepositorioArquivoTema repTema, RepositorioArquivoItemTema repItemTema, RepositorioArquivoAluguel repAluguel) {
+            this.Clientes = repCliente.SelecionarTodos();
+            this.Temas = repTema.SelecionarTodos();
+            this.ItemTemas = repItemTema.SelecionarTodos();
+            this.Alugueis = repAluguel.SelecionarTodos();
+
+            this.ContadorClientes = repCliente.Contador;
+            this.ContadorTemas = repTema.Contador;
+            this.ContadorItemTemas = repItemTema.Contador;
+            this.ContadorAlugueis = repAluguel.Contador;
 
             string registrosJson = JsonSerializer.Serialize(this, ObterConfiguracoes());
 
