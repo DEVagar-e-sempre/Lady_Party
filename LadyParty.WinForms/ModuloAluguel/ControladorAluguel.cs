@@ -13,7 +13,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         private TabelaAluguelUserControl tabelaAluguel;
 
         private RepositorioArquivoAluguel repAluguel;
-            
+
         private RepositorioArquivoCliente repCliente;
 
         private RepositorioArquivoTema repTema;
@@ -108,7 +108,7 @@ namespace LadyParty.WinForms.ModuloAluguel
             if (opcaoEscolhida == DialogResult.OK)
             {
                 Aluguel auxAluguel = telaAluguel.ObterAluguel();
-                
+
                 repAluguel.Inserir(auxAluguel);
 
                 Cliente auxCliente = repCliente.SelecionarPorId(auxAluguel.idCliente);
@@ -134,25 +134,24 @@ namespace LadyParty.WinForms.ModuloAluguel
         private void CarregarAlugueis(DateTime dataInicial, DateTime dataFinal)
         {
             List<Aluguel> alugueis = repAluguel.SelecionarTodos();
-            
+
             if (dataInicial == default(DateTime) && dataFinal == default(DateTime))
             {
-                
+
             }
             else if (dataInicial == DateTime.Now.Date && dataFinal == DateTime.Now.Date)
             {
-                alugueis = alugueis.Where(x => x.festa.data == dataInicial && x.festa.data == dataFinal).ToList();
+                alugueis = alugueis.Where(x => x.festa.data == dataInicial).ToList();
             }
-            else if (dataInicial != default(DateTime) && dataFinal == default(DateTime))
+            else if (dataInicial == DateTime.Now.Date && dataFinal == default(DateTime))
             {
                 alugueis = alugueis.Where(x => x.festa.data >= dataInicial).ToList();
             }
-            else if (dataInicial == default(DateTime) && dataFinal == DateTime.Now.Date.AddDays(-1))
+            else if (dataInicial == default(DateTime) && dataFinal == DateTime.Now.Date)
             {
-                alugueis = alugueis.Where(x => x.festa.data <= dataFinal).ToList();
+                alugueis = alugueis.Where(x => x.festa.data < dataFinal).ToList();
             }
-            else if (dataInicial != default(DateTime) && dataFinal != default(DateTime))
-            {
+            else if (dataInicial != default(DateTime) && dataFinal != default(DateTime)){
                 alugueis = alugueis.Where(x => x.festa.data >= dataInicial && x.festa.data <= dataFinal).ToList();
             }
             tabelaAluguel.AtualizarTabela(alugueis, repCliente, repTema);

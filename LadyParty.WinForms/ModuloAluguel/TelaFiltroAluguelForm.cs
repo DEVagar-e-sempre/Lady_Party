@@ -34,20 +34,20 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         private void rbnEventosHoje_CheckedChanged(object sender, EventArgs e)
         {
-            this.dataInicial = DateTime.Now;
-            this.dataFinal = DateTime.Now;
+            this.dataInicial = DateTime.Now.Date;
+            this.dataFinal = DateTime.Now.Date;
         }
 
         private void rbnEventosAtuais_CheckedChanged(object sender, EventArgs e)
         {
-            this.dataInicial = DateTime.Now;
+            this.dataInicial = DateTime.Now.Date;
             this.dataFinal = default(DateTime);
         }
 
         private void rbnEventosAnteriores_CheckedChanged(object sender, EventArgs e)
         {
             this.dataInicial = default(DateTime);
-            this.dataFinal = DateTime.Now.AddDays(-1);
+            this.dataFinal = DateTime.Now.Date;
         }
 
         private void rbnIntervaloCustomizado_CheckedChanged(object sender, EventArgs e)
@@ -58,12 +58,12 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         private void txtDataInicial_ValueChanged(object sender, EventArgs e)
         {
-            this.dataInicial = txtDataInicial.Value;
+            this.dataInicial = txtDataInicial.Value.Date;
         }
 
         private void txtDataFinal_ValueChanged(object sender, EventArgs e)
         {
-            this.dataFinal = txtDataFinal.Value;
+            this.dataFinal = txtDataFinal.Value.Date;
         }
     }
 }
