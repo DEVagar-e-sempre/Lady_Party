@@ -1,6 +1,7 @@
 using LadyParty.WinForms.ModuloAluguel;
 using LadyParty.WinForms.ModuloCliente;
 using LadyParty.WinForms.ModuloTema;
+using System.Threading;
 
 namespace LadyParty.WinForms
 {
@@ -12,17 +13,45 @@ namespace LadyParty.WinForms
         private RepositorioArquivoItemTema repItem = new RepositorioArquivoItemTema();
         private RepositorioArquivoAluguel repEvento = new RepositorioArquivoAluguel();
 
+        private ContextoDados contextoDados = new ContextoDados();
+
         private static TelaPrincipalForm telaPrincipal;
+        private CancellationTokenSource cancellationTokenSource;
+        private Thread threadSalvarDados;
 
         public TelaPrincipalForm()
         {
             InitializeComponent();
 
+            //Area da serialização
+            contextoDados.CarregarDadosJson();
+            contextoDados.PreencherRepositorios(repCliente, repTema, repItem, repEvento);
+
+            cancellationTokenSource = new CancellationTokenSource();
+            threadSalvarDados = new Thread(() => SalvarDados(cancellationTokenSource));
+            threadSalvarDados.Start();
+
+            //Fim da area da serialização
 
             lbl_status.Text = "";
             this.ConfigurarTelas();
 
             telaPrincipal = this;
+        }
+
+        public void SalvarDados(CancellationTokenSource cancellationTokenSource)
+        {
+            while (!cancellationTokenSource.Token.IsCancellationRequested)
+            {
+                contextoDados.GravarEmJson();
+                Thread.Sleep(2000);
+            }
+        }
+
+        private void TelaPrincipalForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            cancellationTokenSource.Cancel();
+            threadSalvarDados.Join();
         }
 
         public static TelaPrincipalForm TelaPrincipal

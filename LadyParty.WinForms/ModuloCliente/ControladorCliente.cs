@@ -34,7 +34,7 @@ namespace LadyParty.WinForms.ModuloCliente
                 repCliente.Inserir(telaCliente.Cliente);
                 MessageBox.Show("Cliente gravado com Sucesso!");
                 CarregarClientes();
-                repCliente.Serializador();
+                //repCliente.Serializador();
             }
         }
         private void CarregarClientes()
@@ -68,7 +68,7 @@ namespace LadyParty.WinForms.ModuloCliente
 
                     CarregarClientes();
 
-                    repCliente.Serializador();
+                    //repCliente.Serializador();
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace LadyParty.WinForms.ModuloCliente
 
                     CarregarClientes();
 
-                    repCliente.Serializador();
+                    //repCliente.Serializador();
                 }
             }
         }

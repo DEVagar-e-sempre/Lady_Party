@@ -4,7 +4,7 @@
     {
         public RepositorioArquivoTema()
         {
-            base.listaRegistros = Desserializador();   
+            
         }
     }
 }

@@ -10,7 +10,7 @@ namespace LadyParty.WinForms.ModuloTema
     {
         public RepositorioArquivoItemTema()
         {
-            base.listaRegistros = Desserializador();
+            
         }
     }
 }
