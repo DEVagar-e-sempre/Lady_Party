@@ -33,7 +33,15 @@
 
         public Aluguel()
         {
-            
+            this.id = -1;
+            this.idCliente = -1;
+            this.idTema = -1;
+            this.festa = new Festa();
+            this.ValorDaEntrada = -1;
+            this.ValorComDesconto = -1;
+            this.ValorDevido = -1;
+            this.RestanteAPagar = -1;
+
         }
         public override void AtualizarInformacoes(Aluguel entidade)
         {
@@ -47,11 +55,11 @@
         public override string[] Validar()
         {
             List<string> erros = new List<string>();
-            if (idCliente == -1)
+            if (idCliente < 0 )
             {
                 erros.Add("Cliente não selecionado");
             }
-            if (idTema == -1)
+            if (idTema < 0)
             {
                 erros.Add("Tema não selecionado");
             }
