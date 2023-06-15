@@ -8,7 +8,7 @@ namespace LadyParty.WinForms.Compartilhado
         protected Type tipo = typeof(TEntidade);
         protected string nomeArquivo;
         protected List<TEntidade> listaRegistros;//--> descarregar na lista
-        protected int contadorRegistros;
+        public int contadorRegistros;
 
         public int Contador => contadorRegistros;
 
@@ -39,52 +39,12 @@ namespace LadyParty.WinForms.Compartilhado
 
         public virtual TEntidade SelecionarPorId(int id) => listaRegistros.FirstOrDefault(x => x.id == id);
 
-        public virtual List<TEntidade> SelecionarTodos() => listaRegistros.OrderByDescending(x => x.id).ToList();
+        public virtual List<TEntidade> SelecionarTodos() => listaRegistros;
 
-        //Serializando por json 
-        protected List<TEntidade> Desserializador()
+        public virtual void AdicionarRegistroEContador(List<TEntidade> listaRegistros, int contador)
         {
-            nomeArquivo = $"{tipo.Name}.json";
-            JsonSerializerOptions config = ConfigurarLista();
-
-            if (File.Exists(nomeArquivo))
-            {
-                string conteudo = File.ReadAllText(nomeArquivo);
-                
-                return JsonSerializer.Deserialize<List<TEntidade>>(conteudo, config);
-                //RepositorioArquivoBase<TEntidade> tempRep = JsonSerializer.Deserialize<RepositorioArquivoBase<TEntidade>>(conteudo, config);
-
-                //this.contadorRegistros = tempRep.Contador;
-                //return tempRep.listaRegistros;
-            }
-            else
-            {
-                this.contadorRegistros = 0;
-                return new List<TEntidade>();
-            }
-        }
-
-        public void Serializador()
-        {
-            nomeArquivo = $"{tipo.Name}.json";
-
-            JsonSerializerOptions config = ConfigurarLista();
-
-            string jsonString = JsonSerializer.Serialize(this.listaRegistros, config);
-
-            File.WriteAllText(nomeArquivo, jsonString);//cria e escreve o arquivo File.WriteAllText(nomeArquivo, objeto);
-
-        }
-
-        private JsonSerializerOptions ConfigurarLista()
-        {
-            JsonSerializerOptions config = new JsonSerializerOptions();
-
-            config.IncludeFields = true;
-            config.WriteIndented = true;
-            config.ReferenceHandler = ReferenceHandler.Preserve;
-
-            return config;
+            this.listaRegistros = listaRegistros;
+            this.contadorRegistros = contador;
         }
     }
 }

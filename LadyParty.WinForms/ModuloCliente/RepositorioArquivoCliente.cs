@@ -11,7 +11,7 @@ namespace LadyParty.WinForms.ModuloCliente
     {
         public RepositorioArquivoCliente()
         {
-            base.listaRegistros = Desserializador();
+           
         }
     }
 }
