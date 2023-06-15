@@ -38,7 +38,7 @@
 
                 CarregarTemas();
 
-                repTema.Serializador();
+                //repTema.Serializador();
             }
         }
 
@@ -66,7 +66,7 @@
 
                     CarregarTemas();
 
-                    repTema.Serializador();
+                    //repTema.Serializador();
                 }
             }
         }
@@ -95,7 +95,7 @@
 
                     CarregarTemas();
 
-                    repTema.Serializador();
+                    //repTema.Serializador();
                 }
             }
         }
@@ -135,7 +135,7 @@
 
                     repTema.Editar(temaSelec.id, temaSelec);
                     CarregarTemas();
-                    repTema.Serializador();
+                    //repTema.Serializador();
                 }
             }
         }
