@@ -91,6 +91,16 @@ namespace LadyParty.WinForms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Design_sem_nome {
+            get {
+                object obj = ResourceManager.GetObject("Design_sem_nome", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap domino_mask_FILL0_wght400_GRAD0_opsz24 {
