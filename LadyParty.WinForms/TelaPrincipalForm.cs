@@ -43,7 +43,7 @@ namespace LadyParty.WinForms
         {
             while (!cancellationTokenSource.Token.IsCancellationRequested)
             {
-                contextoDados.GravarEmJson();
+                contextoDados.GravarEmJson(repCliente, repTema, repItem, repEvento);
                 Thread.Sleep(2000);
             }
         }
