@@ -29,30 +29,75 @@
         private void InitializeComponent()
         {
             gridTabela = new DataGridView();
+            pictureBox1 = new PictureBox();
+            panel1 = new Panel();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)gridTabela).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // gridTabela
             // 
             gridTabela.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridTabela.Location = new Point(238, 101);
+            gridTabela.Dock = DockStyle.Fill;
+            gridTabela.Location = new Point(0, 0);
             gridTabela.Name = "gridTabela";
-            gridTabela.Size = new Size(240, 150);
+            gridTabela.Size = new Size(459, 183);
             gridTabela.TabIndex = 0;
             // 
-            // TabelaEventoUserControl
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.Lady_Party_Tela__1_;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(505, 371);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(gridTabela);
+            panel1.Location = new Point(20, 148);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(459, 183);
+            panel1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Thistle;
+            label1.FlatStyle = FlatStyle.Flat;
+            label1.Font = new Font("Segoe Print", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(20, 27);
+            label1.Name = "label1";
+            label1.Size = new Size(291, 51);
+            label1.TabIndex = 14;
+            label1.Text = "Tabela de Alugueis";
+            // 
+            // TabelaAluguelUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(gridTabela);
-            Name = "TabelaEventoUserControl";
-            Size = new Size(829, 371);
+            Controls.Add(label1);
+            Controls.Add(panel1);
+            Controls.Add(pictureBox1);
+            Name = "TabelaAluguelUserControl";
+            Size = new Size(505, 371);
             ((System.ComponentModel.ISupportInitialize)gridTabela).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView gridTabela;
+        private PictureBox pictureBox1;
+        private Panel panel1;
+        private Label label1;
     }
 }
