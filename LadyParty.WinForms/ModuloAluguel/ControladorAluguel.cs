@@ -19,6 +19,8 @@ namespace LadyParty.WinForms.ModuloAluguel
         private RepositorioArquivoTema repTema;
         private TelaFiltroAluguelForm telaFiltroAluguel;
 
+
+
         public ControladorAluguel(RepositorioArquivoAluguel repAluguel, RepositorioArquivoCliente repCliente, RepositorioArquivoTema repTema)
         {
             this.repAluguel = repAluguel;
@@ -27,6 +29,9 @@ namespace LadyParty.WinForms.ModuloAluguel
         }
 
         public override string ObterTipoCadastro => "Aluguel";
+
+        public override string ToolTipFiltrar => $"Filtrar Alugueis";
+
         public override bool FiltrarHabilitado => true;
 
         public override void Editar()
@@ -52,7 +57,7 @@ namespace LadyParty.WinForms.ModuloAluguel
             {
                 repAluguel.Editar(aluguelSelecionado.id, telaAluguel.ObterAluguel());
             }
-            CarregarAluguels(dataInicial, dataFinal);
+            CarregarAlugueis(dataInicial, dataFinal);
         }
 
         private Aluguel ObterIdSelecionado()
@@ -88,7 +93,7 @@ namespace LadyParty.WinForms.ModuloAluguel
 
                 repAluguel.Excluir(aluguelSelecionado);
 
-                CarregarAluguels(dataInicial, dataFinal);
+                CarregarAlugueis(dataInicial, dataFinal);
             }
         }
 
@@ -110,7 +115,7 @@ namespace LadyParty.WinForms.ModuloAluguel
 
                 auxCliente.IncrementarContadorDeAlugueis();
 
-                CarregarAluguels(dataInicial, dataFinal);
+                CarregarAlugueis(dataInicial, dataFinal);
             }
         }
         public override void Filtrar()
@@ -123,10 +128,10 @@ namespace LadyParty.WinForms.ModuloAluguel
             if (opcaoEscolhida == DialogResult.OK)
             {
                 telaFiltroAluguel.ObterDatas(out this.dataInicial, out this.dataFinal); ;
-                CarregarAluguels(dataInicial, dataFinal);
+                CarregarAlugueis(dataInicial, dataFinal);
             }
         }
-        private void CarregarAluguels(DateTime dataInicial, DateTime dataFinal)
+        private void CarregarAlugueis(DateTime dataInicial, DateTime dataFinal)
         {
             List<Aluguel> alugueis = repAluguel.SelecionarTodos();
             
