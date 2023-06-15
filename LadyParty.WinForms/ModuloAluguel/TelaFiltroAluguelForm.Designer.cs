@@ -193,6 +193,7 @@
             Controls.Add(groupBox1);
             DoubleBuffered = true;
             Name = "TelaFiltroAluguelForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Filtrar Eventos";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

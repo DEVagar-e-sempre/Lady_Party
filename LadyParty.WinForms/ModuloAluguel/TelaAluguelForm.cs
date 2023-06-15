@@ -69,7 +69,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         {
 
             Aluguel aluguel = new Aluguel();
-            aluguel.festa = new Festa(txtEndereco.Text, txtData.Value, txtHoraInicio.Value.TimeOfDay, txtHoraTermino.Value.TimeOfDay);
+            aluguel.festa = new Festa(txtEndereco.Text, txtData.Value.Date, txtHoraInicio.Value.TimeOfDay, txtHoraTermino.Value.TimeOfDay);
 
             aluguel.id = Convert.ToInt32(txtId.Text);
             aluguel.ValorDaEntrada = txtValorEntrada.Value;
