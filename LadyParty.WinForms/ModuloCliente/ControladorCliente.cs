@@ -59,6 +59,7 @@ namespace LadyParty.WinForms.ModuloCliente
             {
                 telaCliente = new TelaClienteForm();
                 telaCliente.Cliente = clienteSelec;
+                telaCliente.DefinirID(clienteSelec.id);
 
                 DialogResult opcao = telaCliente.ShowDialog();
 
