@@ -19,7 +19,7 @@
 
         
 
-        public Aluguel(int id = -1, int idCliente = -1, int idTema = -1, Festa festa = null, decimal valorDaEntrada = -1, decimal valorComDesconto = -1, decimal valorDevido = -1)
+        public Aluguel(int id, int idCliente, int idTema, Festa festa, decimal valorDaEntrada, decimal valorComDesconto, decimal valorDevido)
         {
             this.id = id;
             this.idCliente = idCliente;
@@ -29,6 +29,11 @@
             this.ValorComDesconto = valorComDesconto;
             this.ValorDevido = valorDevido;
             this.RestanteAPagar = valorDevido;
+        }
+
+        public Aluguel()
+        {
+            
         }
         public override void AtualizarInformacoes(Aluguel entidade)
         {

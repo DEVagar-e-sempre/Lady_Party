@@ -23,5 +23,9 @@ namespace LadyParty.WinForms.ModuloAluguel
             this.horaInicio = horaInicio;
             this.horaTermino = horaTermino;
         }
+        public Festa()
+        {
+            
+        }
     }
 }
