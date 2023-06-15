@@ -9,34 +9,39 @@
 
         public Festa festa;
 
-        private decimal ValorDaEntrada;
+        public decimal ValorDaEntrada;
 
-        private decimal ValorComDesconto;
+        public decimal ValorComDesconto;
 
-        private decimal ValorDevido;
+        public decimal ValorDevido;
+
+        public decimal RestanteAPagar;
 
         
 
-        public Aluguel(int id = -1,int idCliente = -1, int idTema = -1, Festa festa = null)
+        public Aluguel(int id = -1, int idCliente = -1, int idTema = -1, Festa festa = null, decimal valorDaEntrada = -1, decimal valorComDesconto = -1, decimal valorDevido = -1)
         {
             this.id = id;
             this.idCliente = idCliente;
             this.idTema = idTema;
             this.festa = festa;
+            this.ValorDaEntrada = valorDaEntrada;
+            this.ValorComDesconto = valorComDesconto;
+            this.ValorDevido = valorDevido;
+            this.RestanteAPagar = valorDevido;
         }
         public override void AtualizarInformacoes(Aluguel entidade)
         {
             this.idTema = entidade.idTema;
             this.festa = entidade.festa;
+            this.ValorDaEntrada = entidade.ValorDaEntrada;
+            this.ValorComDesconto = entidade.ValorComDesconto;
+            this.ValorDevido = entidade.ValorDevido;
         }
 
         public override string[] Validar()
         {
             List<string> erros = new List<string>();
-            if (String.IsNullOrEmpty(festa.endereco))
-            {
-                erros.Add("Endereço não informado");
-            }
             if (idCliente == -1)
             {
                 erros.Add("Cliente não selecionado");
@@ -44,6 +49,22 @@
             if (idTema == -1)
             {
                 erros.Add("Tema não selecionado");
+            }
+            if(ValorComDesconto == -1)
+            {
+                erros.Add("Valor com desconto não informado");
+            }
+            if (ValorDaEntrada == -1)
+            {
+                erros.Add("Valor da entrada não informado");
+            }
+            if (ValorDevido == -1)
+            {
+                erros.Add("Valor devido não informado");
+            }
+            if (String.IsNullOrEmpty(festa.endereco))
+            {
+                erros.Add("Endereço não informado");
             }
             if (festa.data == default(DateTime))
             {

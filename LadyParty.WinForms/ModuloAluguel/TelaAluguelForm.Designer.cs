@@ -48,16 +48,18 @@
             labelTitulo = new Label();
             groupBox1 = new GroupBox();
             label9 = new Label();
-            txtValor = new Label();
+            txtValorTema = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             label10 = new Label();
             txtValorEntrada = new NumericUpDown();
             label8 = new Label();
             clienteUserControl1 = new ModuloCliente.ClienteUserControl();
             txtValorDevido = new TextBox();
-            cbxConcluirPagamento = new CheckBox();
+            txtPagarDivida = new NumericUpDown();
+            cbxPagarDivida = new CheckBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtValorEntrada).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtPagarDivida).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -112,6 +114,7 @@
             // 
             // cbnTemas
             // 
+            cbnTemas.Enabled = false;
             cbnTemas.FormattingEnabled = true;
             cbnTemas.Location = new Point(136, 157);
             cbnTemas.Name = "cbnTemas";
@@ -185,7 +188,7 @@
             // 
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe Print", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGravar.Location = new Point(102, 498);
+            btnGravar.Location = new Point(104, 471);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(89, 42);
             btnGravar.TabIndex = 12;
@@ -197,7 +200,7 @@
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe Print", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancelar.Location = new Point(208, 498);
+            btnCancelar.Location = new Point(210, 471);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(89, 42);
             btnCancelar.TabIndex = 13;
@@ -246,7 +249,7 @@
             groupBox1.Controls.Add(txtHoraTermino);
             groupBox1.Controls.Add(label6);
             groupBox1.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(12, 306);
+            groupBox1.Location = new Point(14, 279);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(371, 165);
             groupBox1.TabIndex = 17;
@@ -264,16 +267,16 @@
             label9.TabIndex = 18;
             label9.Text = "Valor do tema:";
             // 
-            // txtValor
+            // txtValorTema
             // 
-            txtValor.AutoSize = true;
-            txtValor.BackColor = Color.Thistle;
-            txtValor.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtValor.Location = new Point(138, 197);
-            txtValor.Name = "txtValor";
-            txtValor.Size = new Size(50, 21);
-            txtValor.TabIndex = 19;
-            txtValor.Text = "{valor}";
+            txtValorTema.AutoSize = true;
+            txtValorTema.BackColor = Color.Thistle;
+            txtValorTema.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtValorTema.Location = new Point(138, 197);
+            txtValorTema.Name = "txtValorTema";
+            txtValorTema.Size = new Size(50, 21);
+            txtValorTema.TabIndex = 19;
+            txtValorTema.Text = "{valor}";
             // 
             // contextMenuStrip1
             // 
@@ -298,13 +301,14 @@
             txtValorEntrada.Name = "txtValorEntrada";
             txtValorEntrada.Size = new Size(69, 23);
             txtValorEntrada.TabIndex = 22;
+            txtValorEntrada.ValueChanged += txtValorEntrada_ValueChanged;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.Thistle;
             label8.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(40, 262);
+            label8.Location = new Point(220, 197);
             label8.Name = "label8";
             label8.Size = new Size(90, 21);
             label8.TabIndex = 24;
@@ -320,25 +324,32 @@
             // 
             // txtValorDevido
             // 
-            txtValorDevido.Location = new Point(136, 262);
+            txtValorDevido.Location = new Point(316, 197);
             txtValorDevido.Name = "txtValorDevido";
             txtValorDevido.ReadOnly = true;
             txtValorDevido.Size = new Size(75, 23);
             txtValorDevido.TabIndex = 26;
             // 
-            // cbxConcluirPagamento
+            // txtPagarDivida
             // 
-            cbxConcluirPagamento.AutoCheck = false;
-            cbxConcluirPagamento.AutoSize = true;
-            cbxConcluirPagamento.BackColor = Color.Thistle;
-            cbxConcluirPagamento.CheckAlign = ContentAlignment.MiddleRight;
-            cbxConcluirPagamento.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            cbxConcluirPagamento.Location = new Point(217, 260);
-            cbxConcluirPagamento.Name = "cbxConcluirPagamento";
-            cbxConcluirPagamento.Size = new Size(133, 25);
-            cbxConcluirPagamento.TabIndex = 27;
-            cbxConcluirPagamento.Text = "Pagar Pendência:";
-            cbxConcluirPagamento.UseVisualStyleBackColor = false;
+            txtPagarDivida.Enabled = false;
+            txtPagarDivida.Location = new Point(329, 230);
+            txtPagarDivida.Name = "txtPagarDivida";
+            txtPagarDivida.Size = new Size(65, 23);
+            txtPagarDivida.TabIndex = 29;
+            // 
+            // cbxPagarDivida
+            // 
+            cbxPagarDivida.BackColor = Color.Thistle;
+            cbxPagarDivida.CheckAlign = ContentAlignment.MiddleRight;
+            cbxPagarDivida.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            cbxPagarDivida.Location = new Point(213, 230);
+            cbxPagarDivida.Name = "cbxPagarDivida";
+            cbxPagarDivida.Size = new Size(113, 21);
+            cbxPagarDivida.TabIndex = 30;
+            cbxPagarDivida.Text = "Pagar Dívida?";
+            cbxPagarDivida.UseVisualStyleBackColor = false;
+            cbxPagarDivida.CheckedChanged += cbxPagarDivida_CheckedChanged;
             // 
             // TelaAluguelForm
             // 
@@ -346,14 +357,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(405, 552);
-            Controls.Add(cbxConcluirPagamento);
+            ClientSize = new Size(405, 526);
+            Controls.Add(cbxPagarDivida);
+            Controls.Add(txtPagarDivida);
             Controls.Add(txtValorDevido);
             Controls.Add(clienteUserControl1);
             Controls.Add(label8);
             Controls.Add(txtValorEntrada);
             Controls.Add(label10);
-            Controls.Add(txtValor);
+            Controls.Add(txtValorTema);
             Controls.Add(label9);
             Controls.Add(groupBox1);
             Controls.Add(labelTitulo);
@@ -371,6 +383,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtValorEntrada).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtPagarDivida).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -396,13 +409,14 @@
         private Label labelTitulo;
         private GroupBox groupBox1;
         private Label label9;
-        private Label txtValor;
+        private Label txtValorTema;
         private ContextMenuStrip contextMenuStrip1;
         private Label label10;
         private NumericUpDown txtValorEntrada;
         private Label label8;
         private ModuloCliente.ClienteUserControl clienteUserControl1;
         private TextBox txtValorDevido;
-        private CheckBox cbxConcluirPagamento;
+        private NumericUpDown txtPagarDivida;
+        private CheckBox cbxPagarDivida;
     }
 }
