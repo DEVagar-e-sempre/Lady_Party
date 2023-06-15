@@ -19,7 +19,7 @@ namespace LadyParty.WinForms.ModuloCliente
         }
         public override string ObterTipoCadastro => "Cliente";
 
-        public override bool FiltrarHabilitado => true;
+        //public override bool FiltrarHabilitado => true;
 
         public override void Inserir()
         {

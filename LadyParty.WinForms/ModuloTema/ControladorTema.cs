@@ -9,7 +9,7 @@
 
         public override string ObterTipoCadastro => "Tema";
 
-        public override bool FiltrarHabilitado => true;
+        //public override bool FiltrarHabilitado => true;
         public override bool AddItemHabilitado => true;
 
         public ControladorTema(RepositorioArquivoTema repTema, RepositorioArquivoItemTema repItem)
