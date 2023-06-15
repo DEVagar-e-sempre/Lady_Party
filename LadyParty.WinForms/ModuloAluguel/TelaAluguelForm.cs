@@ -67,6 +67,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         }
         public Aluguel ObterAluguel()
         {
+
             Aluguel aluguel = new Aluguel();
             aluguel.festa = new Festa(txtEndereco.Text, txtData.Value, txtHoraInicio.Value.TimeOfDay, txtHoraTermino.Value.TimeOfDay);
 
