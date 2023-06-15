@@ -17,7 +17,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         private RepositorioArquivoCliente repCliente;
 
         private RepositorioArquivoTema repTema;
-
+        private TelaFiltroAluguelForm telaFiltroAluguel;
 
         public ControladorAluguel(RepositorioArquivoAluguel repAluguel, RepositorioArquivoCliente repCliente, RepositorioArquivoTema repTema)
         {
@@ -27,6 +27,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         }
 
         public override string ObterTipoCadastro => "Aluguel";
+        public override bool FiltrarHabilitado => true;
 
         public override void Editar()
         {
@@ -112,7 +113,19 @@ namespace LadyParty.WinForms.ModuloAluguel
                 CarregarAluguels(dataInicial, dataFinal);
             }
         }
-
+        public override void Filtrar()
+        {
+            if (telaFiltroAluguel == null)
+            {
+                telaFiltroAluguel = new TelaFiltroAluguelForm();
+            }
+            DialogResult opcaoEscolhida = telaFiltroAluguel.ShowDialog();
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                telaFiltroAluguel.ObterDatas(out this.dataInicial, out this.dataFinal); ;
+                CarregarAluguels(dataInicial, dataFinal);
+            }
+        }
         private void CarregarAluguels(DateTime dataInicial, DateTime dataFinal)
         {
             List<Aluguel> alugueis = repAluguel.SelecionarTodos();
