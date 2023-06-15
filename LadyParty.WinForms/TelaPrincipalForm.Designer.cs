@@ -289,6 +289,7 @@
             Controls.Add(pnl_principal);
             Name = "TelaPrincipalForm";
             Text = "Tela Principal";
+            FormClosing += TelaPrincipalForm_FormClosing;
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             pnl_principal.ResumeLayout(false);
