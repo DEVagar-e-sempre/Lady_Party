@@ -4,7 +4,7 @@
     {
         public static void ConfigurarTelas(this Form form)
         {
-            form.ShowIcon = false;
+            //form.ShowIcon = false;
             //form.ShowInTaskbar = false;
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.StartPosition = FormStartPosition.CenterScreen;

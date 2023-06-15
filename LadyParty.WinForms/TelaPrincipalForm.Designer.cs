@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipalForm));
             statusStrip1 = new StatusStrip();
             lbl_status = new ToolStripStatusLabel();
             label1 = new Label();
@@ -61,234 +62,177 @@
             // 
             // statusStrip1
             // 
+            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.BackColor = Color.White;
             statusStrip1.Items.AddRange(new ToolStripItem[] { lbl_status });
-            statusStrip1.Location = new Point(0, 444);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(499, 22);
-            statusStrip1.TabIndex = 1;
-            statusStrip1.Text = "statusStrip1";
             // 
             // lbl_status
             // 
+            resources.ApplyResources(lbl_status, "lbl_status");
             lbl_status.Name = "lbl_status";
-            lbl_status.Size = new Size(39, 17);
-            lbl_status.Text = "Status";
             // 
             // label1
             // 
-            label1.AutoSize = true;
+            resources.ApplyResources(label1, "label1");
             label1.BackColor = Color.Thistle;
             label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Segoe Print", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(14, 21);
             label1.Name = "label1";
-            label1.Size = new Size(188, 51);
-            label1.TabIndex = 9;
-            label1.Text = "Lady Party";
             // 
             // pnl_principal
             // 
+            resources.ApplyResources(pnl_principal, "pnl_principal");
             pnl_principal.Controls.Add(lbl);
             pnl_principal.Controls.Add(pictureBox2);
             pnl_principal.Controls.Add(label1);
             pnl_principal.Controls.Add(pictureBox1);
-            pnl_principal.Location = new Point(0, 71);
             pnl_principal.Name = "pnl_principal";
-            pnl_principal.Size = new Size(499, 370);
-            pnl_principal.TabIndex = 10;
             // 
             // lbl
             // 
-            lbl.AutoSize = true;
+            resources.ApplyResources(lbl, "lbl");
             lbl.BackColor = Color.White;
-            lbl.Font = new Font("Segoe Print", 14.25F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
-            lbl.Location = new Point(14, 122);
             lbl.Name = "lbl";
-            lbl.Size = new Size(473, 33);
-            lbl.TabIndex = 11;
-            lbl.Text = "Vamos lá, escolha um tema para a sua FESTA!!";
             // 
             // pictureBox2
             // 
+            resources.ApplyResources(pictureBox2, "pictureBox2");
             pictureBox2.Image = Properties.Resources.Video_Facebook_Gerente_de_Comunidade_Simples_Vermehlo;
-            pictureBox2.Location = new Point(153, 168);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(186, 166);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
+            resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
-            pictureBox1.BackgroundImageLayout = ImageLayout.None;
-            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.Lady_Party_Tela__1_;
-            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(499, 370);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
             // toolStrip2
             // 
+            resources.ApplyResources(toolStrip2, "toolStrip2");
             toolStrip2.Items.AddRange(new ToolStripItem[] { btn_inserir, btn_editar, btn_excluir, toolStripSeparator4, btn_filtrar, btn_addItem, toolStripSeparator5, lbl_tipoCad });
-            toolStrip2.Location = new Point(0, 39);
             toolStrip2.Name = "toolStrip2";
-            toolStrip2.Size = new Size(499, 29);
-            toolStrip2.TabIndex = 12;
-            toolStrip2.Text = "toolStrip2";
             // 
             // btn_inserir
             // 
+            resources.ApplyResources(btn_inserir, "btn_inserir");
             btn_inserir.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_inserir.Enabled = false;
             btn_inserir.Image = Properties.Resources.add_circle_FILL0_wght400_GRAD0_opsz24;
-            btn_inserir.ImageTransparentColor = Color.Magenta;
             btn_inserir.Name = "btn_inserir";
             btn_inserir.Padding = new Padding(3);
-            btn_inserir.Size = new Size(26, 26);
-            btn_inserir.Text = "toolStripButton1";
             btn_inserir.Click += botaoBarraFerramentas_Click;
             // 
             // btn_editar
             // 
+            resources.ApplyResources(btn_editar, "btn_editar");
             btn_editar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_editar.Enabled = false;
             btn_editar.Image = Properties.Resources.edit_FILL0_wght400_GRAD0_opsz24;
-            btn_editar.ImageTransparentColor = Color.Magenta;
             btn_editar.Name = "btn_editar";
             btn_editar.Padding = new Padding(3);
-            btn_editar.Size = new Size(26, 26);
-            btn_editar.Text = "toolStripButton2";
             btn_editar.Click += botaoBarraFerramentas_Click;
             // 
             // btn_excluir
             // 
+            resources.ApplyResources(btn_excluir, "btn_excluir");
             btn_excluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_excluir.Enabled = false;
             btn_excluir.Image = Properties.Resources.delete_forever_FILL0_wght400_GRAD0_opsz24;
-            btn_excluir.ImageTransparentColor = Color.Magenta;
             btn_excluir.Name = "btn_excluir";
             btn_excluir.Padding = new Padding(3);
-            btn_excluir.Size = new Size(26, 26);
-            btn_excluir.Text = "toolStripButton3";
             btn_excluir.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator4
             // 
+            resources.ApplyResources(toolStripSeparator4, "toolStripSeparator4");
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 29);
             // 
             // btn_filtrar
             // 
+            resources.ApplyResources(btn_filtrar, "btn_filtrar");
             btn_filtrar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_filtrar.Enabled = false;
             btn_filtrar.Image = Properties.Resources.filter_alt_FILL0_wght400_GRAD0_opsz24;
-            btn_filtrar.ImageTransparentColor = Color.Magenta;
             btn_filtrar.Name = "btn_filtrar";
             btn_filtrar.Padding = new Padding(3);
-            btn_filtrar.Size = new Size(26, 26);
-            btn_filtrar.Text = "toolStripButton4";
             btn_filtrar.Click += botaoBarraFerramentas_Click;
             // 
             // btn_addItem
             // 
+            resources.ApplyResources(btn_addItem, "btn_addItem");
             btn_addItem.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_addItem.Enabled = false;
             btn_addItem.Image = Properties.Resources.library_add_FILL0_wght400_GRAD0_opsz24;
-            btn_addItem.ImageTransparentColor = Color.Magenta;
             btn_addItem.Name = "btn_addItem";
             btn_addItem.Padding = new Padding(3);
-            btn_addItem.Size = new Size(26, 26);
-            btn_addItem.Text = "toolStripButton1";
             btn_addItem.Click += botaoBarraFerramentas_Click;
             // 
             // toolStripSeparator5
             // 
+            resources.ApplyResources(toolStripSeparator5, "toolStripSeparator5");
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 29);
             // 
             // lbl_tipoCad
             // 
+            resources.ApplyResources(lbl_tipoCad, "lbl_tipoCad");
             lbl_tipoCad.Name = "lbl_tipoCad";
-            lbl_tipoCad.Size = new Size(97, 26);
-            lbl_tipoCad.Text = "Tipo do Cadastro";
             // 
             // toolStrip1
             // 
+            resources.ApplyResources(toolStrip1, "toolStrip1");
             toolStrip1.BackColor = Color.White;
             toolStrip1.Items.AddRange(new ToolStripItem[] { btn_tema, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_evento, toolStripLabel1 });
-            toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(499, 39);
-            toolStrip1.TabIndex = 11;
-            toolStrip1.Text = "toolStrip1";
             // 
             // btn_tema
             // 
-            btn_tema.Font = new Font("Segoe Print", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            resources.ApplyResources(btn_tema, "btn_tema");
             btn_tema.Image = Properties.Resources.domino_mask_FILL0_wght400_GRAD0_opsz24;
-            btn_tema.ImageTransparentColor = Color.Magenta;
             btn_tema.Name = "btn_tema";
             btn_tema.Padding = new Padding(5);
-            btn_tema.Size = new Size(78, 36);
-            btn_tema.Text = "Temas";
             btn_tema.Click += selecaoModulo_Click;
             // 
             // toolStripSeparator1
             // 
+            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 39);
             // 
             // btn_cliente
             // 
-            btn_cliente.Font = new Font("Segoe Print", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            resources.ApplyResources(btn_cliente, "btn_cliente");
             btn_cliente.Image = Properties.Resources.group_FILL0_wght400_GRAD0_opsz24;
-            btn_cliente.ImageTransparentColor = Color.Magenta;
             btn_cliente.Name = "btn_cliente";
             btn_cliente.Padding = new Padding(5);
-            btn_cliente.Size = new Size(85, 36);
-            btn_cliente.Text = "Clientes";
             btn_cliente.Click += selecaoModulo_Click;
             // 
             // toolStripSeparator2
             // 
+            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 39);
             // 
             // btn_evento
             // 
-            btn_evento.Font = new Font("Segoe Print", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            resources.ApplyResources(btn_evento, "btn_evento");
             btn_evento.Image = Properties.Resources.cake_FILL0_wght400_GRAD0_opsz24;
-            btn_evento.ImageTransparentColor = Color.Magenta;
             btn_evento.Name = "btn_evento";
             btn_evento.Padding = new Padding(5);
-            btn_evento.Size = new Size(82, 36);
-            btn_evento.Text = "Aluguel";
             btn_evento.Click += selecaoModulo_Click;
             // 
             // toolStripLabel1
             // 
+            resources.ApplyResources(toolStripLabel1, "toolStripLabel1");
             toolStripLabel1.Alignment = ToolStripItemAlignment.Right;
             toolStripLabel1.Image = Properties.Resources.sentiment_satisfied_FILL0_wght400_GRAD0_opsz24;
             toolStripLabel1.Name = "toolStripLabel1";
             toolStripLabel1.Padding = new Padding(10);
-            toolStripLabel1.Size = new Size(36, 36);
             // 
             // TelaPrincipalForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(499, 466);
             Controls.Add(toolStrip2);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Controls.Add(pnl_principal);
             Name = "TelaPrincipalForm";
-            Text = "Tela Principal";
             FormClosing += TelaPrincipalForm_FormClosing;
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
