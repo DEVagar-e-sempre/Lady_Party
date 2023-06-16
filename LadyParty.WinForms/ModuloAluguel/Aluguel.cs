@@ -93,5 +93,12 @@
             }
             return erros.ToArray();
         }
+
+        public override bool Equals(object? obj)
+        {
+            Aluguel aluguel = (Aluguel) obj;
+
+            return idCliente == aluguel.idCliente && idTema == aluguel.idTema && festa.Equals(aluguel.festa);
+        }
     }
 }
