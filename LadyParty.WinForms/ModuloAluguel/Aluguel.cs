@@ -1,4 +1,4 @@
-﻿namespace LadyParty.WinForms.ModuloAluguel
+﻿ namespace LadyParty.WinForms.ModuloAluguel
 {
     public class Aluguel : EntidadeBase<Aluguel>
     {
