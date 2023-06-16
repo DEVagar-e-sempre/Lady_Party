@@ -16,20 +16,32 @@ namespace LadyParty.WinForms.Compartilhado
         {
         }
 
-        public virtual void Inserir(TEntidade registro)
+        public virtual bool Inserir(TEntidade registro)
         {
+            if (EhRepetido(registro))
+            {
+                return false;
+            }
             registro.id = contadorRegistros;
 
             listaRegistros.Add(registro);
 
             contadorRegistros++;
+
+            return true;
         }
 
-        public virtual void Editar(int id, TEntidade registroAtualizado)
+        public virtual bool Editar(int id, TEntidade registroAtualizado)
         {
+            if (EhRepetido(registroAtualizado))
+            {
+                return false;
+            }
             TEntidade registroSelecionado = SelecionarPorId(id);
 
             registroSelecionado.AtualizarInformacoes(registroAtualizado);
+
+            return true;
         }
 
         public virtual void Excluir(TEntidade registroSelecionado)
@@ -45,6 +57,12 @@ namespace LadyParty.WinForms.Compartilhado
         {
             this.listaRegistros = listaRegistros;
             this.contadorRegistros = contador;
+        }
+        public virtual bool EhRepetido(TEntidade entidade)
+        {
+            int quantidade = listaRegistros.Count(x => x.Equals(entidade));
+
+            return quantidade > 1;
         }
     }
 }
