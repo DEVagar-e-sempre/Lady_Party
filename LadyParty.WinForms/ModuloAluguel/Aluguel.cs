@@ -7,55 +7,121 @@
 
         public int idTema;
 
+        public StatusAluguelEnum statusAluguel;
+
         public Festa festa;
 
-        public decimal ValorDaEntrada;
+        public decimal valorAluguel;
 
-        public decimal ValorComDesconto;
+        public decimal valorDaEntrada;
 
-        public decimal ValorDevido;
+        public decimal totalJaPago;
 
-        public decimal RestanteAPagar;
+        public decimal valorDevidoPago;
 
-        
+        public DateTime dataQuitacao;
 
-        public Aluguel(int id, int idCliente, int idTema, Festa festa, decimal valorDaEntrada, decimal valorComDesconto, decimal valorDevido)
+
+
+        public Aluguel(int id, int idCliente, int idTema, Festa festa, decimal valorAluguel, decimal valorDaEntrada, decimal valorRestantePago)
         {
             this.id = id;
             this.idCliente = idCliente;
             this.idTema = idTema;
             this.festa = festa;
-            this.ValorDaEntrada = valorDaEntrada;
-            this.ValorComDesconto = valorComDesconto;
-            this.ValorDevido = valorDevido;
-            this.RestanteAPagar = valorDevido;
+
+            this.valorDaEntrada = valorDaEntrada;
+
+            this.valorAluguel = valorAluguel;
+
+            this.valorDevidoPago = valorRestantePago;
+
+            this.dataQuitacao = default(DateTime);
+
+            ObterValorDevido();
         }
 
         public Aluguel()
         {
             this.id = -1;
+            
             this.idCliente = -1;
+            
             this.idTema = -1;
+            
             this.festa = new Festa();
-            this.ValorDaEntrada = -1;
-            this.ValorComDesconto = -1;
-            this.ValorDevido = -1;
-            this.RestanteAPagar = -1;
+            
+            this.festa.data = default(DateTime);
+            
+            this.festa.horaInicio = default(TimeSpan);
+            
+            this.festa.horaTermino = default(TimeSpan);
+            
+            this.valorDaEntrada = 0;
+            
+            this.valorAluguel = 0;
 
+            this.valorDevidoPago = 0;
+
+            this.dataQuitacao = default(DateTime);
+            
+            ObterValorDevido();
+        }
+
+        public decimal ObterTotalPago()
+        {
+            if(valorDaEntrada + valorDevidoPago == valorAluguel)
+            {
+                return valorAluguel;
+            }
+            return valorDaEntrada + valorDevidoPago;
+        }
+
+        public decimal ObterValorDevido()
+        {
+            decimal valorDevido = valorAluguel - (valorDaEntrada + valorDevidoPago);
+            if(valorDevido == 0)
+            {
+                dataQuitacao = DateTime.Now;
+            }else
+            {
+                  dataQuitacao = default(DateTime);
+            }
+            return valorDevido;
+        }
+
+        public StatusAluguelEnum StatusAluguel()
+        {
+            if (ObterValorDevido() == 0 && DateTime.Now.Date >= festa.data.Date && DateTime.Now.TimeOfDay > festa.horaTermino)
+            {
+                return StatusAluguelEnum.Concluido;
+            }
+            else if (ObterValorDevido() > 0 && DateTime.Now.Date >= festa.data.Date && DateTime.Now.TimeOfDay > festa.horaTermino)
+            {
+                return StatusAluguelEnum.PagamentoPendente;
+            }
+
+            return StatusAluguelEnum.Ativo;
         }
         public override void AtualizarInformacoes(Aluguel entidade)
         {
             this.idTema = entidade.idTema;
+
             this.festa = entidade.festa;
-            this.ValorDaEntrada = entidade.ValorDaEntrada;
-            this.ValorComDesconto = entidade.ValorComDesconto;
-            this.ValorDevido = entidade.ValorDevido;
+
+            this.valorAluguel = entidade.valorAluguel;
+
+            this.valorDaEntrada = entidade.valorDaEntrada;
+            
+            this.valorDevidoPago = entidade.valorDevidoPago;
+
+            ObterValorDevido();
         }
 
         public override string[] Validar()
         {
             List<string> erros = new List<string>();
-            if (idCliente < 0 )
+            if (idCliente < 0)
             {
                 erros.Add("Cliente não selecionado");
             }
@@ -63,17 +129,13 @@
             {
                 erros.Add("Tema não selecionado");
             }
-            if(ValorComDesconto == -1)
+            if (valorAluguel < 1)
             {
                 erros.Add("Valor com desconto não informado");
             }
-            if (ValorDaEntrada == -1)
+            if (valorDaEntrada < 1)
             {
                 erros.Add("Valor da entrada não informado");
-            }
-            if (ValorDevido == -1)
-            {
-                erros.Add("Valor devido não informado");
             }
             if (String.IsNullOrEmpty(festa.endereco))
             {
@@ -96,7 +158,7 @@
 
         public override bool Equals(object? obj)
         {
-            Aluguel aluguel = (Aluguel) obj;
+            Aluguel aluguel = (Aluguel)obj;
 
             return idCliente == aluguel.idCliente && idTema == aluguel.idTema && festa.Equals(aluguel.festa);
         }

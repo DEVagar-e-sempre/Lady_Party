@@ -32,7 +32,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         {
             Festa festa = (Festa)obj;
 
-            return this.endereco.Equals(festa.endereco) && this.data.Equals(festa.data);
+            return this.endereco == festa.endereco && this.data == festa.data;
         }
     }
 }
