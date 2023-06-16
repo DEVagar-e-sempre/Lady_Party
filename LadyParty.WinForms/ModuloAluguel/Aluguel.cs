@@ -158,9 +158,17 @@
 
         public override bool Equals(object? obj)
         {
-            Aluguel aluguel = (Aluguel)obj;
+            if (obj == null || obj == DBNull.Value)
+            {
+                return false;
+            }
 
-            return idCliente == aluguel.idCliente && idTema == aluguel.idTema; // && festa.Equals(aluguel.festa);
+            if(obj is Aluguel auxAluguel)
+            {
+                return this.id != auxAluguel.id && this.idCliente == auxAluguel.idCliente && this.idTema == auxAluguel.idTema; // && festa.Equals(aluguel.festa);
+            }
+
+            return false;
         }
     }
 }

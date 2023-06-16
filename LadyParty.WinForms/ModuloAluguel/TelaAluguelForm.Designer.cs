@@ -439,7 +439,6 @@
             DoubleBuffered = true;
             Name = "TelaAluguelForm";
             Text = "Cadastro de Aluguel";
-            Load += TelaAluguelForm_Load;
             gbxDadosFesta.ResumeLayout(false);
             gbxDadosFesta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtValorEntrada).EndInit();
