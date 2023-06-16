@@ -61,7 +61,7 @@ namespace LadyParty.WinForms.ModuloAluguel
             {
                 Aluguel aluguel = telaAluguel.ObterAluguel();
 
-                if(aluguel.StatusAluguel() == StatusAluguelEnum.Concluido && aluguelSelecionado.StatusAluguel() != StatusAluguelEnum.Concluido)
+                if (aluguel.StatusAluguel() == StatusAluguelEnum.Concluido && aluguelSelecionado.StatusAluguel() != StatusAluguelEnum.Concluido)
                 {
                     Cliente auxCliente = repCliente.SelecionarPorId(aluguelSelecionado.idCliente);
 
@@ -84,6 +84,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         public override void Excluir()
         {
             Aluguel aluguelSelecionado = ObterIdSelecionado();
+
             if (aluguelSelecionado == null)
             {
                 MessageBox.Show($"Selecione um {ObterTipoCadastro} primeiro!",
@@ -93,6 +94,17 @@ namespace LadyParty.WinForms.ModuloAluguel
 
                 return;
             }
+
+            if (aluguelSelecionado.StatusAluguel() != StatusAluguelEnum.Concluido)
+            {
+                TelaPrincipalForm.TelaPrincipal.AtualizarRodape($"Não é possível excluir um {ObterTipoCadastro} que não esteja concluído!");
+                MessageBox.Show($"Não é possível excluir um {ObterTipoCadastro} que não esteja concluído!",
+                                $"Exclusão de {ObterTipoCadastro}",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+                return;
+            }
+
             DialogResult opcaoEscolhida = MessageBox.Show(
                 $"Deseja excluir o {ObterTipoCadastro} selecionado?",
                 $"Exclusão de {ObterTipoCadastro}",
@@ -165,7 +177,8 @@ namespace LadyParty.WinForms.ModuloAluguel
             {
                 alugueis = alugueis.Where(x => x.festa.data < dataFinal).ToList();
             }
-            else if (dataInicial != default(DateTime) && dataFinal != default(DateTime)){
+            else if (dataInicial != default(DateTime) && dataFinal != default(DateTime))
+            {
                 alugueis = alugueis.Where(x => x.festa.data >= dataInicial && x.festa.data <= dataFinal).ToList();
             }
             tabelaAluguel.AtualizarTabela(alugueis, repCliente, repTema);
