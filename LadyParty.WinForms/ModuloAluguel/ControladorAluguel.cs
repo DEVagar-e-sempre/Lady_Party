@@ -52,14 +52,20 @@ namespace LadyParty.WinForms.ModuloAluguel
 
             if (repCliente.SelecionarTodos().Count == 0)
             {
-                MessageBox.Show("Não há clientes cadastrados, cadastre um cliente antes de cadastrar um aluguel", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não há clientes cadastrados, cadastre um cliente antes de Editar um aluguel", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (repTema.SelecionarTodos().Count == 0)
             {
-                MessageBox.Show("Não há temas cadastrados, cadastre um tema antes de cadastrar um aluguel", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não há temas cadastrados, cadastre um tema antes de Editar um aluguel", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (aluguelSelecionado.Validar().Length > 0)
+            {
+                MessageBox.Show(string.Join(Environment.NewLine, aluguelSelecionado.Validar()), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             TelaAluguelForm telaAluguel = new TelaAluguelForm(repAluguel, repCliente.SelecionarTodos(), repTema.SelecionarTodos());
 

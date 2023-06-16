@@ -30,7 +30,8 @@ namespace LadyParty.WinForms.ModuloAluguel
             {
                 Cliente cliente = repCliente.SelecionarPorId(aluguel.idCliente);
                 Tema tema = repTema.SelecionarPorId(aluguel.idTema);
-                gridTabela.Rows.Add(aluguel.id, cliente.nomeCliente, tema.nomeTema, aluguel.festa.endereco, aluguel.festa.data.ToShortDateString(), aluguel.festa.horaInicio.ToString(@"hh\:mm"), aluguel.festa.horaTermino.ToString(@"hh\:mm"));
+                //Deve exibir: Id, Nome do Cliente, Telefone do Cliente, Tema, Data e Valor Total
+                gridTabela.Rows.Add(aluguel.id, cliente.nomeCliente,cliente.telefoneCliente, tema.nomeTema, aluguel.festa.data.ToShortDateString(), aluguel.valorAluguel);
             }
         }
 
@@ -40,11 +41,9 @@ namespace LadyParty.WinForms.ModuloAluguel
             {
                 new DataGridViewTextBoxColumn() { Name  = "id", HeaderText = "ID" },
                 new DataGridViewTextBoxColumn() { Name  = "Cliente", HeaderText = "Cliente" },
+                new DataGridViewTextBoxColumn() { Name  = "Telefone", HeaderText = "Telefone" },
                 new DataGridViewTextBoxColumn() { Name  = "Tema", HeaderText = "Tema" },
-                new DataGridViewTextBoxColumn() { Name  = "Endereco", HeaderText = "Endereço"},
                 new DataGridViewTextBoxColumn() { Name  = "Data", HeaderText = "Data" },
-                new DataGridViewTextBoxColumn() { Name  = "HoraInicio", HeaderText = "Hora de Início" },
-                new DataGridViewTextBoxColumn() { Name  = "HoraTermino", HeaderText = "Hora de Término" },
             };
             gridTabela.Columns.AddRange(colunas);
         }
