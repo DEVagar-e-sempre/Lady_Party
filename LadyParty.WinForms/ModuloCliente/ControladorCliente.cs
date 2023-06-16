@@ -23,7 +23,7 @@ namespace LadyParty.WinForms.ModuloCliente
 
         public override void Inserir()
         {
-            TelaClienteForm telaCliente = new TelaClienteForm();
+            TelaClienteForm telaCliente = new TelaClienteForm(repCliente);
 
             telaCliente.DefinirID(repCliente.Contador);
 
@@ -31,10 +31,10 @@ namespace LadyParty.WinForms.ModuloCliente
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repCliente.Inserir(telaCliente.Cliente);
-                MessageBox.Show("Cliente gravado com Sucesso!");
-                CarregarClientes();
-                //repCliente.Serializador();
+                    repCliente.Inserir(telaCliente.Cliente);
+                    MessageBox.Show("Cliente gravado com Sucesso!");
+                    CarregarClientes();
+                    //repCliente.Serializador();
             }
         }
         private void CarregarClientes()
@@ -57,7 +57,7 @@ namespace LadyParty.WinForms.ModuloCliente
             }
             else
             {
-                telaCliente = new TelaClienteForm();
+                telaCliente = new TelaClienteForm(repCliente);
                 telaCliente.Cliente = clienteSelec;
                 telaCliente.DefinirID(clienteSelec.id);
 

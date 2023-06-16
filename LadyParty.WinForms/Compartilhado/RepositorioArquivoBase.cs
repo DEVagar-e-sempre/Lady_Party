@@ -62,7 +62,7 @@ namespace LadyParty.WinForms.Compartilhado
         {
             int quantidade = listaRegistros.Count(x => x.Equals(entidade));
 
-            return quantidade > 1;
+            return quantidade > 0;
         }
     }
 }
