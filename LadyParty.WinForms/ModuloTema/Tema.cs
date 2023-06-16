@@ -1,4 +1,6 @@
-﻿namespace LadyParty.WinForms.ModuloTema
+﻿using LadyParty.WinForms.ModuloCliente;
+
+namespace LadyParty.WinForms.ModuloTema
 {
     public class Tema : EntidadeBase<Tema>
     {
@@ -59,6 +61,20 @@
         public override string ToString()
         {
             return nomeTema;
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || obj == DBNull.Value)
+            {
+                return false;
+            }
+
+            if (obj is Tema auxTema)
+            {
+                return this.id != auxTema.id && this.nomeTema == auxTema.nomeTema;
+            }
+
+            return false;
         }
     }
 }

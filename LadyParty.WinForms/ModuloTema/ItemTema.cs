@@ -33,5 +33,18 @@
         {
             return $"ID: {id} | Nome: {nome} | Preço: {preco}";
         }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || obj == DBNull.Value)
+            {
+                return false;
+            }
+
+            if (obj is ItemTema auxItemTema)
+            {
+                return this.id != auxItemTema.id && this.nome == auxItemTema.nome;
+            }
+            return false;
+        }
     }
 }

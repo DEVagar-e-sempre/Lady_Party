@@ -74,6 +74,13 @@ namespace LadyParty.WinForms.ModuloAluguel
                 cbxPagarDivida.Enabled = true;
             }
 
+            if (aluguel.StatusAluguel() == StatusAluguelEnum.Concluido)
+            {
+                txtDataQuitacao.Text = aluguel.dataQuitacao.ToShortDateString();
+                txtDataQuitacao.Visible = true;
+                labelDataQuitacao.Visible = true;
+            }
+
             this.valorDevido = aluguel.ObterValorDevido();
             this.valorDevidoTemp = aluguel.ObterValorDevido();
 
@@ -205,7 +212,6 @@ namespace LadyParty.WinForms.ModuloAluguel
             cbxPagarDivida.Enabled = false;
 
         }
-
         private void cbnClientes_SelectedValueChanged(object sender, EventArgs e)
         {
             this.cliente = (Cliente)cbnClientes.SelectedItem;
@@ -232,11 +238,7 @@ namespace LadyParty.WinForms.ModuloAluguel
         {
             valorDevidoTemp = valorDevido - txtValorDevidoPago.Value;
             txtValorDevido.Text = $"R$ {valorDevidoTemp}";
-        }
-
-        private void TelaAluguelForm_Load(object sender, EventArgs e)
-        {
-
+            txtTotalPago.Text = $"R$ {txtValorEntrada.Value + txtValorDevidoPago.Value}";
         }
     }
 }

@@ -49,7 +49,7 @@ namespace LadyParty.WinForms.Compartilhado
             listaRegistros.Remove(registroSelecionado);
         }
 
-        public virtual TEntidade SelecionarPorId(int id) => listaRegistros.FirstOrDefault(x => x.id == id);
+        public virtual TEntidade SelecionarPorId(int id) => listaRegistros.Find(x => x.id == id);
 
         public virtual List<TEntidade> SelecionarTodos() => listaRegistros;
 
@@ -62,7 +62,7 @@ namespace LadyParty.WinForms.Compartilhado
         {
             int quantidade = listaRegistros.Count(x => x.Equals(entidade));
 
-            return quantidade > 1;
+            return quantidade > 0;
         }
     }
 }

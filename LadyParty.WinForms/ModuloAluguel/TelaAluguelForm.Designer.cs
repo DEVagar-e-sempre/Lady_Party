@@ -56,9 +56,11 @@
             clienteUserControl1 = new ModuloCliente.ClienteUserControl();
             txtValorDevidoPago = new NumericUpDown();
             cbxPagarDivida = new CheckBox();
-            labelTotalPago = new Label();
             txtValorDevido = new Label();
             txtTotalPago = new Label();
+            labelTotalPago = new Label();
+            txtDataQuitacao = new Label();
+            labelDataQuitacao = new Label();
             gbxDadosFesta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtValorEntrada).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtValorDevidoPago).BeginInit();
@@ -347,17 +349,6 @@
             cbxPagarDivida.UseVisualStyleBackColor = false;
             cbxPagarDivida.CheckedChanged += cbxPagarDivida_CheckedChanged;
             // 
-            // labelTotalPago
-            // 
-            labelTotalPago.AutoSize = true;
-            labelTotalPago.BackColor = Color.Thistle;
-            labelTotalPago.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTotalPago.Location = new Point(128, 267);
-            labelTotalPago.Name = "labelTotalPago";
-            labelTotalPago.Size = new Size(79, 21);
-            labelTotalPago.TabIndex = 31;
-            labelTotalPago.Text = "Total Pago:";
-            // 
             // txtValorDevido
             // 
             txtValorDevido.AutoSize = true;
@@ -374,11 +365,46 @@
             txtTotalPago.AutoSize = true;
             txtTotalPago.BackColor = Color.Thistle;
             txtTotalPago.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtTotalPago.Location = new Point(213, 267);
+            txtTotalPago.Location = new Point(97, 266);
             txtTotalPago.Name = "txtTotalPago";
             txtTotalPago.Size = new Size(50, 21);
             txtTotalPago.TabIndex = 33;
             txtTotalPago.Text = "{valor}";
+            // 
+            // labelTotalPago
+            // 
+            labelTotalPago.AutoSize = true;
+            labelTotalPago.BackColor = Color.Thistle;
+            labelTotalPago.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTotalPago.Location = new Point(12, 266);
+            labelTotalPago.Name = "labelTotalPago";
+            labelTotalPago.Size = new Size(79, 21);
+            labelTotalPago.TabIndex = 31;
+            labelTotalPago.Text = "Total Pago:";
+            // 
+            // txtDataQuitacao
+            // 
+            txtDataQuitacao.AutoSize = true;
+            txtDataQuitacao.BackColor = Color.Thistle;
+            txtDataQuitacao.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtDataQuitacao.Location = new Point(298, 266);
+            txtDataQuitacao.Name = "txtDataQuitacao";
+            txtDataQuitacao.Size = new Size(96, 21);
+            txtDataQuitacao.TabIndex = 35;
+            txtDataQuitacao.Text = "99/99/9999";
+            txtDataQuitacao.Visible = false;
+            // 
+            // labelDataQuitacao
+            // 
+            labelDataQuitacao.AutoSize = true;
+            labelDataQuitacao.BackColor = Color.Thistle;
+            labelDataQuitacao.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDataQuitacao.Location = new Point(170, 266);
+            labelDataQuitacao.Name = "labelDataQuitacao";
+            labelDataQuitacao.Size = new Size(122, 21);
+            labelDataQuitacao.TabIndex = 34;
+            labelDataQuitacao.Text = "Data da Quitação:";
+            labelDataQuitacao.Visible = false;
             // 
             // TelaAluguelForm
             // 
@@ -387,6 +413,8 @@
             BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(405, 538);
+            Controls.Add(txtDataQuitacao);
+            Controls.Add(labelDataQuitacao);
             Controls.Add(txtTotalPago);
             Controls.Add(txtValorDevido);
             Controls.Add(labelTotalPago);
@@ -411,7 +439,6 @@
             DoubleBuffered = true;
             Name = "TelaAluguelForm";
             Text = "Cadastro de Aluguel";
-            Load += TelaAluguelForm_Load;
             gbxDadosFesta.ResumeLayout(false);
             gbxDadosFesta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtValorEntrada).EndInit();
@@ -449,8 +476,10 @@
         private ModuloCliente.ClienteUserControl clienteUserControl1;
         private NumericUpDown txtValorDevidoPago;
         private CheckBox cbxPagarDivida;
-        private Label labelTotalPago;
         private Label txtValorDevido;
         private Label txtTotalPago;
+        private Label labelTotalPago;
+        private Label txtDataQuitacao;
+        private Label labelDataQuitacao;
     }
 }

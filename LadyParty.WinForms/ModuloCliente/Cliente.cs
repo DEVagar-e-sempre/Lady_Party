@@ -1,4 +1,6 @@
-﻿namespace LadyParty.WinForms.ModuloCliente
+﻿using LadyParty.WinForms.ModuloAluguel;
+
+namespace LadyParty.WinForms.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
@@ -60,14 +62,31 @@
             if (string.IsNullOrEmpty(nomeCliente))
                 erros.Add($"O campo 'nome cliente' é obrigatório.");
 
+            if(nomeCliente.Length < 3)
+                erros.Add($"O camo 'nome' deve ter no minimo 3 caracteres.");
+
             if (string.IsNullOrEmpty(telefoneCliente))
-                erros.Add($"O campo 'numero de celular' é obrigatório.");
+                erros.Add($"O campo 'telefone' é obrigatório.");
 
             return erros.ToArray();
         }
         public override string ToString()
         {
             return nomeCliente;
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || obj == DBNull.Value)
+            {
+                return false;
+            }
+
+            if (obj is Cliente auxCliente)
+            {
+                return this.id != auxCliente.id && this.nomeCliente == auxCliente.nomeCliente;
+            }
+
+            return false;
         }
     }
 }

@@ -51,7 +51,11 @@
             btn_cliente = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
             btn_evento = new ToolStripButton();
-            lbl_rostinho = new ToolStripLabel();
+            toolStripLabel1 = new ToolStripLabel();
+            btn_ConfigurarDesconto = new ToolStripButton();
+            toolStripSeparator3 = new ToolStripSeparator();
+            toolStripSeparator6 = new ToolStripSeparator();
+            toolStripButton1 = new ToolStripButton();
             statusStrip1.SuspendLayout();
             pnl_principal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -112,7 +116,7 @@
             // toolStrip2
             // 
             resources.ApplyResources(toolStrip2, "toolStrip2");
-            toolStrip2.Items.AddRange(new ToolStripItem[] { btn_inserir, btn_editar, btn_excluir, toolStripSeparator4, btn_filtrar, btn_addItem, toolStripSeparator5, lbl_tipoCad });
+            toolStrip2.Items.AddRange(new ToolStripItem[] { btn_inserir, btn_editar, btn_excluir, toolStripSeparator4, btn_filtrar, toolStripSeparator6, btn_ConfigurarDesconto, toolStripButton1, toolStripSeparator3, btn_addItem, toolStripSeparator5, lbl_tipoCad });
             toolStrip2.Name = "toolStrip2";
             // 
             // btn_inserir
@@ -179,7 +183,7 @@
             // 
             resources.ApplyResources(toolStrip1, "toolStrip1");
             toolStrip1.BackColor = Color.White;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_tema, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_evento, lbl_rostinho });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_tema, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_evento, toolStripLabel1 });
             toolStrip1.Name = "toolStrip1";
             // 
             // btn_tema
@@ -216,13 +220,37 @@
             btn_evento.Padding = new Padding(5);
             btn_evento.Click += selecaoModulo_Click;
             // 
-            // lbl_rostinho
+            // toolStripLabel1
             // 
-            resources.ApplyResources(lbl_rostinho, "lbl_rostinho");
-            lbl_rostinho.Alignment = ToolStripItemAlignment.Right;
-            lbl_rostinho.Image = Properties.Resources.sentiment_satisfied_FILL0_wght400_GRAD0_opsz24;
-            lbl_rostinho.Name = "lbl_rostinho";
-            lbl_rostinho.Padding = new Padding(10);
+            resources.ApplyResources(toolStripLabel1, "toolStripLabel1");
+            toolStripLabel1.Alignment = ToolStripItemAlignment.Right;
+            toolStripLabel1.Image = Properties.Resources.sentiment_satisfied_FILL0_wght400_GRAD0_opsz24;
+            toolStripLabel1.Name = "toolStripLabel1";
+            toolStripLabel1.Padding = new Padding(10);
+            // 
+            // btn_ConfigurarDesconto
+            // 
+            resources.ApplyResources(btn_ConfigurarDesconto, "btn_ConfigurarDesconto");
+            btn_ConfigurarDesconto.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_ConfigurarDesconto.Image = Properties.Resources.outline_discount_black_24dp;
+            btn_ConfigurarDesconto.Name = "btn_ConfigurarDesconto";
+            // 
+            // toolStripSeparator3
+            // 
+            resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            // 
+            // toolStripSeparator6
+            // 
+            resources.ApplyResources(toolStripSeparator6, "toolStripSeparator6");
+            toolStripSeparator6.Name = "toolStripSeparator6";
+            // 
+            // toolStripButton1
+            // 
+            resources.ApplyResources(toolStripButton1, "toolStripButton1");
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = Properties.Resources.outline_view_list_black_24dp;
+            toolStripButton1.Name = "toolStripButton1";
             // 
             // TelaPrincipalForm
             // 
@@ -271,7 +299,11 @@
         private ToolStripButton btn_filtrar;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripLabel lbl_tipoCad;
-        private ToolStripLabel lbl_rostinho;
+        private ToolStripLabel toolStripLabel1;
         private ToolStripButton btn_addItem;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripButton btn_ConfigurarDesconto;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripButton toolStripButton1;
     }
 }
