@@ -14,6 +14,7 @@ namespace LadyParty.WinForms.ModuloTema
             this.preco = preco;
 
             listaItens = new List<ItemTema>();
+          
         }
 
         public Tema(){ }
@@ -50,7 +51,6 @@ namespace LadyParty.WinForms.ModuloTema
         {
             this.nomeTema = entidadeAtualizada.nomeTema;
             this.preco = entidadeAtualizada.preco;
-            this.listaItens = entidadeAtualizada.listaItens;
         }
 
         internal void AdicionarItens(ItemTema item)

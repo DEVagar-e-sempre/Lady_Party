@@ -42,7 +42,7 @@
             foreach (Tema tema in 
                 listaTemas)
             {
-                grid.Rows.Add(tema.id, tema.nomeTema, tema.preco, tema.listaItens.Count);
+                grid.Rows.Add(tema.id, tema.nomeTema, tema.CalcularValorTotal(), tema.listaItens.Count);
             }
         }
 

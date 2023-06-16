@@ -42,6 +42,8 @@
             txb_id = new TextBox();
             label3 = new Label();
             label5 = new Label();
+            btn_remover = new Button();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -195,15 +197,41 @@
             label5.Font = new Font("Segoe Print", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             label5.Location = new Point(12, 26);
             label5.Name = "label5";
-            label5.Size = new Size(265, 51);
+            label5.Size = new Size(279, 51);
             label5.TabIndex = 32;
-            label5.Text = "Tabela de Temas";
+            label5.Text = "Cadastro de Itens";
+            // 
+            // btn_remover
+            // 
+            btn_remover.BackColor = Color.White;
+            btn_remover.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_remover.Location = new Point(95, 349);
+            btn_remover.Name = "btn_remover";
+            btn_remover.Size = new Size(75, 30);
+            btn_remover.TabIndex = 33;
+            btn_remover.Text = "Remover";
+            btn_remover.UseVisualStyleBackColor = false;
+            btn_remover.Click += btn_remover_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.White;
+            label6.FlatStyle = FlatStyle.Flat;
+            label6.Font = new Font("Segoe Print", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(227, 117);
+            label6.Name = "label6";
+            label6.Size = new Size(45, 23);
+            label6.TabIndex = 34;
+            label6.Text = "Itens:";
             // 
             // TelaCadastroItemForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(461, 390);
+            Controls.Add(label6);
+            Controls.Add(btn_remover);
             Controls.Add(label5);
             Controls.Add(label3);
             Controls.Add(txb_id);
@@ -219,7 +247,7 @@
             Controls.Add(btn_gravar);
             Controls.Add(pictureBox1);
             Name = "TelaCadastroItemForm";
-            Text = "Tela Cadastro de Item";
+            Text = "Cadastro de Item";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -241,5 +269,7 @@
         private TextBox txb_id;
         private Label label3;
         private Label label5;
+        private Button btn_remover;
+        private Label label6;
     }
 }
