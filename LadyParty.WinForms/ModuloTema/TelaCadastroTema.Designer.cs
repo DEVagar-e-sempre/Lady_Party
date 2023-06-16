@@ -169,7 +169,7 @@
             Controls.Add(pictureBox1);
             Name = "TelaCadastroTema";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "TelaCadastroTema";
+            Text = "Cadastro de Tema";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

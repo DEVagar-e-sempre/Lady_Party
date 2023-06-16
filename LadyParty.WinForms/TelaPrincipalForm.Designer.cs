@@ -51,7 +51,7 @@
             btn_cliente = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
             btn_evento = new ToolStripButton();
-            toolStripLabel1 = new ToolStripLabel();
+            lbl_rostinho = new ToolStripLabel();
             statusStrip1.SuspendLayout();
             pnl_principal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -179,7 +179,7 @@
             // 
             resources.ApplyResources(toolStrip1, "toolStrip1");
             toolStrip1.BackColor = Color.White;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_tema, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_evento, toolStripLabel1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_tema, toolStripSeparator1, btn_cliente, toolStripSeparator2, btn_evento, lbl_rostinho });
             toolStrip1.Name = "toolStrip1";
             // 
             // btn_tema
@@ -216,13 +216,13 @@
             btn_evento.Padding = new Padding(5);
             btn_evento.Click += selecaoModulo_Click;
             // 
-            // toolStripLabel1
+            // lbl_rostinho
             // 
-            resources.ApplyResources(toolStripLabel1, "toolStripLabel1");
-            toolStripLabel1.Alignment = ToolStripItemAlignment.Right;
-            toolStripLabel1.Image = Properties.Resources.sentiment_satisfied_FILL0_wght400_GRAD0_opsz24;
-            toolStripLabel1.Name = "toolStripLabel1";
-            toolStripLabel1.Padding = new Padding(10);
+            resources.ApplyResources(lbl_rostinho, "lbl_rostinho");
+            lbl_rostinho.Alignment = ToolStripItemAlignment.Right;
+            lbl_rostinho.Image = Properties.Resources.sentiment_satisfied_FILL0_wght400_GRAD0_opsz24;
+            lbl_rostinho.Name = "lbl_rostinho";
+            lbl_rostinho.Padding = new Padding(10);
             // 
             // TelaPrincipalForm
             // 
@@ -271,7 +271,7 @@
         private ToolStripButton btn_filtrar;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripLabel lbl_tipoCad;
-        private ToolStripLabel toolStripLabel1;
+        private ToolStripLabel lbl_rostinho;
         private ToolStripButton btn_addItem;
     }
 }

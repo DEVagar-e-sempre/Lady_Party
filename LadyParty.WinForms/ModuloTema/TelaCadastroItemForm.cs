@@ -12,6 +12,11 @@
             ConfigurarTelaItem(tema);
         }
 
+        public void DefinirID(int id)
+        {
+            txb_id.Text = id.ToString();
+        }
+
         private void ConfigurarTelaItem(Tema tema)
         {
             txb_id.Text = tema.id.ToString();
@@ -30,6 +35,7 @@
             TelaPrincipalForm tlPrinc = TelaPrincipalForm.TelaPrincipal;
 
             string nome = txb_nome.Text;
+
             if (decimal.TryParse(txb_preco.Text, out decimal preco) == false)
             {
                 txb_preco.Text = "0";
@@ -58,6 +64,7 @@
         private void btn_gravar_Click(object sender, EventArgs e)
         {
             string nome = txb_nome.Text;
+
             if (decimal.TryParse(txb_preco.Text, out decimal preco) == false)
             {
                 txb_preco.Text = "0";
@@ -65,6 +72,11 @@
             }
 
             this.item = new ItemTema(nome, preco);
+        }
+
+        private void btn_remover_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

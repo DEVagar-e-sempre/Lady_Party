@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-namespace LadyParty.WinForms.ModuloTema
+﻿namespace LadyParty.WinForms.ModuloTema
 {
     public partial class TelaCadastroTema : Form
     {
@@ -31,15 +29,21 @@ namespace LadyParty.WinForms.ModuloTema
         {
             TelaPrincipalForm tlPrinc = TelaPrincipalForm.TelaPrincipal;
 
+            int id = Convert.ToInt32(txb_id.Text);
+
             string nome = txb_nomeTema.Text;
 
-            if(decimal.TryParse(txb_preco.Text, out decimal preco) == false)
+            if (decimal.TryParse(txb_preco.Text, out decimal preco) == false)
             {
                 txb_preco.Text = "0";
                 preco = 0;
             }
 
             tema = new Tema(nome, preco);
+
+            tema.id = id;
+
+            tema.CalcularValorTotal();
 
             string[] erros = tema.Validar();
 

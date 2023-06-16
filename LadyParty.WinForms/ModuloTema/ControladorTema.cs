@@ -37,8 +37,6 @@
                 MessageBox.Show("Tema Gravado com sucesso!");
 
                 CarregarTemas();
-
-                //repTema.Serializador();
             }
         }
 
@@ -56,6 +54,7 @@
             else
             {
                 telaTema = new TelaCadastroTema();
+
                 telaTema.Tema = temaSelec;
 
                 DialogResult opcao = telaTema.ShowDialog();
@@ -65,8 +64,6 @@
                     repTema.Editar(telaTema.Tema.id, telaTema.Tema);
 
                     CarregarTemas();
-
-                    //repTema.Serializador();
                 }
             }
         }
@@ -94,8 +91,6 @@
                     repTema.Excluir(temaSelec);
 
                     CarregarTemas();
-
-                    //repTema.Serializador();
                 }
             }
         }
@@ -117,12 +112,12 @@
             {
                 TelaCadastroItemForm telaCadItem = new TelaCadastroItemForm(temaSelec);
 
+                telaCadItem.DefinirID(repItem.Contador);
+
                 DialogResult opcaoEscolhida = telaCadItem.ShowDialog();
 
                 if (opcaoEscolhida == DialogResult.OK)
                 {
-
-                    //tarefaSelec.AdicionarItens(telaCadItem.Item);
 
                     List<ItemTema> listaItens = telaCadItem.ObterItensCad();
 
@@ -131,11 +126,8 @@
                         temaSelec.AdicionarItens(item);
                     }
 
-                    //tarefaSelec.AdicionarItens(listaItens.ElementAt<ItemTarefa>(listaItens.Count - 1));
-
                     repTema.Editar(temaSelec.id, temaSelec);
                     CarregarTemas();
-                    //repTema.Serializador();
                 }
             }
         }

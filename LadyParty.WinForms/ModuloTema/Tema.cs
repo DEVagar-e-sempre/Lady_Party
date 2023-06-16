@@ -12,6 +12,7 @@
             this.preco = preco;
 
             listaItens = new List<ItemTema>();
+          
         }
 
         public Tema(){ }
@@ -48,7 +49,6 @@
         {
             this.nomeTema = entidadeAtualizada.nomeTema;
             this.preco = entidadeAtualizada.preco;
-            this.listaItens = entidadeAtualizada.listaItens;
         }
 
         internal void AdicionarItens(ItemTema item)

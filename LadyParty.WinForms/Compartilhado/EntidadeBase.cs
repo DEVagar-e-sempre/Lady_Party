@@ -2,7 +2,7 @@
 {
     public abstract class EntidadeBase<T>
     {
-        public int id;
+        public int id { get; set; }
 
         public abstract string[] Validar();
 
