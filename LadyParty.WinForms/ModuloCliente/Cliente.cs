@@ -62,6 +62,9 @@ namespace LadyParty.WinForms.ModuloCliente
             if (string.IsNullOrEmpty(nomeCliente))
                 erros.Add($"O campo 'nome cliente' é obrigatório.");
 
+            if(nomeCliente.Length < 3)
+                erros.Add($"O camo 'nome' deve ter no minimo 3 caracteres.");
+
             if (string.IsNullOrEmpty(telefoneCliente))
                 erros.Add($"O campo 'telefone' é obrigatório.");
 

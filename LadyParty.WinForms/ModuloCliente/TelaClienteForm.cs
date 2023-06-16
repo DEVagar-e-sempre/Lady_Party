@@ -74,7 +74,7 @@ namespace LadyParty.WinForms.ModuloCliente
 
                 }
             }
-            
+
         }
     }
 }

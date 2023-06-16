@@ -30,13 +30,13 @@
         {
             lbl_Cliente = new Label();
             lbl_nomeCliente = new Label();
-            txt_nomeCliente = new TextBox();
-            txt_telefone = new TextBox();
             lbl_telefone = new Label();
             txt_id = new TextBox();
             lbl_id = new Label();
             btn_gravar = new Button();
             btn_cancelar = new Button();
+            txt_telefone = new MaskedTextBox();
+            txt_nomeCliente = new TextBox();
             SuspendLayout();
             // 
             // lbl_Cliente
@@ -55,32 +55,18 @@
             lbl_nomeCliente.AutoSize = true;
             lbl_nomeCliente.BackColor = Color.Transparent;
             lbl_nomeCliente.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_nomeCliente.Location = new Point(43, 170);
+            lbl_nomeCliente.Location = new Point(50, 170);
             lbl_nomeCliente.Name = "lbl_nomeCliente";
             lbl_nomeCliente.Size = new Size(44, 15);
             lbl_nomeCliente.TabIndex = 12;
             lbl_nomeCliente.Text = "Nome:";
-            // 
-            // txt_nomeCliente
-            // 
-            txt_nomeCliente.Location = new Point(100, 162);
-            txt_nomeCliente.Name = "txt_nomeCliente";
-            txt_nomeCliente.Size = new Size(194, 23);
-            txt_nomeCliente.TabIndex = 13;
-            // 
-            // txt_telefone
-            // 
-            txt_telefone.Location = new Point(100, 207);
-            txt_telefone.Name = "txt_telefone";
-            txt_telefone.Size = new Size(152, 23);
-            txt_telefone.TabIndex = 15;
             // 
             // lbl_telefone
             // 
             lbl_telefone.AutoSize = true;
             lbl_telefone.BackColor = Color.Transparent;
             lbl_telefone.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_telefone.Location = new Point(32, 215);
+            lbl_telefone.Location = new Point(35, 215);
             lbl_telefone.Name = "lbl_telefone";
             lbl_telefone.Size = new Size(59, 15);
             lbl_telefone.TabIndex = 14;
@@ -98,7 +84,7 @@
             lbl_id.AutoSize = true;
             lbl_id.BackColor = Color.Transparent;
             lbl_id.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_id.Location = new Point(66, 119);
+            lbl_id.Location = new Point(73, 119);
             lbl_id.Name = "lbl_id";
             lbl_id.Size = new Size(21, 15);
             lbl_id.TabIndex = 16;
@@ -131,6 +117,21 @@
             btn_cancelar.Text = "Cancelar";
             btn_cancelar.UseVisualStyleBackColor = false;
             // 
+            // txt_telefone
+            // 
+            txt_telefone.Location = new Point(100, 207);
+            txt_telefone.Mask = "(00) 0000-0000";
+            txt_telefone.Name = "txt_telefone";
+            txt_telefone.Size = new Size(152, 23);
+            txt_telefone.TabIndex = 25;
+            // 
+            // txt_nomeCliente
+            // 
+            txt_nomeCliente.Location = new Point(101, 162);
+            txt_nomeCliente.Name = "txt_nomeCliente";
+            txt_nomeCliente.Size = new Size(151, 23);
+            txt_nomeCliente.TabIndex = 27;
+            // 
             // TelaClienteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -138,13 +139,13 @@
             BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(461, 344);
+            Controls.Add(txt_nomeCliente);
+            Controls.Add(txt_telefone);
             Controls.Add(btn_cancelar);
             Controls.Add(btn_gravar);
             Controls.Add(txt_id);
             Controls.Add(lbl_id);
-            Controls.Add(txt_telefone);
             Controls.Add(lbl_telefone);
-            Controls.Add(txt_nomeCliente);
             Controls.Add(lbl_nomeCliente);
             Controls.Add(lbl_Cliente);
             DoubleBuffered = true;
@@ -157,8 +158,6 @@
         #endregion
         private Label lbl_Cliente;
         private Label lbl_nomeCliente;
-        private TextBox txt_nomeCliente;
-        private TextBox txt_telefone;
         private Label lbl_telefone;
         private TextBox textBox3;
         private Label label3;
@@ -167,5 +166,7 @@
         private Button btn_gravar;
         private Button btn_cancelar;
         private Label label4;
+        private MaskedTextBox txt_telefone;
+        private TextBox txt_nomeCliente;
     }
 }
