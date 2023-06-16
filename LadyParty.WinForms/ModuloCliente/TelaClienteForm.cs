@@ -17,18 +17,21 @@ namespace LadyParty.WinForms.ModuloCliente
     {
         private Cliente cliente;
 
-        public TelaClienteForm()
+        public RepositorioArquivoCliente repCliente;
+        public TelaClienteForm(RepositorioArquivoCliente repCliente)
         {
             InitializeComponent();
 
             this.ConfigurarTelas();
             txt_id.ReadOnly = true;
+            this.repCliente = repCliente;
         }
         public Cliente Cliente
         {
             set
             {
                 txt_nomeCliente.Text = value.nomeCliente;
+                txt_telefone.Text = value.telefoneCliente;
             }
             get
             {
@@ -50,19 +53,28 @@ namespace LadyParty.WinForms.ModuloCliente
 
             cliente = new Cliente(nome, telefone);
 
-
-            string[] erros = cliente.Validar();
-
-            if (erros.Length > 0)
+            if (repCliente.EhRepetido(cliente))
             {
-                tlPrinc.AtualizarRodape(erros[0]);
+                TelaPrincipalForm.TelaPrincipal.AtualizarRodape("Nome de cliente já existente, por facor insira um novo nome!");
+
                 DialogResult = DialogResult.None;
             }
             else
             {
-                tlPrinc.AtualizarRodape("");
+                string[] erros = cliente.Validar();
 
+                if (erros.Length > 0)
+                {
+                    tlPrinc.AtualizarRodape(erros[0]);
+                    DialogResult = DialogResult.None;
+                }
+                else
+                {
+                    tlPrinc.AtualizarRodape("");
+
+                }
             }
+            
         }
     }
 }
