@@ -98,11 +98,7 @@
         {
             Aluguel aluguel = (Aluguel) obj;
 
-            if(idCliente == aluguel.idCliente && idTema == aluguel.idTema && festa.Equals(aluguel.festa))
-            {
-                return true;
-            }
-            return false;
+            return idCliente == aluguel.idCliente && idTema == aluguel.idTema && festa.Equals(aluguel.festa);
         }
     }
 }
