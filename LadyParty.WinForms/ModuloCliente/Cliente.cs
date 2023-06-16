@@ -73,9 +73,17 @@ namespace LadyParty.WinForms.ModuloCliente
         }
         public override bool Equals(object? obj)
         {
-            Cliente cliente = (Cliente)obj;
+            if (obj == null || obj == DBNull.Value)
+            {
+                return false;
+            }
 
-                return this.nomeCliente == cliente.nomeCliente;
+            if (obj is Cliente auxCliente)
+            {
+                return this.id != auxCliente.id && this.nomeCliente == auxCliente.nomeCliente;
+            }
+
+            return false;
         }
     }
 }

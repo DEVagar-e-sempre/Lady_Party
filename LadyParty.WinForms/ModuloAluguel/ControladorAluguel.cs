@@ -40,8 +40,6 @@ namespace LadyParty.WinForms.ModuloAluguel
         {
             Aluguel aluguelSelecionado = ObterIdSelecionado();
 
-
-
             if (aluguelSelecionado == null)
             {
                 MessageBox.Show($"Selecione um {ObterTipoCadastro} primeiro!",
@@ -49,6 +47,17 @@ namespace LadyParty.WinForms.ModuloAluguel
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
+                return;
+            }
+
+            if (repCliente.SelecionarTodos().Count == 0)
+            {
+                MessageBox.Show("Não há clientes cadastrados, cadastre um cliente antes de cadastrar um aluguel", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (repTema.SelecionarTodos().Count == 0)
+            {
+                MessageBox.Show("Não há temas cadastrados, cadastre um tema antes de cadastrar um aluguel", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -125,6 +134,18 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         public override void Inserir()
         {
+
+            if (repCliente.SelecionarTodos().Count == 0)
+            {
+                MessageBox.Show("Não há clientes cadastrados, cadastre um cliente antes de cadastrar um aluguel", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (repTema.SelecionarTodos().Count == 0)
+            {
+                MessageBox.Show("Não há temas cadastrados, cadastre um tema antes de cadastrar um aluguel", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             TelaAluguelForm telaAluguel = new TelaAluguelForm(repAluguel, repCliente.SelecionarTodos(), repTema.SelecionarTodos());
 
             telaAluguel.DefinirID(repAluguel.Contador);
