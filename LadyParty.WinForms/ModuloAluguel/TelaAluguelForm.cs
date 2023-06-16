@@ -17,51 +17,98 @@ namespace LadyParty.WinForms.ModuloAluguel
         private List<Cliente> clientes;
         private List<Tema> temas;
 
+        private RepositorioArquivoAluguel repAluguel;
+
         private Cliente cliente;
         private Tema tema;
 
         private decimal valorDoTema;
 
         private decimal valorDevido;
+        private decimal valorDevidoTemp;
 
-        public TelaAluguelForm(List<Cliente> clientes, List<Tema> temas)
+        public TelaAluguelForm(RepositorioArquivoAluguel repAluguel, List<Cliente> clientes, List<Tema> temas)
         {
             InitializeComponent();
+            this.repAluguel = repAluguel;
             this.clientes = clientes;
             this.temas = temas;
             CarregarClientes();
             CarregarTemas();
             this.ConfigurarTelas();
             this.valorDoTema = 0;
+            ConfigurarDataHora();
         }
 
         public void DefinirID(int id = 0)
         {
             txtId.Text = id.ToString();
         }
+        private void ConfigurarDataHora()
+        {
+            txtData.MinDate = DateTime.Now.Date;
 
+        }
         public void ConfigurarTela(Aluguel aluguel, Cliente cliente, Tema tema)
         {
             this.Text = "Edição de Aluguel";
+
             labelTitulo.Text = Text;
 
-            txtId.Text = aluguel.id.ToString();
+            //Informações do Aluguel
 
-            txtEndereco.Text = aluguel.festa.endereco;
+            txtId.Text = aluguel.id.ToString();
 
             cbnClientes.SelectedItem = cliente;
 
             cbnTemas.SelectedItem = tema;
 
+            //Informações do Pagamento
+
+            txtValorEntrada.Value = aluguel.valorDaEntrada;
+
+            txtValorEntrada.Enabled = false;
+
+            if (aluguel.StatusAluguel() == StatusAluguelEnum.PagamentoPendente)
+            {
+                cbxPagarDivida.Enabled = true;
+            }
+
+            this.valorDevido = aluguel.ObterValorDevido();
+            this.valorDevidoTemp = aluguel.ObterValorDevido();
+
+            txtValorDevido.Text = $"R$ {valorDevido}";
+
+            txtTotalPago.Text = $"R$ {aluguel.ObterTotalPago()}";
+
+            txtValorTema.Text = aluguel.valorAluguel.ToString();
+
+            //Dados da Festa
+
+            if (aluguel.StatusAluguel() is StatusAluguelEnum.PagamentoPendente or StatusAluguelEnum.Concluido)
+            {
+                txtEndereco.ReadOnly = true;
+
+                txtData.Enabled = false;
+
+                txtHoraInicio.Enabled = false;
+
+                txtHoraTermino.Enabled = false;
+
+                cbnClientes.Enabled = false;
+                cbnTemas.Enabled = false;
+
+            }
+
+            txtEndereco.Text = aluguel.festa.endereco;
+
+            txtData.MinDate = aluguel.festa.data;
             txtData.Value = aluguel.festa.data;
+
 
             txtHoraInicio.Value = DateTime.Now.Date.Add(aluguel.festa.horaInicio);
 
             txtHoraTermino.Value = DateTime.Now.Date.Add(aluguel.festa.horaTermino);
-
-            txtValorEntrada.Value = aluguel.ValorDaEntrada;
-            txtValorDevido.Text = aluguel.ValorDevido.ToString();
-            txtValorTema.Text = aluguel.ValorComDesconto.ToString();
 
 
         }
@@ -72,9 +119,12 @@ namespace LadyParty.WinForms.ModuloAluguel
             aluguel.festa = new Festa(txtEndereco.Text, txtData.Value.Date, txtHoraInicio.Value.TimeOfDay, txtHoraTermino.Value.TimeOfDay);
 
             aluguel.id = Convert.ToInt32(txtId.Text);
-            aluguel.ValorDaEntrada = txtValorEntrada.Value;
-            aluguel.ValorComDesconto = valorDoTema;
-            aluguel.ValorDevido = valorDevido;
+
+            aluguel.valorDaEntrada = txtValorEntrada.Value;
+
+            aluguel.valorAluguel = valorDoTema;
+
+            aluguel.valorDevidoPago = txtValorDevidoPago.Value;
 
             if (cliente != null)
             {
@@ -92,6 +142,14 @@ namespace LadyParty.WinForms.ModuloAluguel
         {
             Aluguel aluguel = ObterAluguel();
             string[] erros = aluguel.Validar();
+
+            if (repAluguel.EhRepetido(aluguel))
+            {
+                TelaPrincipalForm.TelaPrincipal.AtualizarRodape("Aluguel já cadastrado!");
+
+                DialogResult = DialogResult.None;
+            }
+
             if (erros.Length > 0)
             {
                 TelaPrincipalForm.TelaPrincipal.AtualizarRodape(erros[0]);
@@ -139,11 +197,12 @@ namespace LadyParty.WinForms.ModuloAluguel
 
             }
 
-            txtValorEntrada.Maximum = valorDoTema;
+            txtValorEntrada.Maximum = valorDoTema / 2;
 
             txtValorEntrada.Minimum = valorDoTema * 0.40m;
 
             txtValorEntrada.Enabled = true;
+            cbxPagarDivida.Enabled = false;
 
         }
 
@@ -157,17 +216,27 @@ namespace LadyParty.WinForms.ModuloAluguel
         {
             valorDevido = valorDoTema - txtValorEntrada.Value;
             txtValorDevido.Text = $"R$ {valorDevido}";
+            txtTotalPago.Text = $"R$ {txtValorEntrada.Value}";
         }
 
         private void cbxPagarDivida_CheckedChanged(object sender, EventArgs e)
         {
-            txtPagarDivida.Enabled = !txtPagarDivida.Enabled;
+            txtValorDevidoPago.Enabled = !txtValorDevidoPago.Enabled;
             if (cbxPagarDivida.CheckState == CheckState.Checked)
             {
-                txtPagarDivida.Minimum = txtValorEntrada.Value;
-                txtPagarDivida.Maximum = valorDevido;
-                txtPagarDivida.Value = valorDevido;
+                txtValorDevidoPago.Maximum = valorDevido;
             }
+        }
+
+        private void txtPagarDivida_ValueChanged(object sender, EventArgs e)
+        {
+            valorDevidoTemp = valorDevido - txtValorDevidoPago.Value;
+            txtValorDevido.Text = $"R$ {valorDevidoTemp}";
+        }
+
+        private void TelaAluguelForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

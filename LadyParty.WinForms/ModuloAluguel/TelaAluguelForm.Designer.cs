@@ -46,7 +46,7 @@
             label7 = new Label();
             txtEndereco = new TextBox();
             labelTitulo = new Label();
-            groupBox1 = new GroupBox();
+            gbxDadosFesta = new GroupBox();
             label9 = new Label();
             txtValorTema = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -54,12 +54,14 @@
             txtValorEntrada = new NumericUpDown();
             label8 = new Label();
             clienteUserControl1 = new ModuloCliente.ClienteUserControl();
-            txtValorDevido = new TextBox();
-            txtPagarDivida = new NumericUpDown();
+            txtValorDevidoPago = new NumericUpDown();
             cbxPagarDivida = new CheckBox();
-            groupBox1.SuspendLayout();
+            labelTotalPago = new Label();
+            txtValorDevido = new Label();
+            txtTotalPago = new Label();
+            gbxDadosFesta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtValorEntrada).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtPagarDivida).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtValorDevidoPago).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -188,7 +190,7 @@
             // 
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe Print", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGravar.Location = new Point(104, 471);
+            btnGravar.Location = new Point(196, 480);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(89, 42);
             btnGravar.TabIndex = 12;
@@ -200,7 +202,7 @@
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe Print", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancelar.Location = new Point(210, 471);
+            btnCancelar.Location = new Point(302, 480);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(89, 42);
             btnCancelar.TabIndex = 13;
@@ -237,24 +239,24 @@
             labelTitulo.TabIndex = 16;
             labelTitulo.Text = "Cadastro de Aluguel";
             // 
-            // groupBox1
+            // gbxDadosFesta
             // 
-            groupBox1.BackColor = Color.Transparent;
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(txtEndereco);
-            groupBox1.Controls.Add(txtData);
-            groupBox1.Controls.Add(txtHoraInicio);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(txtHoraTermino);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(14, 279);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(371, 165);
-            groupBox1.TabIndex = 17;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Dados da Festa";
+            gbxDadosFesta.BackColor = Color.Transparent;
+            gbxDadosFesta.Controls.Add(label7);
+            gbxDadosFesta.Controls.Add(label4);
+            gbxDadosFesta.Controls.Add(txtEndereco);
+            gbxDadosFesta.Controls.Add(txtData);
+            gbxDadosFesta.Controls.Add(txtHoraInicio);
+            gbxDadosFesta.Controls.Add(label5);
+            gbxDadosFesta.Controls.Add(txtHoraTermino);
+            gbxDadosFesta.Controls.Add(label6);
+            gbxDadosFesta.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            gbxDadosFesta.Location = new Point(14, 300);
+            gbxDadosFesta.Name = "gbxDadosFesta";
+            gbxDadosFesta.Size = new Size(377, 165);
+            gbxDadosFesta.TabIndex = 17;
+            gbxDadosFesta.TabStop = false;
+            gbxDadosFesta.Text = "Dados da Festa";
             // 
             // label9
             // 
@@ -322,26 +324,20 @@
             clienteUserControl1.Size = new Size(8, 8);
             clienteUserControl1.TabIndex = 25;
             // 
-            // txtValorDevido
+            // txtValorDevidoPago
             // 
-            txtValorDevido.Location = new Point(316, 197);
-            txtValorDevido.Name = "txtValorDevido";
-            txtValorDevido.ReadOnly = true;
-            txtValorDevido.Size = new Size(75, 23);
-            txtValorDevido.TabIndex = 26;
-            // 
-            // txtPagarDivida
-            // 
-            txtPagarDivida.Enabled = false;
-            txtPagarDivida.Location = new Point(329, 230);
-            txtPagarDivida.Name = "txtPagarDivida";
-            txtPagarDivida.Size = new Size(65, 23);
-            txtPagarDivida.TabIndex = 29;
+            txtValorDevidoPago.Enabled = false;
+            txtValorDevidoPago.Location = new Point(329, 230);
+            txtValorDevidoPago.Name = "txtValorDevidoPago";
+            txtValorDevidoPago.Size = new Size(65, 23);
+            txtValorDevidoPago.TabIndex = 29;
+            txtValorDevidoPago.ValueChanged += txtPagarDivida_ValueChanged;
             // 
             // cbxPagarDivida
             // 
             cbxPagarDivida.BackColor = Color.Thistle;
             cbxPagarDivida.CheckAlign = ContentAlignment.MiddleRight;
+            cbxPagarDivida.Enabled = false;
             cbxPagarDivida.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cbxPagarDivida.Location = new Point(213, 230);
             cbxPagarDivida.Name = "cbxPagarDivida";
@@ -351,23 +347,58 @@
             cbxPagarDivida.UseVisualStyleBackColor = false;
             cbxPagarDivida.CheckedChanged += cbxPagarDivida_CheckedChanged;
             // 
+            // labelTotalPago
+            // 
+            labelTotalPago.AutoSize = true;
+            labelTotalPago.BackColor = Color.Thistle;
+            labelTotalPago.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTotalPago.Location = new Point(128, 267);
+            labelTotalPago.Name = "labelTotalPago";
+            labelTotalPago.Size = new Size(79, 21);
+            labelTotalPago.TabIndex = 31;
+            labelTotalPago.Text = "Total Pago:";
+            // 
+            // txtValorDevido
+            // 
+            txtValorDevido.AutoSize = true;
+            txtValorDevido.BackColor = Color.Thistle;
+            txtValorDevido.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtValorDevido.Location = new Point(316, 197);
+            txtValorDevido.Name = "txtValorDevido";
+            txtValorDevido.Size = new Size(50, 21);
+            txtValorDevido.TabIndex = 32;
+            txtValorDevido.Text = "{valor}";
+            // 
+            // txtTotalPago
+            // 
+            txtTotalPago.AutoSize = true;
+            txtTotalPago.BackColor = Color.Thistle;
+            txtTotalPago.Font = new Font("Segoe Print", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtTotalPago.Location = new Point(213, 267);
+            txtTotalPago.Name = "txtTotalPago";
+            txtTotalPago.Size = new Size(50, 21);
+            txtTotalPago.TabIndex = 33;
+            txtTotalPago.Text = "{valor}";
+            // 
             // TelaAluguelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Lady_Party_Tela__1_;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(405, 526);
-            Controls.Add(cbxPagarDivida);
-            Controls.Add(txtPagarDivida);
+            ClientSize = new Size(405, 538);
+            Controls.Add(txtTotalPago);
             Controls.Add(txtValorDevido);
+            Controls.Add(labelTotalPago);
+            Controls.Add(cbxPagarDivida);
+            Controls.Add(txtValorDevidoPago);
             Controls.Add(clienteUserControl1);
             Controls.Add(label8);
             Controls.Add(txtValorEntrada);
             Controls.Add(label10);
             Controls.Add(txtValorTema);
             Controls.Add(label9);
-            Controls.Add(groupBox1);
+            Controls.Add(gbxDadosFesta);
             Controls.Add(labelTitulo);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
@@ -380,10 +411,11 @@
             DoubleBuffered = true;
             Name = "TelaAluguelForm";
             Text = "Cadastro de Aluguel";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            Load += TelaAluguelForm_Load;
+            gbxDadosFesta.ResumeLayout(false);
+            gbxDadosFesta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtValorEntrada).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtPagarDivida).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtValorDevidoPago).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -407,7 +439,7 @@
         private Label label7;
         private TextBox txtEndereco;
         private Label labelTitulo;
-        private GroupBox groupBox1;
+        private GroupBox gbxDadosFesta;
         private Label label9;
         private Label txtValorTema;
         private ContextMenuStrip contextMenuStrip1;
@@ -415,8 +447,10 @@
         private NumericUpDown txtValorEntrada;
         private Label label8;
         private ModuloCliente.ClienteUserControl clienteUserControl1;
-        private TextBox txtValorDevido;
-        private NumericUpDown txtPagarDivida;
+        private NumericUpDown txtValorDevidoPago;
         private CheckBox cbxPagarDivida;
+        private Label labelTotalPago;
+        private Label txtValorDevido;
+        private Label txtTotalPago;
     }
 }

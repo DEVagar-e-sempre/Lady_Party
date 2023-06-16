@@ -34,9 +34,13 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         public override bool FiltrarHabilitado => true;
 
+
+
         public override void Editar()
         {
             Aluguel aluguelSelecionado = ObterIdSelecionado();
+
+
 
             if (aluguelSelecionado == null)
             {
@@ -48,13 +52,23 @@ namespace LadyParty.WinForms.ModuloAluguel
                 return;
             }
 
-            TelaAluguelForm telaAluguel = new TelaAluguelForm(repCliente.SelecionarTodos(), repTema.SelecionarTodos());
+            TelaAluguelForm telaAluguel = new TelaAluguelForm(repAluguel, repCliente.SelecionarTodos(), repTema.SelecionarTodos());
 
             telaAluguel.ConfigurarTela(aluguelSelecionado, repCliente.SelecionarPorId(aluguelSelecionado.idCliente), repTema.SelecionarPorId(aluguelSelecionado.idTema));
 
             DialogResult opcaoEscolhida = telaAluguel.ShowDialog();
             if (opcaoEscolhida == DialogResult.OK)
             {
+                Aluguel aluguel = telaAluguel.ObterAluguel();
+
+                if(aluguel.StatusAluguel() == StatusAluguelEnum.Concluido && aluguelSelecionado.StatusAluguel() != StatusAluguelEnum.Concluido)
+                {
+                    Cliente auxCliente = repCliente.SelecionarPorId(aluguelSelecionado.idCliente);
+
+                    auxCliente.IncrementarContadorDeAlugueis();
+
+                    repCliente.Editar(auxCliente.id, auxCliente);
+                }
                 repAluguel.Editar(aluguelSelecionado.id, telaAluguel.ObterAluguel());
             }
             CarregarAlugueis(dataInicial, dataFinal);
@@ -99,7 +113,7 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         public override void Inserir()
         {
-            TelaAluguelForm telaAluguel = new TelaAluguelForm(repCliente.SelecionarTodos(), repTema.SelecionarTodos());
+            TelaAluguelForm telaAluguel = new TelaAluguelForm(repAluguel, repCliente.SelecionarTodos(), repTema.SelecionarTodos());
 
             telaAluguel.DefinirID(repAluguel.Contador);
 
