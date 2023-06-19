@@ -32,6 +32,7 @@ namespace LadyParty.WinForms.ModuloCliente
             {
                 txt_nomeCliente.Text = value.nomeCliente;
                 txt_telefone.Text = value.telefoneCliente;
+                txt_id.Text = value.id.ToString();
             }
             get
             {
@@ -51,7 +52,11 @@ namespace LadyParty.WinForms.ModuloCliente
 
             string telefone = txt_telefone.Text;
 
+            int id = Convert.ToInt32(txt_id.Text);
+
             cliente = new Cliente(nome, telefone);
+
+            cliente.id = id;
 
             if (repCliente.EhRepetido(cliente))
             {
