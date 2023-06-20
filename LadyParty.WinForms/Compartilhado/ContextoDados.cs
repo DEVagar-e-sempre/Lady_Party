@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
+using LadyParty.WinForms.ModuloItemTema;
 
 namespace LadyParty.WinForms.Compartilhado
 {

@@ -1,4 +1,6 @@
-﻿namespace LadyParty.WinForms.ModuloTema
+﻿using LadyParty.WinForms.ModuloItemTema;
+
+namespace LadyParty.WinForms.ModuloTema
 {
     public class ControladorTema : ControladorBase
     {
@@ -8,9 +10,8 @@
         private TemaUserControl tabelaTema;
 
         public override string ObterTipoCadastro => "Tema";
-
-        //public override bool FiltrarHabilitado => true;
         public override bool AddItemHabilitado => true;
+        public override bool ListarHabilitado => true;
 
         public ControladorTema(RepositorioArquivoTema repTema, RepositorioArquivoItemTema repItem)
         {
@@ -22,7 +23,7 @@
 
         public override void Inserir()
         {
-            telaTema = new TelaCadastroTema();
+            telaTema = new TelaCadastroTema(repItem.SelecionarTodos());
 
             telaTema.DefinirID(repTema.Contador);
 
@@ -53,7 +54,7 @@
             }
             else
             {
-                telaTema = new TelaCadastroTema();
+                telaTema = new TelaCadastroTema(repItem.SelecionarTodos());
 
                 telaTema.Tema = temaSelec;
 
@@ -94,45 +95,6 @@
                 }
             }
         }
-
-        //########### Item ############//
-
-        public override void AddItem()
-        {
-            Tema temaSelec = ObterTemaSelecionado();
-
-            if (temaSelec == null)
-            {
-                MessageBox.Show($"Selecione um Tema primeiro!",
-                    "Adição de itens a Tema",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                TelaCadastroItemForm telaCadItem = new TelaCadastroItemForm(temaSelec);
-
-                telaCadItem.DefinirID(repItem.Contador);
-
-                DialogResult opcaoEscolhida = telaCadItem.ShowDialog();
-
-                if (opcaoEscolhida == DialogResult.OK)
-                {
-
-                    List<ItemTema> listaItens = telaCadItem.ObterItensCad();
-
-                    foreach (ItemTema item in listaItens)
-                    {
-                        temaSelec.AdicionarItens(item);
-                    }
-
-                    repTema.Editar(temaSelec.id, temaSelec);
-                    CarregarTemas();
-                }
-            }
-        }
-
-        //##################################//
 
         private Tema ObterTemaSelecionado()
         {
