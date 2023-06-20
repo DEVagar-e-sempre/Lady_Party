@@ -1,14 +1,26 @@
-﻿namespace LadyParty.WinForms.ModuloTema
+﻿using LadyParty.WinForms.ModuloItemTema;
+
+namespace LadyParty.WinForms.ModuloTema
 {
     public partial class TelaCadastroTema : Form
     {
         private Tema tema;
-        public TelaCadastroTema()
+        public TelaCadastroTema(List<ItemTema> listaItens)
         {
             InitializeComponent();
 
             this.ConfigurarTelas();
             txb_id.ReadOnly = true;
+
+            CarregarItens(listaItens);
+        }
+
+        private void CarregarItens(List<ItemTema> listaItens)
+        {
+            foreach (ItemTema item in listaItens)
+            {
+                checkedList.Items.Add(item);
+            }
         }
 
         public Tema Tema

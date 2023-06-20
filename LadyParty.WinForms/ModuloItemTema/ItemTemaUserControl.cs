@@ -1,8 +1,10 @@
-﻿namespace LadyParty.WinForms.ModuloTema
+﻿using LadyParty.WinForms.ModuloTema;
+
+namespace LadyParty.WinForms.ModuloItemTema
 {
-    public partial class TemaUserControl : UserControl
+    public partial class ItemTemaUserControl : UserControl
     {
-        public TemaUserControl()
+        public ItemTemaUserControl()
         {
             InitializeComponent();
 
@@ -17,38 +19,35 @@
             id.Name = "ID";
             id.HeaderText = "ID";
 
-            DataGridViewTextBoxColumn nomeTema = new DataGridViewTextBoxColumn();
-            nomeTema.Name = "nome";
-            nomeTema.HeaderText = "Nome do Tema";
+            DataGridViewTextBoxColumn descricao = new DataGridViewTextBoxColumn();
+            descricao.Name = "descricao";
+            descricao.HeaderText = "Descricao";
 
             DataGridViewTextBoxColumn preco = new DataGridViewTextBoxColumn();
             preco.Name = "preco";
             preco.HeaderText = "Preço";
 
-            DataGridViewTextBoxColumn listaItens = new DataGridViewTextBoxColumn();
-            listaItens.Name = "listaItens";
-            listaItens.HeaderText = "Quantidade de Itens";
-
             grid.Columns.AddRange(id);
-            grid.Columns.AddRange(nomeTema);
+            grid.Columns.AddRange(descricao);
             grid.Columns.AddRange(preco);
-            grid.Columns.AddRange(listaItens);
         }
 
-        public void AtualizarRegistros(List<Tema> listaTemas)
+        public void AtualizarRegistros(List<ItemTema> listaItens)
         {
             grid.Rows.Clear();
 
-            foreach (Tema tema in  listaTemas)
+            foreach (ItemTema item in listaItens)
             {
-                grid.Rows.Add(tema.id, tema.nomeTema, tema.CalcularValorTotal(), tema.listaItens.Count);
+                grid.Rows.Add(item.id, item.descricao, item.preco);
             }
         }
 
         public int ObterIdSelecionado()
         {
             if (grid.SelectedRows.Count == 0)
+            {
                 return -1;
+            }
 
             int id = Convert.ToInt32(grid.SelectedRows[0].Cells["ID"].Value);
 

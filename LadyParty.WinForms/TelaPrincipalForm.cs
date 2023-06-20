@@ -1,5 +1,6 @@
 using LadyParty.WinForms.ModuloAluguel;
 using LadyParty.WinForms.ModuloCliente;
+using LadyParty.WinForms.ModuloItemTema;
 using LadyParty.WinForms.ModuloTema;
 using System.Threading;
 
@@ -18,6 +19,8 @@ namespace LadyParty.WinForms
         private static TelaPrincipalForm telaPrincipal;
         private CancellationTokenSource cancellationTokenSource;
         private Thread threadSalvarDados;
+
+        // no botão de adicionar item terá que mostrar uma tabela com os itens e fazer do jeito normal a inserção e etc
 
         public TelaPrincipalForm()
         {
@@ -94,6 +97,7 @@ namespace LadyParty.WinForms
 
             btn_filtrar.ToolTipText = controlador.ToolTipFiltrar;
             btn_addItem.ToolTipText = controlador.ToolTipAdd;
+            btn_list.ToolTipText = controlador.ToolTipListar;
         }
 
         public void AtualizarRodape(string msg)
@@ -119,8 +123,18 @@ namespace LadyParty.WinForms
                     controlador.Filtrar();
                     break;
                 case "btn_addItem":
-                    controlador.AddItem();
+                    //instanciar controlador do item tema --> como acontece no metodo a baixo
+
+                    controlador = new ControladorItemTema(repItem);
+
+                    ConfigurarEstados(controlador);
+                    ConfigurarTelaPrincipal(controlador);
+
                     break;
+                case "btn_list":
+                    controlador.Listar();
+                    break;
+
                 default:
                     break;
             }
@@ -155,6 +169,7 @@ namespace LadyParty.WinForms
             btn_excluir.Enabled = controlador.ExcluirHabilitado;
             btn_addItem.Enabled = controlador.AddItemHabilitado;
             btn_filtrar.Enabled = controlador.FiltrarHabilitado;
+            btn_list.Enabled = controlador.ListarHabilitado;
         }
     }
 }

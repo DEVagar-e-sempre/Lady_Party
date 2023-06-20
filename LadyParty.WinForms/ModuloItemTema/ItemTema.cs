@@ -1,14 +1,14 @@
-﻿namespace LadyParty.WinForms.ModuloTema
+﻿namespace LadyParty.WinForms.ModuloItemTema
 {
     public class ItemTema : EntidadeBase<ItemTema>
     {
-        public string nome { get; set; }
+        public string descricao { get; set; }
         public decimal preco { get; set; }
 
-        public ItemTema(string nome, decimal preco)
+        public ItemTema(string descricao, decimal preco)
         {
             this.preco = preco;
-            this.nome = nome;
+            this.descricao = descricao;
         }
 
         public override void AtualizarInformacoes(ItemTema entidade) { }
@@ -17,9 +17,9 @@
         {
             List<string> listaErros = new List<string>();
 
-            if (string.IsNullOrEmpty(nome))
+            if (string.IsNullOrEmpty(descricao))
             {
-                listaErros.Add("O campo do Nome é obrigatório!");
+                listaErros.Add("O campo da Descrição é obrigatório!");
             }
             else if (preco is string || preco == null)
             {
@@ -31,7 +31,7 @@
 
         public override string ToString()
         {
-            return $"ID: {id} | Nome: {nome} | Preço: {preco}";
+            return $"ID: {id} | Nome: {descricao} | Preço: {preco}";
         }
         public override bool Equals(object? obj)
         {
@@ -42,7 +42,7 @@
 
             if (obj is ItemTema auxItemTema)
             {
-                return this.id != auxItemTema.id && this.nome == auxItemTema.nome;
+                return id != auxItemTema.id && descricao == auxItemTema.descricao;
             }
             return false;
         }
