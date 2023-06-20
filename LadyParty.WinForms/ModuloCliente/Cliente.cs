@@ -74,19 +74,11 @@ namespace LadyParty.WinForms.ModuloCliente
         {
             return nomeCliente;
         }
-        public override bool Equals(object? obj)
+        public override bool VerificarRepeticao(Cliente obj)
         {
-            if (obj == null || obj == DBNull.Value)
-            {
-                return false;
-            }
 
-            if (obj is Cliente auxCliente)
-            {
-                return this.id != auxCliente.id && this.nomeCliente == auxCliente.nomeCliente;
-            }
+            return this.id != obj.id && this.nomeCliente == obj.nomeCliente;
 
-            return false;
         }
     }
 }

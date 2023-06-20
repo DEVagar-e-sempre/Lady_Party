@@ -7,5 +7,7 @@
         public abstract string[] Validar();
 
         public abstract void AtualizarInformacoes(T entidade);
+
+        public abstract bool VerificarRepeticao(T entidade);
     }
 }

@@ -23,7 +23,7 @@ namespace LadyParty.WinForms.ModuloTema
 
         public override void Inserir()
         {
-            telaTema = new TelaCadastroTema(repItem.SelecionarTodos());
+            telaTema = new TelaCadastroTema(repItem.SelecionarTodos(), repTema);
 
             telaTema.DefinirID(repTema.Contador);
 
@@ -54,7 +54,7 @@ namespace LadyParty.WinForms.ModuloTema
             }
             else
             {
-                telaTema = new TelaCadastroTema(repItem.SelecionarTodos());
+                telaTema = new TelaCadastroTema(repItem.SelecionarTodos(), repTema);
 
                 telaTema.Tema = temaSelec;
 

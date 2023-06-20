@@ -63,19 +63,9 @@ namespace LadyParty.WinForms.ModuloTema
         {
             return nomeTema;
         }
-        public override bool Equals(object? obj)
+        public override bool VerificarRepeticao(Tema obj)
         {
-            if (obj == null || obj == DBNull.Value)
-            {
-                return false;
-            }
-
-            if (obj is Tema auxTema)
-            {
-                return this.id != auxTema.id && this.nomeTema == auxTema.nomeTema;
-            }
-
-            return false;
+            return this.id != obj.id && this.nomeTema == obj.nomeTema;
         }
     }
 }
