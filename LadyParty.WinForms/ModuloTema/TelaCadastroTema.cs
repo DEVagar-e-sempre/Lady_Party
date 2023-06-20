@@ -4,13 +4,16 @@ namespace LadyParty.WinForms.ModuloTema
 {
     public partial class TelaCadastroTema : Form
     {
+        private RepositorioArquivoTema repTema;
         private Tema tema;
-        public TelaCadastroTema(List<ItemTema> listaItens)
+        public TelaCadastroTema(List<ItemTema> listaItens, RepositorioArquivoTema repTema)
         {
             InitializeComponent();
 
             this.ConfigurarTelas();
             txb_id.ReadOnly = true;
+
+            this.repTema = repTema;
 
             CarregarItens(listaItens);
         }
@@ -41,6 +44,8 @@ namespace LadyParty.WinForms.ModuloTema
         {
             TelaPrincipalForm tlPrinc = TelaPrincipalForm.TelaPrincipal;
 
+            bool ehRepetido = false;
+
             int id = Convert.ToInt32(txb_id.Text);
 
             string nome = txb_nomeTema.Text;
@@ -62,6 +67,11 @@ namespace LadyParty.WinForms.ModuloTema
             if (erros.Length > 0)
             {
                 tlPrinc.AtualizarRodape(erros[0]);
+                DialogResult = DialogResult.None;
+            }
+            else if (repTema.EhRepetido(tema))
+            {
+                tlPrinc.AtualizarRodape("Não pode dar o mesmo Nome para os dois Temas!");
                 DialogResult = DialogResult.None;
             }
             else

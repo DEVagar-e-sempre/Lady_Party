@@ -156,19 +156,9 @@
             return erros.ToArray();
         }
 
-        public override bool Equals(object? obj)
+        public override bool VerificarRepeticao(Aluguel obj)
         {
-            if (obj == null || obj == DBNull.Value)
-            {
-                return false;
-            }
-
-            if(obj is Aluguel auxAluguel)
-            {
-                return this.id != auxAluguel.id && this.idCliente == auxAluguel.idCliente && this.idTema == auxAluguel.idTema; // && festa.Equals(aluguel.festa);
-            }
-
-            return false;
+            return this.id != obj.id && this.idCliente == obj.idCliente && this.idTema == obj.idTema; // && festa.Equals(aluguel.festa);
         }
     }
 }

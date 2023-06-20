@@ -60,7 +60,7 @@ namespace LadyParty.WinForms.Compartilhado
         }
         public virtual bool EhRepetido(TEntidade entidade)
         {
-            int quantidade = listaRegistros.Count(x => x.Equals(entidade));
+            int quantidade = listaRegistros.Count(x => x.VerificarRepeticao(entidade));
 
             return quantidade > 0;
         }

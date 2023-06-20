@@ -33,18 +33,11 @@
         {
             return $"ID: {id} | Nome: {descricao} | Preço: {preco}";
         }
-        public override bool Equals(object? obj)
+        public override bool VerificarRepeticao(ItemTema obj)
         {
-            if (obj == null || obj == DBNull.Value)
-            {
-                return false;
-            }
 
-            if (obj is ItemTema auxItemTema)
-            {
-                return id != auxItemTema.id && descricao == auxItemTema.descricao;
-            }
-            return false;
+            return id != obj.id && descricao == obj.descricao;
+
         }
     }
 }
