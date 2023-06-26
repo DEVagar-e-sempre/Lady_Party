@@ -1,7 +1,6 @@
-﻿using LadyParty.WinForms.ModuloCliente;
-using LadyParty.WinForms.ModuloItemTema;
+﻿using LadyParty.Dominio.ModuloItemTema;
 
-namespace LadyParty.WinForms.ModuloTema
+namespace LadyParty.Dominio.ModuloTema
 {
     public class Tema : EntidadeBase<Tema>
     {

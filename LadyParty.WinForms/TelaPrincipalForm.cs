@@ -1,8 +1,11 @@
+using LadyParty.Infra.ModuloAluguel;
+using LadyParty.Infra.ModuloCliente;
+using LadyParty.Infra.ModuloItemTema;
+using LadyParty.Infra.ModuloTema;
 using LadyParty.WinForms.ModuloAluguel;
 using LadyParty.WinForms.ModuloCliente;
 using LadyParty.WinForms.ModuloItemTema;
 using LadyParty.WinForms.ModuloTema;
-using System.Threading;
 
 namespace LadyParty.WinForms
 {

@@ -13,6 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LadyParty.Dominio\LadyParty.Dominio.csproj" />
+    <ProjectReference Include="..\LadyParty.Infra\LadyParty.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

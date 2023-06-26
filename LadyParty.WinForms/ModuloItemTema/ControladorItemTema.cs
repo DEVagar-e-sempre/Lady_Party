@@ -1,5 +1,6 @@
-﻿using LadyParty.WinForms.ModuloTema;
-using System.Runtime.Intrinsics.X86;
+﻿using LadyParty.Dominio.ModuloItemTema;
+using LadyParty.Infra.ModuloItemTema;
+using LadyParty.WinForms.ModuloTema;
 
 namespace LadyParty.WinForms.ModuloItemTema
 {
