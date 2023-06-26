@@ -1,14 +1,13 @@
-﻿using LadyParty.WinForms.ModuloAluguel;
-using LadyParty.WinForms.ModuloCliente;
-using LadyParty.WinForms.ModuloTema;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using LadyParty.WinForms.ModuloCliente;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using System.Threading.Tasks;
-using LadyParty.WinForms.ModuloItemTema;
+using LadyParty.Dominio.ModuloTema;
+using LadyParty.Dominio.ModuloItemTema;
+using LadyParty.Dominio.ModuloAluguel;
+using LadyParty.Infra.ModuloCliente;
+using LadyParty.Infra.ModuloTema;
+using LadyParty.Infra.ModuloItemTema;
+using LadyParty.Infra.ModuloAluguel;
 
 namespace LadyParty.WinForms.Compartilhado
 {

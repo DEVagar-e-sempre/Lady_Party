@@ -1,4 +1,4 @@
-﻿using LadyParty.WinForms.ModuloAluguel;
+﻿using LadyParty.Dominio.ModuloAluguel;
 
 namespace LadyParty.WinForms.ModuloCliente
 {

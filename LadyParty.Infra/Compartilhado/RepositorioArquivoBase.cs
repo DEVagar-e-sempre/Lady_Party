@@ -1,7 +1,6 @@
-﻿using System.Text.Json.Serialization;
-using System.Text.Json;
+﻿using LadyParty.Dominio.Compartilhado;
 
-namespace LadyParty.WinForms.Compartilhado
+namespace LadyParty.Infra.Compartilhado
 {
     public  class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
     {

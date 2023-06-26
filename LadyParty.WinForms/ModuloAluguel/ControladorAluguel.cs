@@ -1,7 +1,8 @@
-﻿using LadyParty.WinForms.Compartilhado;
+﻿using LadyParty.Dominio.ModuloAluguel;
+using LadyParty.Infra.ModuloAluguel;
+using LadyParty.Infra.ModuloCliente;
+using LadyParty.Infra.ModuloTema;
 using LadyParty.WinForms.ModuloCliente;
-using LadyParty.WinForms.ModuloTema;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LadyParty.WinForms.ModuloAluguel
 {

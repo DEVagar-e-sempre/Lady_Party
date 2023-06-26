@@ -1,4 +1,6 @@
-﻿namespace LadyParty.WinForms.ModuloTema
+﻿using LadyParty.Dominio.ModuloTema;
+
+namespace LadyParty.WinForms.ModuloTema
 {
     public partial class TemaUserControl : UserControl
     {

@@ -1,4 +1,4 @@
-﻿using LadyParty.WinForms.ModuloTema;
+﻿using LadyParty.Dominio.ModuloItemTema;
 
 namespace LadyParty.WinForms.ModuloItemTema
 {

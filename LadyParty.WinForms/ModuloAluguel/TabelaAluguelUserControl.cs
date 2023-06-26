@@ -1,14 +1,7 @@
-﻿using LadyParty.WinForms.ModuloCliente;
-using LadyParty.WinForms.ModuloTema;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using LadyParty.Dominio.ModuloAluguel;
+using LadyParty.Dominio.ModuloTema;
+using LadyParty.Infra.Compartilhado;
+using LadyParty.WinForms.ModuloCliente;
 
 namespace LadyParty.WinForms.ModuloAluguel
 {

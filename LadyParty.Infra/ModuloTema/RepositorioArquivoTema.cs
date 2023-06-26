@@ -1,6 +1,6 @@
-﻿using LadyParty.WinForms.ModuloItemTema;
+﻿using LadyParty.Dominio.ModuloTema;
 
-namespace LadyParty.WinForms.ModuloTema
+namespace LadyParty.Infra.ModuloTema
 {
     public class RepositorioArquivoTema : RepositorioArquivoBase<Tema>
     {

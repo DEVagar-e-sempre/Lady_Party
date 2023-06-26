@@ -1,4 +1,4 @@
-﻿namespace LadyParty.WinForms.Compartilhado
+﻿namespace LadyParty.Dominio.Compartilhado
 {
     public abstract class EntidadeBase<T>
     {

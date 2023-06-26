@@ -1,4 +1,4 @@
-﻿namespace LadyParty.WinForms.ModuloItemTema
+﻿namespace LadyParty.Dominio.ModuloItemTema
 {
     public class ItemTema : EntidadeBase<ItemTema>
     {
