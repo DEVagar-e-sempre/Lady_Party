@@ -1,4 +1,5 @@
 ﻿using LadyParty.Dominio.ModuloAluguel;
+using Microsoft.Data.SqlClient;
 
 namespace LadyParty.WinForms.ModuloCliente
 {
@@ -79,6 +80,35 @@ namespace LadyParty.WinForms.ModuloCliente
 
             return this.id != obj.id && this.nomeCliente == obj.nomeCliente;
 
+        }
+
+        public override string ObterCampoSQL(bool ehParametro = false)
+        {
+            String sufixo = "[";
+            String prefixo = "]";
+            String campo = "";
+
+            if (ehParametro)
+            {
+                sufixo = "@";
+                prefixo = "";
+            }
+            campo += $"{sufixo}nomeCliente{prefixo},";
+            campo += $"{sufixo}telefoneCliente{prefixo},";
+            campo += $"{sufixo}temFestaMarcada{prefixo},";
+            campo += $"{sufixo}dataDeCadastro{prefixo}";
+            return campo;
+        }
+
+        public override SqlParameter[] ObterParametroSQL()
+        {
+            return new SqlParameter[]
+            {
+                new SqlParameter("@nomeCliente", nomeCliente),
+                new SqlParameter("@telefoneCliente", telefoneCliente),
+                new SqlParameter("@temFestaMarcada", temFestaMarcada),
+                new SqlParameter("@dataDeCadastro", dataDeCadastro)
+            };
         }
     }
 }

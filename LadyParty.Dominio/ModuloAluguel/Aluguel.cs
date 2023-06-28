@@ -1,4 +1,6 @@
-﻿ namespace LadyParty.Dominio.ModuloAluguel
+﻿using Microsoft.Data.SqlClient;
+
+namespace LadyParty.Dominio.ModuloAluguel
 {
     public class Aluguel : EntidadeBase<Aluguel>
     {
@@ -44,33 +46,33 @@
         public Aluguel()
         {
             this.id = -1;
-            
+
             this.idCliente = -1;
-            
+
             this.idTema = -1;
-            
+
             this.festa = new Festa();
-            
+
             this.festa.data = default(DateTime);
-            
+
             this.festa.horaInicio = default(TimeSpan);
-            
+
             this.festa.horaTermino = default(TimeSpan);
-            
+
             this.valorDaEntrada = 0;
-            
+
             this.valorAluguel = 0;
 
             this.valorDevidoPago = 0;
 
             this.dataQuitacao = default(DateTime);
-            
+
             ObterValorDevido();
         }
 
         public decimal ObterTotalPago()
         {
-            if(valorDaEntrada + valorDevidoPago == valorAluguel)
+            if (valorDaEntrada + valorDevidoPago == valorAluguel)
             {
                 return valorAluguel;
             }
@@ -80,12 +82,13 @@
         public decimal ObterValorDevido()
         {
             decimal valorDevido = valorAluguel - (valorDaEntrada + valorDevidoPago);
-            if(valorDevido == 0)
+            if (valorDevido == 0)
             {
                 dataQuitacao = DateTime.Now;
-            }else
+            }
+            else
             {
-                  dataQuitacao = default(DateTime);
+                dataQuitacao = default(DateTime);
             }
             return valorDevido;
         }
@@ -112,7 +115,7 @@
             this.valorAluguel = entidade.valorAluguel;
 
             this.valorDaEntrada = entidade.valorDaEntrada;
-            
+
             this.valorDevidoPago = entidade.valorDevidoPago;
 
             ObterValorDevido();
@@ -159,6 +162,48 @@
         public override bool VerificarRepeticao(Aluguel obj)
         {
             return this.id != obj.id && this.idCliente == obj.idCliente && this.idTema == obj.idTema; // && festa.Equals(aluguel.festa);
+        }
+
+        public override string ObterCampoSQL(bool ehParametro = false)
+        {
+            String sufixo = "[";
+            String prefixo = "]";
+            String campo = "";
+
+            if (ehParametro)
+            {
+                sufixo = "@";
+                prefixo = "";
+            }
+
+            campo = sufixo + "idCliente" + prefixo + ", ";
+            campo += sufixo + "idTema" + prefixo + ", ";
+            campo += sufixo + "idFesta" + prefixo + ", ";
+            campo += sufixo + "statusAluguel" + prefixo + ", ";
+            campo += sufixo + "valorAluguel" + prefixo + ", ";
+            campo += sufixo + "valorDaEntrada" + prefixo + ", ";
+            campo += sufixo + "totalJaPago" + prefixo + ", ";
+            campo += sufixo + "valorDevidoPago" + prefixo + ", ";
+            campo += sufixo + "dataQuitacao" + prefixo + ", ";
+
+            return campo;
+
+        }
+
+        public override SqlParameter[] ObterParametroSQL()
+        {
+            return new SqlParameter[]
+            {
+                new SqlParameter("@idCliente", idCliente),
+                new SqlParameter("@idTema", idTema),
+                //new SqlParameter("@idFesta", festa.id),
+                new SqlParameter("@statusAluguel", statusAluguel),
+                new SqlParameter("@valorAluguel", valorAluguel),
+                new SqlParameter("@valorDaEntrada", valorDaEntrada),
+                new SqlParameter("@totalJaPago", ObterTotalPago()),
+                new SqlParameter("@valorDevidoPago", valorDevidoPago),
+                new SqlParameter("@dataQuitacao", dataQuitacao)
+            };
         }
     }
 }
