@@ -1,4 +1,6 @@
-﻿namespace LadyParty.Dominio.ModuloItemTema
+﻿using Microsoft.Data.SqlClient;
+
+namespace LadyParty.Dominio.ModuloItemTema
 {
     public class ItemTema : EntidadeBase<ItemTema>
     {
@@ -38,6 +40,31 @@
 
             return id != obj.id && descricao == obj.descricao;
 
+        }
+
+        public override string ObterCampoSQL(bool ehParametro = false)
+        {
+            String sufixo = "[";
+            String prefixo = "]";
+            String campo = "";
+
+            if (ehParametro)
+            {
+                sufixo = "@";
+                prefixo = "";
+            }
+            campo += $"{sufixo}descricao{prefixo},";
+            campo += $"{sufixo}preco{prefixo}";
+            return campo;
+        }
+
+        public override SqlParameter[] ObterParametroSQL()
+        {
+            return new SqlParameter[]
+            {
+                new SqlParameter("@descricao", descricao),
+                new SqlParameter("@preco", preco)
+            }; 
         }
     }
 }
