@@ -16,6 +16,14 @@ namespace LadyParty.Infra.Compartilhado
 
         public bool Inserir(TEntidade registro)
         {
+            String inserirSQL;
+            inserirSQL = $"INSERT INTO TB{typeof(TEntidade).Name} ({registro.ObterCampoSQL()}) VALUES ({registro.ObterCampoSQL(true)})";
+
+            SqlCommand comando = new SqlCommand(inserirSQL, conexao);
+            comando.Parameters.AddRange(registro.ObterParametroSQL());
+            conexao.Open();
+            comando.ExecuteNonQuery();
+            return true;
         }
         public bool Editar(int id, TEntidade registroAtualizado)
         {
