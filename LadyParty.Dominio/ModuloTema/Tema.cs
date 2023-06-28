@@ -1,4 +1,5 @@
 ﻿using LadyParty.Dominio.ModuloItemTema;
+using Microsoft.Data.SqlClient;
 
 namespace LadyParty.Dominio.ModuloTema
 {
@@ -65,6 +66,31 @@ namespace LadyParty.Dominio.ModuloTema
         public override bool VerificarRepeticao(Tema obj)
         {
             return this.id != obj.id && this.nomeTema == obj.nomeTema;
+        }
+
+        public override string ObterCampoSQL(bool ehParametro = false)
+        {
+            String sufixo = "[";
+            String prefixo = "]";
+            String campo = "";
+
+            if (ehParametro)
+            {
+                sufixo = "@";
+                prefixo = "";
+            }
+            campo += $"{sufixo}nomeTema{prefixo},";
+            campo += $"{sufixo}preco{prefixo}";
+            return campo;
+        }
+
+        public override SqlParameter[] ObterParametroSQL()
+        {
+            return new SqlParameter[]
+            {
+                new SqlParameter("@nomeTema", nomeTema),
+                new SqlParameter("@preco", preco)
+            }; 
         }
     }
 }
