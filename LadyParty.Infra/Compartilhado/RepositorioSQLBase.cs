@@ -1,5 +1,6 @@
 ﻿using LadyParty.Dominio.Compartilhado;
 using LadyParty.Dominio.ModuloTema;
+using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 
 namespace LadyParty.Infra.Compartilhado
@@ -7,24 +8,14 @@ namespace LadyParty.Infra.Compartilhado
     public abstract class RepositorioSQLBase<TEntidade> : IRepositorio<TEntidade>
         where TEntidade : EntidadeBase<TEntidade>
     {
-        private const string strInserirEditar = @"INSERT INTO[LADYPARTYDB]
-                                            (
-                                                [NOME],
-		                                        [TELEFONE]
-	                                        )
-	                                        VALUES
-                                            (
-		                                        @NOME,
-		                                        @TELEFONE
-	                                        )";
-                                            
-        private string strExcluir;
-        private string strSelecionarTodos;
-        private string strConexaoBd;
+        protected SqlConnection conexao;
+        public abstract string strInserirEditar { get; }
+        public abstract string strExcluir { get; }
+        public abstract string strSelecionarTodos { get; }
+        public abstract string strConexaoBd { get; }
 
         public bool Inserir(TEntidade registro)
         {
-            throw new NotImplementedException();
         }
         public bool Editar(int id, TEntidade registroAtualizado)
         {

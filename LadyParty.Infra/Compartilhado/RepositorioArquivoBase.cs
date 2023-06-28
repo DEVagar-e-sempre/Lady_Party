@@ -53,11 +53,12 @@ namespace LadyParty.Infra.Compartilhado
 
         public List<TEntidade> SelecionarTodos() => listaRegistros;
 
-        public void AdicionarRegistroEContador(List<TEntidade> listaRegistros, int contador)
-        {
-            this.listaRegistros = listaRegistros;
-            this.contadorRegistros = contador;
-        }
+        //public void AdicionarRegistroEContador(List<TEntidade> listaRegistros, int contador)
+        //{
+        //    this.listaRegistros = listaRegistros;
+        //    this.contadorRegistros = contador;
+        //}
+
         public bool EhRepetido(TEntidade entidade)
         {
             int quantidade = listaRegistros.Count(x => x.VerificarRepeticao(entidade));

@@ -44,15 +44,16 @@ namespace LadyParty.Dominio.ModuloItemTema
 
         public override string ObterCampoSQL(bool ehParametro = false)
         {
-            String sufixo = "[";
-            String prefixo = "]";
-            String campo = "";
+            string sufixo = "[";
+            string prefixo = "]";
+            string campo = "";
 
             if (ehParametro)
             {
                 sufixo = "@";
                 prefixo = "";
             }
+
             campo += $"{sufixo}descricao{prefixo},";
             campo += $"{sufixo}preco{prefixo}";
             return campo;

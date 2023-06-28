@@ -84,9 +84,9 @@ namespace LadyParty.WinForms.ModuloCliente
 
         public override string ObterCampoSQL(bool ehParametro = false)
         {
-            String sufixo = "[";
-            String prefixo = "]";
-            String campo = "";
+            string sufixo = "[";
+            string prefixo = "]";
+            string campo = "";
 
             if (ehParametro)
             {
