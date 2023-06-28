@@ -110,10 +110,9 @@
             txb_preco.Font = new Font("Segoe Print", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txb_preco.Location = new Point(30, 282);
             txb_preco.Name = "txb_preco";
-            txb_preco.ReadOnly = true;
             txb_preco.Size = new Size(163, 30);
             txb_preco.TabIndex = 20;
-            txb_preco.Text = "500";
+            txb_preco.Text = "0\r\n";
             // 
             // txb_nomeTema
             // 

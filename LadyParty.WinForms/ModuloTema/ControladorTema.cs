@@ -7,15 +7,15 @@ namespace LadyParty.WinForms.ModuloTema
     public class ControladorTema : ControladorBase
     {
         private TelaCadastroTema telaTema;
-        private RepositorioArquivoTema repTema;
-        private RepositorioArquivoItemTema repItem;
+        private RepositorioTemaSQL repTema;
+        private RepositorioItemTemaSQL repItem;
         private TemaUserControl tabelaTema;
 
         public override string ObterTipoCadastro => "Tema";
         public override bool AddItemHabilitado => true;
         public override bool ListarHabilitado => true;
 
-        public ControladorTema(RepositorioArquivoTema repTema, RepositorioArquivoItemTema repItem)
+        public ControladorTema(RepositorioTemaSQL repTema, RepositorioItemTemaSQL repItem)
         {
             this.repTema = repTema;
             this.repItem = repItem;
