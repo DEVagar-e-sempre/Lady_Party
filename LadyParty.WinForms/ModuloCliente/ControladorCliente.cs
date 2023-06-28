@@ -6,9 +6,9 @@ namespace LadyParty.WinForms.ModuloCliente
     {
         private TelaClienteForm telaCliente;
         private ClienteUserControl tabelaCliente;
-        private RepositorioArquivoCliente repCliente;
+        private RepositorioClienteSQL repCliente;
 
-        public ControladorCliente(RepositorioArquivoCliente repCliente)
+        public ControladorCliente(RepositorioClienteSQL repCliente)
         {
             this.repCliente = repCliente;
         }

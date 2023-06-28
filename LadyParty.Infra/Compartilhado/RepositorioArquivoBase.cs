@@ -2,7 +2,8 @@
 
 namespace LadyParty.Infra.Compartilhado
 {
-    public  class RepositorioArquivoBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
+    public  class RepositorioArquivoBase<TEntidade> : IRepositorio<TEntidade>
+        where TEntidade : EntidadeBase<TEntidade>
     {
         protected Type tipo = typeof(TEntidade);
         protected string nomeArquivo;
@@ -15,7 +16,7 @@ namespace LadyParty.Infra.Compartilhado
         {
         }
 
-        public virtual bool Inserir(TEntidade registro)
+        public bool Inserir(TEntidade registro)
         {
             if (EhRepetido(registro))
             {
@@ -30,7 +31,7 @@ namespace LadyParty.Infra.Compartilhado
             return true;
         }
 
-        public virtual bool Editar(int id, TEntidade registroAtualizado)
+        public bool Editar(int id, TEntidade registroAtualizado)
         {
             if (EhRepetido(registroAtualizado))
             {
@@ -43,21 +44,21 @@ namespace LadyParty.Infra.Compartilhado
             return true;
         }
 
-        public virtual void Excluir(TEntidade registroSelecionado)
+        public void Excluir(TEntidade registroSelecionado)
         {
             listaRegistros.Remove(registroSelecionado);
         }
 
-        public virtual TEntidade SelecionarPorId(int id) => listaRegistros.Find(x => x.id == id);
+        public TEntidade SelecionarPorId(int id) => listaRegistros.Find(x => x.id == id);
 
-        public virtual List<TEntidade> SelecionarTodos() => listaRegistros;
+        public List<TEntidade> SelecionarTodos() => listaRegistros;
 
-        public virtual void AdicionarRegistroEContador(List<TEntidade> listaRegistros, int contador)
+        public void AdicionarRegistroEContador(List<TEntidade> listaRegistros, int contador)
         {
             this.listaRegistros = listaRegistros;
             this.contadorRegistros = contador;
         }
-        public virtual bool EhRepetido(TEntidade entidade)
+        public bool EhRepetido(TEntidade entidade)
         {
             int quantidade = listaRegistros.Count(x => x.VerificarRepeticao(entidade));
 

@@ -6,16 +6,25 @@ using LadyParty.WinForms.ModuloAluguel;
 using LadyParty.WinForms.ModuloCliente;
 using LadyParty.WinForms.ModuloItemTema;
 using LadyParty.WinForms.ModuloTema;
+using Microsoft.Data.SqlClient;
 
 namespace LadyParty.WinForms
 {
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-        private RepositorioArquivoCliente repCliente = new RepositorioArquivoCliente();
-        private RepositorioArquivoTema repTema = new RepositorioArquivoTema();
-        private RepositorioArquivoItemTema repItem = new RepositorioArquivoItemTema();
-        private RepositorioArquivoAluguel repEvento = new RepositorioArquivoAluguel();
+        //private RepositorioArquivoCliente repCliente = new RepositorioArquivoCliente();
+        //private RepositorioArquivoTema repTema = new RepositorioArquivoTema();
+        //private RepositorioArquivoItemTema repItem = new RepositorioArquivoItemTema();
+        //private RepositorioArquivoAluguel repEvento = new RepositorioArquivoAluguel();
+
+        private RepositorioClienteSQL repCliente = new RepositorioClienteSQL();
+        private RepositorioTemaSQL repTema = new RepositorioTemaSQL();
+        private RepositorioItemTemaSQL repItem = new RepositorioItemTemaSQL();
+        private RepositorioAluguelSQL repAluguel = new RepositorioAluguelSQL();
+
+        private const string strEnderecoBD = "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=LadyPartyDb;Integrated Security=True";
+        private SqlConnection conexao = new SqlConnection(strEnderecoBD);
 
         private ContextoDados contextoDados = new ContextoDados();
 
@@ -29,15 +38,7 @@ namespace LadyParty.WinForms
         {
             InitializeComponent();
 
-            //Area da serialização
-            contextoDados.CarregarDadosJson();
-            contextoDados.PreencherRepositorios(repCliente, repTema, repItem, repEvento);
-
-            cancellationTokenSource = new CancellationTokenSource();
-            threadSalvarDados = new Thread(() => SalvarDados(cancellationTokenSource));
-            threadSalvarDados.Start();
-
-            //Fim da area da serialização
+            conexao.Open();
 
             lbl_status.Text = "";
             this.ConfigurarTelas();
@@ -45,19 +46,18 @@ namespace LadyParty.WinForms
             telaPrincipal = this;
         }
 
-        public void SalvarDados(CancellationTokenSource cancellationTokenSource)
-        {
-            while (!cancellationTokenSource.Token.IsCancellationRequested)
-            {
-                contextoDados.GravarEmJson(repCliente, repTema, repItem, repEvento);
-                Thread.Sleep(2000);
-            }
-        }
+        //public void SalvarDados(CancellationTokenSource cancellationTokenSource)
+        //{
+        //    while (!cancellationTokenSource.Token.IsCancellationRequested)
+        //    {
+        //        contextoDados.GravarEmJson(repCliente, repTema, repItem, repEvento);
+        //        Thread.Sleep(2000);
+        //    }
+        //}
 
         private void TelaPrincipalForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            cancellationTokenSource.Cancel();
-            threadSalvarDados.Join();
+            conexao.Close();
         }
 
         public static TelaPrincipalForm TelaPrincipal
@@ -65,7 +65,6 @@ namespace LadyParty.WinForms
             get
             {
                 return telaPrincipal;
-
             }
         }
 

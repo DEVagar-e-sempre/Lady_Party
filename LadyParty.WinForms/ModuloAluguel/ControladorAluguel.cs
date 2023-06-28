@@ -13,16 +13,17 @@ namespace LadyParty.WinForms.ModuloAluguel
 
         private TabelaAluguelUserControl tabelaAluguel;
 
-        private RepositorioArquivoAluguel repAluguel;
+        private RepositorioAluguelSQL repAluguel;
 
-        private RepositorioArquivoCliente repCliente;
+        private RepositorioClienteSQL repCliente;
 
-        private RepositorioArquivoTema repTema;
+        private RepositorioTemaSQL repTema;
+
         private TelaFiltroAluguelForm telaFiltroAluguel;
 
 
 
-        public ControladorAluguel(RepositorioArquivoAluguel repAluguel, RepositorioArquivoCliente repCliente, RepositorioArquivoTema repTema)
+        public ControladorAluguel(RepositorioAluguelSQL repAluguel, RepositorioClienteSQL repCliente, RepositorioTemaSQL repTema)
         {
             this.repAluguel = repAluguel;
             this.repCliente = repCliente;
